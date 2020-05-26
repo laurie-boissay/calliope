@@ -9,69 +9,68 @@ from commandes.caracteristiques import *
 def macro_gargrim (macro_text) :
     perso = "Gargrim"
     qui = carac_gargrim
-    gantelets = 2
-    maitre_arme = 1
+    
 
     if "!hacheg" in macro_text.lower():
         p1 = "Gargrim donne un coup de hache de guerre (avec ses gantelets + maître d'arme) :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("niveau") + maitre_arme + gantelets) 
+        p2 = roll(1, 20, qui["force"] + qui["niveau"] + qui["maitre_arme"] + qui["gantelets"]) 
         return p1 + p2
 
     elif "!couteaug" in macro_text.lower():
         p1 = "Gargrim donne un coup couteau (avec ses gantelets) :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("niveau") + gantelets) 
+        p2 = roll(1, 20, qui["force"] + qui["niveau"] + qui["gantelets"]) 
         return p1 + p2
 
     elif "!hache" in macro_text.lower():
         p1 = "Gargrim donne un coup de hache de guerre (maître d'arme) :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("niveau") + maitre_arme) 
+        p2 = roll(1, 20, qui["force"] + qui["niveau"] + qui["maitre_arme"]) 
         return p1 + p2
 
     elif "!couteau" in macro_text.lower():
         p1 = "Gargrim donne un coup de couteau :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("niveau")) 
+        p2 = roll(1, 20, qui["force"] + qui["niveau"]) 
         return p1 + p2
 
     elif "!jet" in macro_text.lower():
         p1 = "Gargrim envoie sa hache de jet :\n" 
-        p2 = roll(1, 20, carac_gargrim("dextérité") + carac_gargrim("niveau")) 
+        p2 = roll(1, 20, qui["dextérité"] + qui["niveau"]) 
         return p1 + p2
 
     elif "!arbalète" in macro_text.lower():
         p1 = "Gargrim tire à l'arbalète :\n" 
-        p2 = roll(1, 20, carac_gargrim("dextérité") + carac_gargrim("niveau")) 
+        p2 = roll(1, 20, qui["dextérité"] + qui["niveau"]) 
         return p1 + p2
 
 #______Dégâts____________________________________________________________________
 
     elif "!dhacheg" in macro_text.lower():
         p1 = "Dégâts de la hache de guerre de Gargrim (avec ses gantelets) :\n" 
-        p2 = roll(1, 8, carac_gargrim("force") + gantelets) 
+        p2 = roll(1, 8, qui["force"] + qui["gantelets"]) 
         return p1 + p2
 
     elif "!dcouteaug" in macro_text.lower():
         p1 = "Dégâts du couteau de Gargrim (avec ses gantelets) :\n" 
-        p2 = roll(1, 6, carac_gargrim("force") + gantelets) 
+        p2 = roll(1, 6, qui["force"] + qui["gantelets"]) 
         return p1 + p2
 
     elif "!dhache" in macro_text.lower():
         p1 = "Dégâts de la hache de guerre Gargrim :\n" 
-        p2 = roll(1, 8, carac_gargrim("force")) 
+        p2 = roll(1, 8, qui["force"]) 
         return p1 + p2
 
     elif "!dcouteau" in macro_text.lower():
         p1 = "Dégâts du couteau de Gargrim :\n" 
-        p2 = roll(1, 6, carac_gargrim("force")) 
+        p2 = roll(1, 6, qui["force"]) 
         return p1 + p2
 
     elif "!djetg" in macro_text.lower():
         p1 = "Dégâts de la hache de jet de Gargrim (avec ses gantelets) :\n" 
-        p2 = roll(1, 6, carac_gargrim("force") + gantelets) 
+        p2 = roll(1, 6, qui["force"] + qui["gantelets"]) 
         return p1 + p2
 
     elif "!djet" in macro_text.lower():
         p1 = "Dégâts de la hache de jet de Gargrim:\n" 
-        p2 = roll(1, 6, carac_gargrim("force")) 
+        p2 = roll(1, 6, qui["force"]) 
         return p1 + p2
 
     elif "!darbalète" in macro_text.lower():
@@ -82,28 +81,28 @@ def macro_gargrim (macro_text) :
 #______Tests stats____________________________________________________________________
     
     elif "!stat" in macro_text.lower():
-        return stat_c_o(qui, perso)
+        return toutes_stat(qui, perso)
 
     elif "!forg" in macro_text.lower():
         p1 = "Gargrim teste sa force (avec ses gantelets) :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + gantelets) 
+        p2 = roll(1, 20, qui["force"] + qui["gantelets"]) 
         return p1 + p2
 
 #________voies_______________________________________________________________________
 
     elif "!absg" in macro_text.lower():
         p1 = "Gargrim absorbe un coup (avec ses gantelets) :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("force") + gantelets)
+        p2 = roll(1, 20, qui["force"] + qui["force"] + qui["gantelets"])
         return p1 + p2
 
     elif "!abs" in macro_text.lower():
         p1 = "Gargrim absorbe un coup :\n" 
-        p2 = roll(1, 20, carac_gargrim("force") + carac_gargrim("force"))
+        p2 = roll(1, 20, qui["force"] + qui["force"])
         return p1 + p2
 
     elif "!abssort" in macro_text.lower():
         p1 = "Gargrim absorbe un sort :\n" 
-        p2 = roll(1, 20, carac_gargrim("sagesse"))
+        p2 = roll(1, 20, qui["sagesse"])
         return p1 + p2
 
 #_____________________________________________________________________________________
@@ -137,8 +136,6 @@ def macro_idaho_dm (macro_text) :
         text = ""
         macro_gargrim = [
         "\n\n```!stat```Affiche les caractéristiques de Gargrim."
-        "\n\n```!ini```Affiche l'initiative de Gargrim."
-        "\n\n```!déf```Affiche la défense de Gargrim."
         "\n\n```!forg```Gargrim teste sa force (avec ses gantelets)."
         "\n\n```!for```Gargrim teste sa force."
         "\n\n```!dex```Gargrim teste sa dextérité."

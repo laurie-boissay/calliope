@@ -32,9 +32,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else :
                     text = macro_agmar(message.content)
-                    if text == "pas Agmar":
-                        text = "not a macro"
-
+        
         #_________Idaho___________________________________________________________________________
             
         elif (message.author.name == "Idaho"):
@@ -45,9 +43,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else:
                     text = macro_gargrim(message.content)
-                    if text == "pas Gargrim":
-                        text = "not a macro"
-
+                  
         #_________Jaenne_________________________________________________________________________
 
         elif (message.author.name == "Jaenne"): #"Jaenne"
@@ -59,12 +55,9 @@ def is_it_macro(message, client):
                 else :
                     if (message.content.startswith('!dm')) or (message.content.startswith('!m')):
                         text = macro_merest(message.content)
-                        if (text == "pas Mérest"):
-                            text = "not a macro"
+                       
                     else:
                         text = macro_jaenne(message.content)
-                        if text == "pas Jaenne":
-                            text = "not a macro" 
         #_________Lex_____________________________________________________________________________
             
         elif (message.author.name == "Lex"):
@@ -77,8 +70,7 @@ def is_it_macro(message, client):
                     text = macro_lex(message.content)
                     if text == "pas Lex":
                         text = macro_filtch(message.content)           
-                        if text == "pas Filtch":
-                            text = "not a macro"      
+                        
         #_________Mel_____________________________________________________________________________
             
         elif (message.author.name == "Mel"):
@@ -89,8 +81,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else:
                     text = macro_willow(message.content)
-                    if text == "pas Willow":
-                        text = "not a macro"
+                   
         #_________PYo_____________________________________________________________________________
             
         elif (message.author.name == "PYo"):
@@ -101,8 +92,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else:
                     text = macro_eustache(message.content)
-                    if text == "pas Eustache":
-                        text = "not a macro"            
+                    
         #_________Stevendeo_____________________________________________________________________________
             
         elif (message.author.name == "Stevendeo"):
@@ -113,8 +103,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else:
                     text = macro_duncan(message.content)
-                    if text == "pas Duncan":
-                        text = "not a macro"
+
         #_________tasneo_____________________________________________________________________________
             
         elif (message.author.name == "tasneo"):
@@ -125,8 +114,7 @@ def is_it_macro(message, client):
                     canal = message.author
                 else:
                     text = macro_darius(message.content)
-                    if text == "pas Darius":
-                        text = "not a macro"
+          
         #__________________________________________________________________________________________
 
     return canal, text

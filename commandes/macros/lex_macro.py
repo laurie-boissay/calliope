@@ -19,32 +19,32 @@ def macro_filtch (macro_text) :
     
     if "!dexh" in macro_text.lower():
         p1 = perso + " teste sa dextérité (avec le bonus de hobbit) :\n"
-        p2 = roll(2, 6, carac_filtch("dextérité") + hobbit)
+        p2 = roll(2, 6, qui["dextérité"] + hobbit)
         return p1 + p2
 
     elif "!inth" in macro_text.lower():
         p1 = perso + " teste son intelligence (avec le bonus de hobbit) :\n"
-        p2 =roll(2, 6, carac_filtch("intelligence") + hobbit)
+        p2 =roll(2, 6, qui["intelligence"] + hobbit)
         return p1 + p2
 
     elif "!forh" in macro_text.lower():
         p1 = perso + " teste sa force (avec le bonus de hobbit) :\n"
-        p2 =roll(2, 6, carac_filtch("force") + hobbit)
+        p2 =roll(2, 6, qui["force"] + hobbit)
         return p1 + p2
 
     elif "!conh" in macro_text.lower():
         p1 = perso + " teste sa constitution (avec le bonus de hobbit) :\n"
-        p2 =roll(2, 6, carac_filtch("constitution") + hobbit)
+        p2 =roll(2, 6, qui["constitution"] + hobbit)
         return p1 + p2
 
     elif "!sagh" in macro_text.lower():
         p1 = perso + " teste sa sagesse (avec le bonus de hobbit) :\n"
-        p2 =roll(2, 6, carac_filtch("sagesse") + hobbit)
+        p2 =roll(2, 6, qui["sagesse"] + hobbit)
         return p1 + p2
 
     elif "!chah" in macro_text.lower():
         p1 = perso + " teste son charisme (avec le bonus de hobbit) :\n"
-        p2 =roll(2, 6, carac_filtch("charisme") + hobbit)
+        p2 =roll(2, 6, qui["charisme"] + hobbit)
         return p1 + p2
 
     else:
@@ -54,13 +54,13 @@ def macro_filtch (macro_text) :
 
 def macro_lex (macro_text) :    
     if "!mérest" in macro_text.lower():
-        return stat_c_o(carac_merest, "Mérest")
+        return toutes_stat(carac_merest, "Mérest")
 
     if "!gargrim" in macro_text.lower():
-        return stat_c_o(carac_gargrim, "Gargrim")
+        return toutes_stat(carac_gargrim, "Gargrim")
 
     if "!eustache" in macro_text.lower():
-        return stat_c_o(carac_eustache, "Eustache")
+        return toutes_stat(carac_eustache, "Eustache")
 
     else:
         return "pas Lex"
@@ -79,7 +79,7 @@ def macro_lex_dm (macro_text) :
         "\n\n```!int```Jet d'intelligence."
         "\n\n```!inth```Jet d'intelligence avec le bonus de hobbit."
         "\n\n```!for```Jet de force."
-        "\n\n```!for```Jet de force avec le bonus de hobbit."
+        "\n\n```!forh```Jet de force avec le bonus de hobbit."
         "\n\n```!con```Jet de Constitution."
         "\n\n```!conh```Jet de Constitution avec le bonus de hobbit."
         "\n\n```!sag```Jet de Sagesse."

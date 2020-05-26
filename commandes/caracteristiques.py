@@ -1,16 +1,15 @@
+#!/usr/bin/python3.8
+#coding:u8
+
+
 """
 Les caractéristiques des joueurs de mon serveur ;
-Les fonctions qui font appel à ses caractéristiques.
+Les fonctions qui font appel à ces caractéristiques.
 """
 
 from commandes.des import *
 
-
-#______World_of_dungeons______________________________________
-
-def carac_darius(carac) :
-
-    caracteristiques = {
+carac_darius = {
     "force" : 0,
     "dextérité" : 0,
     "constitution" : 0,
@@ -19,13 +18,7 @@ def carac_darius(carac) :
     "charisme" : 0
     }
 
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
-
-def carac_duncan(carac) :
-
-    caracteristiques = {
+carac_duncan = {
     "force" : 0,
     "dextérité" : -1,
     "constitution" : 2,
@@ -34,13 +27,21 @@ def carac_duncan(carac) :
     "charisme" : 1
     }
 
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
+carac_eustache = {
+    "force" : 0,
+    "dextérité" : 1,
+    "constitution" : 0,
+    "intelligence" : 3,
+    "sagesse" : 1,
+    "charisme" : 3,
+    "initiative" : 3,
+    "défense" : 14,
+    "niveau" : 2,
+    "arme de maître" : 1,
+    "surprise" : 4,
+    }
 
-def carac_filtch(carac) :
-
-    caracteristiques = {
+carac_filtch = {
     "force" : -1,
     "dextérité" : 2,
     "constitution" : 0,
@@ -49,102 +50,7 @@ def carac_filtch(carac) :
     "charisme" : 1
     }
 
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
-
-def carac_jaenne(carac) :
-
-    caracteristiques = {
-    "force" : -1,
-    "dextérité" : 0,
-    "constitution" : 0,
-    "intelligence" : 1,
-    "sagesse" : 1,
-    "charisme" : 2
-    }
-
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
-
-def carac_willow(carac) :
-
-    caracteristiques = {
-    "force" : 1,
-    "dextérité" : 2,
-    "constitution" : 0,
-    "intelligence" : 1,
-    "sagesse" : 0,
-    "charisme" : -1
-    }
-
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
-
-def stat_w_of_d(qui, perso):
-    text = "Caractéristiques de " + perso + " : \n"
-    liste_carac = [
-    "force", "dextérité", "constitution", 
-    "intelligence", "sagesse", "charisme"
-    ]
-    for caracteristiques in range(len(liste_carac)):
-        text += liste_carac[caracteristiques].capitalize() + " : " + str(qui(liste_carac[caracteristiques])) + "\n"
-    return text
-
-def afficher_une_stat(qui, perso, macro_text):
-
-    if "!for" in macro_text.lower():
-        carac = "force"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui(carac))
-
-    elif "!dex" in macro_text.lower():
-        carac = "dextérité"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui(carac))
-
-    elif "!con" in macro_text.lower():
-        carac = "constitution"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui(carac))
-
-    elif "!int" in macro_text.lower():
-        carac = "intelligence"
-        text = perso + " teste son " + carac + " : " + roll(2, 6, qui(carac))
-
-    elif "!sag" in macro_text.lower():
-        carac = "sagesse"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui(carac))
-
-    elif "!cha" in macro_text.lower():
-        carac = "charisme"
-        text = perso + " teste son " + carac + " : " + roll(2, 6, qui(carac))
-
-    else:
-        text = "pas " + perso
-    
-    return text
-
-#______Chroniques_oubliées______________________________________
-
-def carac_eustache(carac) :
-    caracteristiques = {
-    "force" : 0,
-    "dextérité" : 1,
-    "constitution" : 0,
-    "intelligence" : 3,
-    "sagesse" : 0,
-    "charisme" : 0,
-    "initiative" : 0,
-    "défense" : 0,
-    "niveau" : 2
-    }
-
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
-
-def carac_gargrim(carac) :
-    caracteristiques = {
+carac_gargrim = {
     "force" : 3,
     "dextérité" : 1,
     "constitution" : 3,
@@ -153,16 +59,21 @@ def carac_gargrim(carac) :
     "charisme" : 1,
     "initiative" : 4,
     "défense" : 19,
-    "niveau" : 3
+    "niveau" : 3,
+    "gantelets" : 2,
+    "maitre_arme" : 1,
     }
 
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
+carac_jaenne = {
+    "force" : -1,
+    "dextérité" : 0,
+    "constitution" : 0,
+    "intelligence" : 1,
+    "sagesse" : 1,
+    "charisme" : 2
+    }
 
-
-def carac_merest(carac) :
-    caracteristiques = {
+carac_merest = {
     "force" : 0,
     "dextérité" : 4,
     "constitution" : 2,
@@ -171,51 +82,94 @@ def carac_merest(carac) :
     "charisme" : 0,
     "initiative" : 9,
     "défense" : 16,
-    "niveau" : 3
+    "niveau" : 3,
+    "surprise" : 5,
+    "odorat" : 5,
+    "survie" : 4,
+    "perception" : 4
     }
 
-    for caracteristique, valeur in caracteristiques.items():
-        if caracteristique == carac:
-            return valeur
+carac_willow = {
+    "force" : 1,
+    "dextérité" : 2,
+    "constitution" : 0,
+    "intelligence" : 1,
+    "sagesse" : 0,
+    "charisme" : -1
+    }
 
-def stat_c_o(qui, perso):
+
+def toutes_stat(qui, perso):
     text = "Caractéristiques de " + perso + " : \n"
-    liste_carac = [
-    "force", "dextérité", "constitution", 
-    "intelligence", "sagesse", "charisme",
-    "initiative", "défense", "niveau" 
-    ]
-    for caracteristiques in range(len(liste_carac)):
-        text += liste_carac[caracteristiques].capitalize() + " : " + str(qui(liste_carac[caracteristiques])) + "\n"
+    for k, v in qui.items():
+        text += k.capitalize() + " : " + str(v) + "\n"
     return text
+
+def afficher_une_stat(qui, perso, macro_text):
+
+    if "!for" in macro_text.lower():
+        carac = "force"
+        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
+
+    elif "!dex" in macro_text.lower():
+        carac = "dextérité"
+        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
+
+    elif "!con" in macro_text.lower():
+        carac = "constitution"
+        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
+
+    elif "!int" in macro_text.lower():
+        carac = "intelligence"
+        text = perso + " teste son " + carac + " : " + roll(2, 6, qui[carac])
+
+    elif "!sag" in macro_text.lower():
+        carac = "sagesse"
+        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
+
+    elif "!cha" in macro_text.lower():
+        carac = "charisme"
+        text = perso + " teste son " + carac + " : " + roll(2, 6, qui[carac])
+
+    else:
+        text = "not a macro"
+    
+    return text
+
+#______Chroniques_oubliées______________________________________
+
 
 def afficher_1_stat(qui, perso, macro_text):
 
     if "!for" in macro_text.lower():
         carac = "force"
-        text = perso + " teste sa " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
 
     elif "!dex" in macro_text.lower():
         carac = "dextérité"
-        text = perso + " teste sa " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
 
     elif "!con" in macro_text.lower():
         carac = "constitution"
-        text = perso + " teste sa " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
 
     elif "!int" in macro_text.lower():
         carac = "intelligence"
-        text = perso + " teste son " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste son " + carac + roll(1, 20, qui[carac])
 
     elif "!sag" in macro_text.lower():
         carac = "sagesse"
-        text = perso + " teste sa " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
 
     elif "!cha" in macro_text.lower():
         carac = "charisme"
-        text = perso + " teste son " + carac + roll(2, 6, qui(carac))
+        text = perso + " teste son " + carac + roll(1, 20, qui[carac])
 
     else:
         text = "pas " + perso
     
     return text
+
+
+#cd /home/jaenne/Python/calliope/commandes
+# ./caracteristiques_modif.py

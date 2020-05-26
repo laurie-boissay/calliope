@@ -10,7 +10,7 @@ def macro_darius (macro_text) :
     qui = carac_darius
 
     if "!stat" in macro_text.lower():
-        return stat_w_of_d(qui, perso)
+        return toutes_stat(qui, perso)
 
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)

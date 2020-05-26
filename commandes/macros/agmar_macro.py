@@ -10,19 +10,19 @@ def macro_agmar (macro_text) :
     perso = "Le MdJ"
 
     if "!filtch" in macro_text.lower():
-        return stat_w_of_d(carac_filtch, "Filtch")
+        return toutes_stat(carac_filtch, "Filtch")
         
     elif "!jaenne" in macro_text.lower():
-        return stat_w_of_d(carac_jaenne, "Jaenne")
+        return toutes_stat(carac_jaenne, "Jaenne")
 
     elif "!willow" in macro_text.lower():
-        return stat_w_of_d(carac_willow, "Willow")
+        return toutes_stat(carac_willow, "Willow")
 
     elif "!darius" in macro_text.lower():
-        return stat_w_of_d(carac_darius, "Darius")
+        return toutes_stat(carac_darius, "Darius")
 
     elif "!duncan" in macro_text.lower():
-        return stat_w_of_d(carac_duncan, "Duncan")
+        return toutes_stat(carac_duncan, "Duncan")
         
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)

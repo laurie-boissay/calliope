@@ -21,7 +21,7 @@ def macro_jaenne (macro_text) :
         return p1 + p2
 
     if "!stat" in macro_text.lower():
-        return stat_w_of_d(qui, perso)
+        return toutes_stat(qui, perso)
 
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
@@ -33,10 +33,6 @@ def macro_jaenne (macro_text) :
 def macro_merest (macro_text):
     perso = "Mérest"
     qui = carac_merest
-    surprise = 5
-    perception = 4
-    odorat = 5
-    survie = 4
 
 #____________Pupuce_______________________________________________
 
@@ -77,7 +73,7 @@ def macro_merest (macro_text):
 
     elif "!marbalète" in macro_text.lower():
         p1 = "Mérest tire avec son arbalète légère :\n"
-        p2 = roll(1, 20, qui("dextérité") + qui("niveau"))
+        p2 = roll(1, 20, qui["dextérité"] + qui["niveau"])
         return p1 + p2
 
     elif "!dmarbalète" in macro_text.lower():
@@ -87,7 +83,7 @@ def macro_merest (macro_text):
 
     elif "!mlourde" in macro_text.lower():
         p1 = perso + " tire avec son arbalète lourde :\n"
-        p2 = roll(1, 20, qui("dextérité") + qui("niveau") + 1)
+        p2 = roll(1, 20, qui["dextérité"] + qui["niveau"] + 1)
         return p1 + p2
 
     elif "!dmlourde" in macro_text.lower():
@@ -97,7 +93,7 @@ def macro_merest (macro_text):
 
     elif "!mcouteau" in macro_text.lower():
         p1 = perso + " donne un coup de couteau :\n"
-        p2 = roll(1, 20, qui("force") + qui("niveau"))
+        p2 = roll(1, 20, qui("force") + qui["niveau"])
         return p1 + p2
 
     elif "!dmcouteau" in macro_text.lower():
@@ -109,22 +105,22 @@ def macro_merest (macro_text):
 
     elif "!msurprise" in macro_text.lower():
         p1 = perso + " est aux aguets (+ surprise + perception) :\n"
-        p2 = roll(1, 20, qui("sagesse") +perception + surprise)
+        p2 = roll(1, 20, qui["sagesse"] + qui["perception"] + qui["surprise"])
         return p1 + p2
 
     elif "!mperception" in macro_text.lower():
         p1 = perso + " fouille du regard (+perception) :\n"
-        p2 = roll(1, 20, qui("sagesse") + perception)
+        p2 = roll(1, 20, qui["sagesse"] + qui["perception"])
         return p1 + p2
 
     elif "!mpistage" in macro_text.lower():
-        p1 = perso + " cherche une piste (+ surprise + perception + odorat) :\n"
-        p2 = roll(1, 20, qui("sagesse") + perception + odorat)
+        p1 = perso + " cherche une piste (+ perception + odorat) :\n"
+        p2 = roll(1, 20, qui["sagesse"] + qui["perception"] + qui["odorat"])
         return p1 + p2
 
     elif "!msurvie" in macro_text.lower():
         p1 = perso + " résiste aux éléments (+ survie) :\n"
-        p2 = roll(1, 20, qui("constitution") + survie)
+        p2 = roll(1, 20, qui["constitution"] + qui["survie"])
         return p1 + p2
 
 #_____________Stats_______________________________________________
@@ -136,34 +132,34 @@ def macro_merest (macro_text):
 
     elif "!mdex" in macro_text.lower():
         p1 = perso + " teste sa dextérité :\n"
-        p2 = roll(1, 20, qui("dextérité"))
+        p2 = roll(1, 20, qui["dextérité"])
         return p1 + p2
 
     elif "!mcon" in macro_text.lower():
         p1 = perso + " teste sa constitution :\n"
-        p2 = roll(1, 20, qui("constitution"))
+        p2 = roll(1, 20, qui["constitution"])
         return p1 + p2
 
     elif "!mint" in macro_text.lower():
         p1 = perso + " teste son intelligence :\n"
-        p2 = roll(1, 20, qui("intelligence"))
+        p2 = roll(1, 20, qui["intelligence"])
         return p1 + p2
 
     elif "!msag" in macro_text.lower():
         p1 = perso + " teste sa sagesse :\n"
-        p2 = roll(1, 20, qui("sagesse"))
+        p2 = roll(1, 20, qui["sagesse"])
         return p1 + p2
 
     elif "!mcha" in macro_text.lower():
         p1 = perso + " teste son charisme :\n"
-        p2 = roll(1, 20, qui("charisme"))
+        p2 = roll(1, 20, qui["charisme"])
         return p1 + p2
 
     elif "!mstat" in macro_text.lower():
-        return stat_c_o(qui, perso)
+        return toutes_stat(qui, perso)
 
     else:
-        return "pas " + perso
+        return "not a macro"
 
 def macro_jaenne_dm (macro_text) :
     if '!macro' in macro_text.lower():

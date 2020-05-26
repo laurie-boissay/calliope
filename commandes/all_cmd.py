@@ -27,8 +27,6 @@ def is_it_cmd(message, client):
 
         if message.channel.id == 692765037231603734 :
             text = reaction_crit(message.content)
-            if text == "pas Calliope":
-                text = "not a cmd"
 
         return canal, text
     
@@ -98,7 +96,7 @@ def reaction_crit(message):
          return reaction(reussite_crit)
 
     else:
-        return "pas Calliope"
+        return "not a cmd"
 
 
 def reaction(liste) :
