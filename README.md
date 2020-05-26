@@ -17,7 +17,7 @@ Pour que mes amis s'intéressent à Calliope sans que je leur révèle qu'elle e
 
 Puis je me dis qu'elle devrait faire des choses plus utiles et simplifier les commandes que nous utilisons. J'ai commencé par lui faire lancer DiceParser : le joueur ou la joueuse pouvait entrer une macro personnalisé de type !arc pour que Calliope réponde !2d6+2 par exemple et lance ainsi une réaction avec DiceParser qui répondait à son tour en "lançant les dés".
 
-Les inconvéniant de cette méthode était la lisibilité et le bruit (dans les deux sens du terme) : pour obtenir 1 lancé de dé, 3 messages étaient affichés à l'écran et leur 3 alertes sonores retentissaient pour les autres joueurs. 
+Les inconvéniants de cette méthode était la lisibilité et le bruit (dans les deux sens du terme) : pour obtenir 1 lancé de dé, 3 messages étaient affichés à l'écran et leur 3 alertes sonores retentissaient pour les autres joueurs. 
 
 De plus si tous les joueurs executaient la même commande en même temps, il était plus compliqué de se mettre d'accord sur quel résultat appartenait à quel joueur. ex "Lancez tous 1 dé 6 pour voir combien de points de vie vous regagnez."
 
