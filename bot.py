@@ -26,8 +26,6 @@ import discord
 from commandes.all_cmd import *
 from commandes.all_macro import *
 
-from generation.generer_commanditaire import * # provisoire pour tester !quete.
-
 class MyClient(discord.Client):
 
     async def on_ready(self):
@@ -36,15 +34,6 @@ class MyClient(discord.Client):
         await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="!help"))
 
     async def on_message(self, message):
-
-        if ("!quete" in message.content): # pour tester !quete en le faisant tourner en boucle.
-            if (message.author.name == "Jaenne") or (message.author == client.user):
-                text = "\n!quete" + generer_commanditaire()
-                if len(text) < 1950: # max discord text lenght = 2000.
-                    await message.channel.send(text)
-                else:
-                    await message.channel.send("!quete")
-                    print("testé")
 
         canal, text = is_it_macro(message, client)
         if text != "not a macro":
