@@ -116,11 +116,11 @@ def enquete_kidnaping() :
 	phrase_2 = "Il s'agit d'"+personne()
 	scene = lieu_crime[randrange(len(lieu_crime))]
 	if scene == "lieu discret" :
-		phrase_3 = "\nElle est retenue "+lieu_discret[randrange(len(lieu_discret))]+"."
+		phrase_3 = "\nCette personne est retenue "+lieu_discret[randrange(len(lieu_discret))]+"."
 	elif scene == "une maison" :
-		phrase_3 = "\nElle est retenue "+maison[randrange(len(maison))]+"."
+		phrase_3 = "\nCette personne est retenue "+maison[randrange(len(maison))]+"."
 	else : # "une organisation" :
-		phrase_3 = "\nElle est retenue dans "+organisation[randrange(len(organisation))]+"."
+		phrase_3 = "\nCette personne est retenue dans "+organisation[randrange(len(organisation))]+"."
 	phrase_4 = "\n\nLe coupable est "+personne()
 	phrase_5 = "\nLe mobile est "+mobile[randrange(len(mobile))]+"."
 	return phrase_2+phrase_3+phrase_4+phrase_5
