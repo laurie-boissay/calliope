@@ -3,8 +3,6 @@
 
 from random import randrange
 
-from menu import *
-
 from collection_de_mots.quetes import *
 from collection_de_mots.zone import *
 from collection_de_mots.personnes import *
@@ -12,8 +10,20 @@ from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
 
 from generation.generer_nom import *
+from generation.generer_personne import *
+
+"""
+Le type de quête ;
+Les détails de la quête :
+	cible, lieux, objet, mobile...
+"""
 
 def afficher_quete(mission):
+	"""
+	Décide du type de quête :
+	voler, infiltrer, protéger, livrer, enquêter, kidnaper, tuer, détruire,
+	trouver, sauver, fabriquer, capturer, empoisonner et intercepter.
+	"""
 	phrase_1 = "Les héros devront "
 	if mission == "voler" :
 		return phrase_1 + "__**voler**__ "+ truc_a_voler()+qui_paye()
@@ -57,165 +67,72 @@ def afficher_quete(mission):
 	else : #"intercepter"
 		return phrase_1 + "__**intercepter**__ " + mission_intercepter()
 
-def afficher_recompense() :
-	prix = hasard(recompense)
-	phrase_1 = "La récompense est : "
-	if prix == "un titre" or prix == "le recrutement" or prix == "une autorisation d'accès" or prix == "des terres" :
-		return afficher_recompense()
-	elif prix == "un objet précieux" :
-		phrase_2 = prix + " : " +objet_precieux()+"."
-	else : #"de l'argent" "de l'or" "des bijoux"
-		phrase_2 = prix + " " + "d'une valeur " +hasard(valeur)+ "."
-	return phrase_1+phrase_2
-
-#_____personne_________________________________________________________
-
-def personne():
-	genre = hasard(pers_genre)
-	if genre == "féminin" :
-		pronom = "elle"
-		pronom_maj = "Elle"
-	elif genre == "masculin" :
-		pronom = "il"
-		pronom_maj = "Il"
-	else : # genre == "masculin" :
-		pronom = "iel"
-		pronom_maj = "Iel"
-
-	race = hasard(pers_race)
-	metier =  metier_pers()
-
-	phrase_1 = nom_pers(genre, race) + "."
-	phrase_2 = "\nC'est une personne " + hasard(pers_age) + " de genre " + genre + ", de la race des "+race+"."
-	phrase_3 = "\n" + pronom_maj +" est " + metier + "."
-	phrase_4 = "\n" + pronom_maj + " cache un secret à propos "+ secret_personne() + "."
-
-	return phrase_1 + phrase_2 + phrase_3 + phrase_4
-
-def nom_pers(genre, race) :
-	if genre == "féminin" :
-		if race == "humains" :
-			nom = hasard(prenoms_humains_f) + " " + hasard(noms_humains)
-		elif race == "nains" :
-			nom = hasard(prenoms_nains_f) + " " + hasard(noms_nains)
-		elif race == "elfes" :
-			nom = hasard(prenoms_elfes_f) + " " + hasard(noms_elfes)
-		elif race == "orcs" :
-			nom = hasard(prenoms_orcs_f) + " du clan de " + hasard(prenoms_orcs_f)
-		elif race == "demi-elfes" :
-			nom = hasard(prenoms_elfes_f) + " " + hasard(noms_humains)
-		elif race == "demi-orcs" :
-			race = hasard(race_nom)
-			if race == "orc" :
-				nom = hasard(prenoms_orcs_f) + " du clan de " + hasard(prenoms_orcs_f)
-			else : #humain
-				nom = hasard(prenoms_humains_f) + " " + hasard(noms_humains)
-		elif race == "halfelins" :
-			nom = hasard(prenoms_halfelins_f) + " " + hasard(noms_halfelins)
-		else : # "gnomes"
-			nom = hasard(prenoms_gnomes_f) + " " + hasard(noms_gnomes)
-	elif genre == "masculin" :
-		if race == "humains" :
-			nom = hasard(prenoms_humains_m) + " " + hasard(noms_humains) 
-		elif race == "nains" :
-			nom = hasard(prenoms_nains_m) +" "+ hasard(noms_nains)
-		elif race == "elfes" :
-			nom = hasard(prenoms_elfes_m) + " " + hasard(noms_elfes)
-		elif race == "orcs" :
-			nom = hasard(prenoms_orcs_m) + " du clan de " + hasard(prenoms_orcs_m)
-		elif race == "demi-elfes" :
-			nom = hasard(prenoms_elfes_m) + " " + hasard(noms_humains)
-		elif race == "demi-orcs" :
-			race = hasard(race_nom)
-			if race == "orc" :
-				nom = hasard(prenoms_orcs_m) + " du clan de " + hasard(prenoms_orcs_m)
-			else : #humain
-				nom = hasard(prenoms_humains_m) + " " + hasard(noms_humains)
-		elif race == "halfelins" :
-			nom = hasard(prenoms_halfelins_m) + " " + hasard(noms_halfelins)
-		else : # "gnomes"
-			nom = hasard(prenoms_gnomes_m) + " " + hasard(noms_gnomes)
-	else : #"andorgyne"
-		genre = hasard(genre_nom)
-		return nom_pers(genre, race)
-	return nom
-
-def secret_personne() :
-	secret = hasard(pers_secret)
-	return secret
-
-def indiscret() :
-	return "Quelqu'un dont le métier est "+metier_pers()+" est au courrant de son secret."
-
-def metier_pers() :
-	metier = hasard(pers_metier)
-	if metier == "haut placé/e" :
-		phrase_1 = metier + " dans " +hasard(organisation)
-	elif metier == "éleveur/éleveuse" :
-		phrase_1 = metier + " de/d' " + hasard(animal_elevage)
-	elif metier == "paysan/ne" :
-		phrase_1 = metier + " dans la culture " + hasard(champ)
-	elif metier == "servante/serviteur" :
-		phrase_1 = metier+ " dans " + hasard(organisation)
-	elif metier == "serveur/serveuse" or metier == "tavernier/e" :
-		phrase_1 = metier + " dans l'auberge " + nom_auberge()
-	elif metier == "marchand/e" :
-		phrase_1 = metier + " de/d' " + hasard(commerce)
-	elif metier == "capitaine" :
-		phrase_1 = metier + " du bateau " + nom_navire()
-	elif metier == "artisan/ne" :
-		phrase_1 = metier + " " + hasard(artisanat)
-	else :
-		phrase_1 = metier
-	return phrase_1
 
 #_____enquete___________________________________________________________
 
 def mission_enqueter():
-	raison = hasard(enquete)
+	"""
+	Le propos de l'enquête :
+	un meurtre, un kidnaping, une organisation, un réseau, une personne, un vol.
+	"""
+	raison = enquete[randrange(len(enquete))]
 	phrase_1 = raison +" :\n\n"	
 	if raison == "un meurtre" :
-		phrase_2 = "La victime est "+personne()+"\n\nLe mobile est "+hasard(mobile)+".\n\n"+hasard(description)+".\n\n"+"Le corps a été retrouvé "+scene_crime()+"\n\nLe coupable est "+personne()	
+		phrase_2 = "La victime est "+personne()+"\n\nLe mobile est "+mobile[randrange(len(mobile))]+".\n\n"+description[randrange(len(description))]+".\n\n"+"Le corps a été retrouvé "+scene_crime()+"\n\nLe coupable est "+personne()	
 	elif raison == "un kidnaping" :
 		phrase_2 = enquete_kidnaping()
 	elif raison == "une organisation" :
-		phrase_2 = "C'est "+hasard(organisation)+".\nLes héros doivent démasquer un espion.\nC'est "+personne()
+		phrase_2 = "C'est "+organisation[randrange(len(organisation))]+".\nLes héros doivent démasquer un espion.\nC'est "+personne()
 	elif raison == "une personne" :
 		phrase_2 = "Il s'agit d'"+personne()
 	elif raison == "un vol" :
 		phrase_2 = "Il s'agit d'"+ truc_a_voler() +"\n\nLe coupable est "+personne()
 	else : #"un réseau"
-		phrase_2 = "C'est un réseau "+hasard(reseau)+".\nLes héros doivent identifier le chef du réseau.\nC'est "+personne()
+		phrase_2 = "C'est un réseau "+reseau[randrange(len(reseau))]+".\nLes héros doivent identifier le chef du réseau.\nC'est "+personne()
 	return phrase_1 + phrase_2
 
 def scene_crime() :
-	scene = hasard(lieu_crime)
+	"""
+	Définit la scène du crime :
+	un lieu discret, une maison, une organisation.
+	"""
+	scene = lieu_crime[randrange(len(lieu_crime))]
 	if scene == "lieu discret" :
-		phrase_1 = hasard(lieu_discret)+"."
+		phrase_1 = lieu_discret[randrange(len(lieu_discret))]+"."
 	elif scene == "une maison" :
-		phrase_1 = hasard(maison)+"."
+		phrase_1 = maison[randrange(len(maison))]+"."
 	else : # "une organisation" :
-		phrase_1 = "dans "+ hasard(organisation)+"."
+		phrase_1 = "dans "+ organisation[randrange(len(organisation))]+"."
 	return phrase_1
 
 def enquete_kidnaping() :
+	"""
+	Détails pour résoudre l'enquête du kidnaping.
+	- qui a été enlevé ;
+	- ou cette personne est-elle retenue ;
+	- qui est le coupable ;
+	- quel est le mobile.
+	"""
 	phrase_2 = "Il s'agit d'"+personne()
-	scene = hasard(lieu_crime)
+	scene = lieu_crime[randrange(len(lieu_crime))]
 	if scene == "lieu discret" :
-		phrase_3 = "\nElle est retenue "+hasard(lieu_discret)+"."
+		phrase_3 = "\nElle est retenue "+lieu_discret[randrange(len(lieu_discret))]+"."
 	elif scene == "une maison" :
-		phrase_3 = "\nElle est retenue "+hasard(maison)+"."
+		phrase_3 = "\nElle est retenue "+maison[randrange(len(maison))]+"."
 	else : # "une organisation" :
-		phrase_3 = "\nElle est retenue dans "+hasard(organisation)+"."
+		phrase_3 = "\nElle est retenue dans "+organisation[randrange(len(organisation))]+"."
 	phrase_4 = "\n\nLe coupable est "+personne()
-	phrase_5 = "\nLe mobile est "+hasard(mobile)+"."
+	phrase_5 = "\nLe mobile est "+mobile[randrange(len(mobile))]+"."
 	return phrase_2+phrase_3+phrase_4+phrase_5
 
-#________lieux_________________________________________________________
-
+#_______________________________________________________________________________________________
 
 def type_lieu_ville() :
-	type = hasard(batiment)
+	"""
+	Génère un lieu en ville :
+	maison de quelqu'un, une auberge, un navire, un autre type de bâtiment.
+	"""
+	type = batiment[randrange(len(batiment))]
 	if type == "une maison":
 		phrase_1 = "la maison de "+personne() + ".\nCette personne vit " + ou_en_ville()
 	elif type == "la taverne":
@@ -227,55 +144,60 @@ def type_lieu_ville() :
 	return phrase_1
 
 def truc_a_voler() :
-	truc = hasard(vol)
+	"""
+	Définit un nombre d'objets ou d'animaux et génère des détails sur l'endroit ou les trouver
+	et la personne à qui ils appartiennent.
+	"""
+	truc = vol[randrange(len(vol))]
 	if truc == "objet" :
-		truc = hasard(objet)
+		objet[randrange(len(objet))]
 		if truc ==  "uniforme(s)" :
 			return str(randrange(1, 10, 1)) + " " + truc + " dans " + type_lieu_ville()
 		else :
 			return str(randrange(1, 10, 1)) + " " + truc + "."
 	elif truc == "objet personnel" :
-		return hasard(objet_pers) + ". Chez " + personne() + "\nCette personne vit " + ou_en_ville()
+		return objet_pers[randrange(len(objet_pers))] + ". Chez " + personne() + "\nCette personne vit " + ou_en_ville()
 	elif truc == "animal" :
-		return hasard(animal_domestique)+" appartenant à "+personne() + "\nCette personne vit " + ou_en_ville()
+		return animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne() + "\nCette personne vit " + ou_en_ville()
 	elif truc == "caisse" :
-		return str(randrange(1 , 10, 1))+" caisse(s) "+hasard(caisse)+" dans "+ type_lieu_ville()
+		return str(randrange(1 , 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))]+" dans "+ type_lieu_ville()
 	else : #argent
-		return "de l'"+truc+" en "+hasard(quantite)+"."
+		return "de l'"+truc+" en "+quantite[randrange(len(quantite))]+"."
+
 
 def qui_paye() :
-	payeur = hasard(commanditaire)
+	"""
+	Définit un point de livraison.
+	une organisation, un lieu discret, la maison de quelqu'un, une auberge.
+	"""
+	payeur = commanditaire[randrange(len(commanditaire))]
 	if payeur == "une organisation" :
-		return "\nLa livraison se fera dans "+hasard(organisation)+". Ils seront attendus."
+		return "\nLa livraison se fera dans "+organisation[randrange(len(organisation))]+". Ils seront attendus."
 	elif payeur == "un réseau" :
-		contact = hasard(lieu_discret)
-		phrase_1 = "\nLa livraison est pour un réseau "+hasard(reseau)+". Ils trouverons leur contact "+contact
+		contact = lieu_discret[randrange(len(lieu_discret))]
+		phrase_1 = "\nLa livraison est pour un réseau "+reseau[randrange(len(reseau))]+". Ils trouverons leur contact "+contact
 		if contact == "dans la taverne" :
 			return phrase_1+" : "+nom_auberge()+"."
 		else :
 			return phrase_1+"."
 	else :
 		return "\nLa livraison se fera chez "+personne()
-	
-def generer_contact() :
-	contact = hasard(lieu_discret)
-	if contact == "dans la taverne" :
-			return phrase_1+" : "+nom_auberge()+"."
-	else :
-		""" 
-		"dans la forêt""dans les égouts""dans une grotte"
-		"dans les docs""dans la montagne""dans la taverne""sur les berges de la rivière"
-		"""
-		return phrase_1+"."
 
 def cible_protection() :
-	cible = hasard(protection)
+	"""
+	Ce que les héros doivent protéger : 
+	une personne, un secret, un objet personnel, un convoi, un lieu
+
+	Beaucoup de détails si la cible est un convoi :
+	type de convoi, date de départ, durée du trajet, destination du convoi.
+	"""
+	cible = protection[randrange(len(protection))]
 	if cible == "une personne" :
 		proteger = personne()
 	elif cible == "un secret" :
 		proteger = "le secret de "+personne()
 	elif cible == "un objet personnel" :
-		proteger = hasard(objet_pers)+" appartenant à "+personne()
+		proteger = objet_pers[randrange(len(objet_pers))]+" appartenant à "+personne()
 	elif cible == "un convoi" :
 		phrase_1 = type_convoi()+".\nIl part dans "+str(randrange(1, 3, 1))+" jour(s) pour"
 		phrase_2 = zone()
@@ -286,71 +208,91 @@ def cible_protection() :
 	return proteger + " " + menace(cible)
 
 def menace(cible_protection):
+	"""
+	Selon la cible à protéger, définit la menace qui pèse dessus.
+	"""
 	if cible_protection == "une personne" :
-		raison = hasard(menace_personne)
+		raison = menace_personne[randrange(len(menace_personne))]
 		menace = "Cette personne est menacée de " + raison + " par "+ entite()
 	elif cible_protection == "un secret" :
 		menace = "Ce secret risque d'être révélé par " + entite()
 	elif cible_protection == "un objet personnel" :
-		menace = "On peut craindre " + hasard(menace_objet_perso) + " de cet objet par " + entite()
+		menace = "On peut craindre " + menace_objet_perso[randrange(len(menace_objet_perso))] + " de cet objet par " + entite()
 	elif cible_protection == "un convoi" :
-		menace = "Sur la route du convoi, les héros risquent de croiser " + hasard(creature) + "."
+		menace = "Sur la route du convoi, les héros risquent de croiser " + creature[randrange(len(creature))] + "."
 	else : #"un lieu"
 		phrase_1 = "Grâce à un informateur, les héros savent que cet endroit va être la cible d'une attaque.\n"
 		phrase_2 = "A la tête de cet assaut "+ entite() + "\n"
-		phrase_3 = "\nLe but est " + hasard(menace_lieu) + " de la cible."
+		phrase_3 = "\nLe but est " + menace_lieu[randrange(len(menace_lieu))] + " de la cible."
 		menace = phrase_1 + phrase_2 + phrase_3
 	return "\n\n" + menace
 
 def entite():
-	qui = hasard(commanditaire)
+	"""
+	Génère une entité soit :
+	une organisation, une personne, un réseau.
+	"""
+	qui = commanditaire[randrange(len(commanditaire))]
 	if qui == "une organisation" :
-		qui = hasard(organisation)+"."
+		qui = organisation[randrange(len(organisation))]+"."
 	elif qui == "une personne" :
 		qui = personne()
 	else : #"un réseau"
-		qui = "un réseau " + hasard(reseau)+"."
+		qui = "un réseau " + reseau[randrange(len(reseau))]+"."
 	return qui
 
 def cible_livraison() :
-	truc = hasard(livraison)
+	"""
+	Génère ce que les héros doivent livrer.
+	"""
+	truc = livraison[randrange(len(livraison))]
 	if truc == "une personne" :
 		phrase_1 = personne() + "\n\nLa cible se cache "
 	elif truc == "un objet" :
-		truc = hasard(objet)
+		objet[randrange(len(objet))]
 		phrase_1 = str(randrange(1, 10, 1))+" "+truc + " "
 	elif truc == "un objet personnel" :
-		phrase_1 = hasard(objet_pers)+" "
+		phrase_1 = objet_pers[randrange(len(objet_pers))]+" "
 	elif truc == "un animal" :
-		phrase_1 = hasard(animal_domestique)+" "
+		phrase_1 = animal_domestique[randrange(len(animal_domestique))]+" "
 	elif truc == "une caisse" :
-		phrase_1 = str(randrange(1, 10, 1))+" caisse(s) "+hasard(caisse)+" "
+		phrase_1 = str(randrange(1, 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))]+" "
 	else : # "de l'argent" "un animal"
-		phrase_1 = truc+" en "+hasard(quantite)+" "	
+		phrase_1 = truc+" en "+quantite[randrange(len(quantite))]+" "	
 
 	return phrase_1 + ou_en_ville()
 
 def type_animal() :
-	type = hasard(quel_animal)
+	"""
+	Génère un type d'animal :
+	un animal sauvage, un animal domestique, des animaux d'élevage.
+	"""
+	type = quel_animal[randrange(len(quel_animal))]
 	if type == "animal sauvage" :
-		return "un "+hasard(animal_sauvage)+" sauvage"
+		return "un "+animal_sauvage[randrange(len(animal_sauvage))]+" sauvage"
 	elif type == "animal domestique" :
-		return hasard(animal_domestique)+" appartenant à "+personne()
+		return animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()
 	else :
-		return "des "+hasard(animal_elevage)+"."
+		return "des "+animal_elevage[randrange(len(animal_elevage))]+"."
 
 def type_convoi() :
-	marchandises = hasard(convoi)
+	"""
+	Définit ce que transporte le convoit.
+	"""
+	marchandises = convoi[randrange(len(convoi))]
 	if marchandises == "de caisses" :
-		return "un convoi de caisses "+hasard(caisse)
+		return "un convoi de caisses "+caisse[randrange(len(caisse))]
 	else :
 		return "un convoi "+marchandises
 
 def mission_infiltrer() :
+	"""
+	définit le but de la mission d'infiltration.
+	"""
 	phrase_1 = cible_infiltration()
-	raison = hasard(raison_inf)
+	raison = raison_inf[randrange(len(raison_inf))]
 	if raison == "voler" :
-		phrase_2 = "\nIls pourront alors voler "+hasard(objet_pers)+"."
+		phrase_2 = "\nIls pourront alors voler "+objet_pers[randrange(len(objet_pers))]+"."
 	elif raison == "protéger" or raison == "libérer" or raison == "sauver" :
 		phrase_2 = "\nIls pourront alors "+raison+" "+personne()
 	elif raison == "tuer" :
@@ -360,58 +302,78 @@ def mission_infiltrer() :
 	return phrase_1 + phrase_2
 
 def cible_infiltration() :
-	inf = hasard(infiltration)
+	"""
+	Quel réseau ou quelle organisation les héros doivent infiltrer.
+	"""
+	inf = infiltration[randrange(len(infiltration))]
 	if inf == "un réseau" :
-		phrase_1 = "un réseau "+hasard(reseau)+"."
+		phrase_1 = "un réseau "+reseau[randrange(len(reseau))]+"."
 	else : #"une organisation"
-		phrase_1 = hasard(organisation)+"."
+		phrase_1 = organisation[randrange(len(organisation))]+"."
 	return phrase_1
 
 def mission_kidnaper() :
-	cible = hasard(kid)
+	"""
+	Qui ou qu'est-ce que les héros doivent kidnaper.
+	"""
+	cible = kid[randrange(len(kid))]
 	if cible == "personne" :
 		phrase_1 = personne()  + "\nLa cible réside " + ou_en_ville()
 	else : #"animal"
-		cible = hasard(animal_domestique)
+		cible = animal_domestique[randrange(len(animal_domestique))]
 		phrase_1 = cible + " appartenant à "+personne()
 	return phrase_1
 
 def mission_tuer() :
-	cible = hasard(kill)	
+	"""
+	Qui ou qu'est-ce que les héros doivent tuer et ou le trouver ou, 
+	ou le livrer.
+	"""
+	cible = kill[randrange(len(kill))]	
 	if cible == "personne" :
 		phrase_1 = personne() + "\n\nLa cible vit " + ou_en_ville()
 	elif cible == "monstre" :
-		phrase_1 = hasard(creature) + " dans " + lieu_quete() + "." + ou_nature()
+		phrase_1 = creature[randrange(len(creature))] + " dans " + lieu_quete() + "." + ou_nature()
 	elif cible == "animal sauvage" :
-		phrase_1 = str(randrange(1, 10, 1))+" "+hasard(animal_sauvage)+"."+qui_paye()
+		phrase_1 = str(randrange(1, 10, 1))+" "+animal_sauvage[randrange(len(animal_sauvage))]+"."+qui_paye()
 	else : #"animal"
-		phrase_1 ="un animal.\nC'est "+hasard(animal_domestique)+" appartenant à "+personne()
+		phrase_1 ="un animal.\nC'est "+animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()
 	return phrase_1
 
 def mission_detruire() :
-	cible = hasard(destruction)
+	"""
+	Ce que les héros doivent détruire et ou le trouver.
+	"""
+	cible = destruction[randrange(len(destruction))]
 	if cible == "un objet" :
-		phrase_1 = hasard(objet_pers)+" appartenant à "+ personne() + "\n\nCette personne vit " + ou_en_ville()
+		phrase_1 = objet_pers[randrange(len(objet_pers))]+" appartenant à "+ personne() + "\n\nCette personne vit " + ou_en_ville()
 	elif cible == "une organisation" :
-		phrase_1 = hasard(organisation)+" " + ou_en_ville()
+		phrase_1 = organisation[randrange(len(organisation))]+" " + ou_en_ville()
 	elif cible == "un réseau" :
-		phrase_1 = cible+" "+hasard(reseau)+".\nIls trouverons une de leurs câches " + hasard(lieu_discret)+ " " + ou_en_ville()
+		phrase_1 = cible+" "+reseau[randrange(len(reseau))]+".\nIls trouverons une de leurs câches " + lieu_discret[randrange(len(lieu_discret))]+ " " + ou_en_ville()
 	else :#"un bâtiment"
 		phrase_1 = type_lieu_ville()
 	return phrase_1
 
 def quel_monstre() :
-	cible = hasard(monstre)
+	"""
+	Génère un monstre (animal sacré ou créature) et l'endroit ou le trouver.
+	"""
+	cible = monstre[randrange(len(monstre))]
 	if cible == "animal sacré" :
 		phrase_1 = animal_sacre()
 		phrase_2 = " dans "+lieu_quete_ext()
 	else : #"créature"
-		phrase_1 = hasard(creature)
+		phrase_1 = creature[randrange(len(creature))]
 		phrase_2 = " dans "+lieu_quete()
 	return phrase_1+phrase_2
 
 def mission_intercepter() :
-	cible = hasard(interception)
+	"""
+	Ce que les héros doivent intercepter
+	La date prévu de son arrivée dans la zone.
+	"""
+	cible = interception[randrange(len(interception))]
 	phrase_2 = " qui vient de : " + zone()
 	phrase_3 = " qui viennent de : " + zone()
 
@@ -424,9 +386,13 @@ def mission_intercepter() :
 	return phrase_1 + " dans " + str(randrange(1, 3, 1))+ " jour(s)."
 
 def mission_empoisonement() :
-	cible = hasard(poison)
+	"""
+	Qui ou qu'est-ce que les héros doivent empoisonner.
+	Ou le trouver.
+	"""
+	cible = poison[randrange(len(poison))]
 	if cible == "un animal domestique" :
-		phrase_1 = hasard(animal_domestique)+" appartenant à "+personne()+ "\nSa demeure se trouve " + ou_en_ville()
+		phrase_1 = animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()+ "\nSa demeure se trouve " + ou_en_ville()
 	elif cible ==  "une personne" :
 		phrase_1 = personne() + "\nSa demeure se trouve " + ou_en_ville()
 	elif cible ==  "des caisses de nourriture" :
@@ -436,28 +402,43 @@ def mission_empoisonement() :
 	return phrase_1
 
 def ou_en_ville() :
-	point = hasard(quelle_zone)
+	"""
+	Indique une direction cardinale et une distance (parfois en jours de marche)
+	pour une zone en ville.
+	"""
+	point = quelle_zone[randrange(len(quelle_zone))]
 	if point == "ici" :
-		phrase_1 = "tout près d'ici, " + hasard(rose_vent) + "."
+		phrase_1 = "tout près d'ici, " +rose_vent[randrange(len(rose_vent))] + "."
 	else : #"ailleurs"
 		phrase_1 = "dans " + zone() + "\nIl faudra " +str(randrange(1, 10, 1))+ " jour(s) de marche aux héros pour s'y rendre."
 
 	return phrase_1
 
 def ou_nature() :
+	"""
+	Indique une direction cardinale et une distance (parfois en jours de marche)
+	pour une zone dans la nature.
+	"""
 	phrase_2 = "\nIl faudra " +str(randrange(5, 10, 1))+ " jour(s) de marche aux héros pour s'y rendre."
-	point = hasard(quelle_zone)
+	point = quelle_zone[randrange(len(quelle_zone))]
 	if point == "ici" :
-		phrase_1 = "\nC'est " + hasard(rose_vent) + " d'ici."
+		phrase_1 = "\nC'est " +rose_vent[randrange(len(rose_vent))] + " d'ici."
 	else : #"ailleurs"
-		phrase_1 = "\nC'est " + hasard(rose_vent) + " de : " + zone()
+		phrase_1 = "\nC'est " +rose_vent[randrange(len(rose_vent))] + " de : " + zone()
 
 	return phrase_1 + phrase_2
 
 def mission_fabriquer() :
+	"""
+	Définit les 3 étapes nécessaires pour résoudre une quête de type "fabriquer":
+		- ou trouver les composants ;
+		- ou fabriquer l'objet ;
+		- quel monstre tuer avec cet objet et ou le trouver.
+	"""
 	phrase_1 = objet_precieux() + " :\n"
 	phrase_2 = "\n1) Il leur faudra d'abord trouver les composants dans " + lieu_quete()+ "." + ou_nature()
 	phrase_3 = "\n\n2) Puis ils se rendront dans " + lieu_quete()+ " pour fabriquer l'objet." + ou_nature()
 	phrase_4 = "\n\n3) Leur quête prendra fin lorsqu'ils aurront tué " + quel_monstre() + " dans "+ lieu_quete_ext() + "." + ou_nature()
 
 	return phrase_1 + phrase_2 + phrase_3 + phrase_4
+
