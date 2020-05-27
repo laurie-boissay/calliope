@@ -8,8 +8,7 @@ Toutes les commandes de Calliope qui ne sont pas des macro ;
 """
 
 import discord
-
-from menu import *
+from random import randrange
 
 from commandes.des import *
 
@@ -90,16 +89,12 @@ def all_users_cmd(message):
 def reaction_crit(message):
 
     if '(1)' in message:
-        return reaction(echec_crit)
+        text = echec_crit[randrange(len(echec_crit))]
 
     elif '(20)' in message:
-         return reaction(reussite_crit)
+         text = reussite_crit[randrange(len(reussite_crit))]
 
     else:
-        return "not a cmd"
+        text = "not a cmd"
 
-
-def reaction(liste) :
-    reaction = hasard(liste)
-    return reaction
-
+    return text
