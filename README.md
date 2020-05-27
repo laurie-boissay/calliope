@@ -25,6 +25,7 @@ Calliope s'est alors mise à lancer les dés elle aussi. Elle identifie la perso
 
 En plus des macro, j'ai conservé la commande de DiceParser utilisée par les joueurs : 
 ! nb_dés d valeur_dés + bonus/malus
+
 Par ex : !1d20-5
 
 Calliope gère donc maintenant, en plus de ses autres fonctions :
@@ -33,4 +34,6 @@ Calliope gère donc maintenant, en plus de ses autres fonctions :
   
 Il n'y a plus qu'un bot sur mon serveur Discord pour éviter les conflits de commandes : Calliope. 
 Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile aux besoin de mes groupes de JDR et je peux la personnaliser à l'envie.
+
+27/05/20 : nettoyage du code ajout d'une poignée de prénoms humains.
 
