@@ -108,7 +108,7 @@ def toutes_stat(qui, perso):
 def afficher_une_stat(qui, perso, macro_text):
 
     if len(macro_text) > 4:
-        return "not a macro"
+        text = "not a macro"
 
     elif "!for" in macro_text.lower():
         carac = "force"
