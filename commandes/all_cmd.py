@@ -83,7 +83,7 @@ def all_users_cmd(message):
         return nom_auberge()
 
     elif message.startswith('!macro'):
-        return "Vous n'avez pas encore de macro.\nDemandez à Jaenne pour ajouter des macros."
+        return "Tu n'as pas encore de macro.\nDemande à Jaenne pour en ajouter."
 
     else:
         return "not a cmd"
