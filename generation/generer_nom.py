@@ -86,7 +86,7 @@ def zone() :
 
 		phrase_3 = "L'activité principale est "+activite_1+", l'activité secondaire est "+activite_2+"."
 		phrase_4 = "La population est "+rich+". Le climat est "+temp+". La zone est "+paysage[randrange(len(paysage))]+"."
-		return  phrase_0+"\n\n"+phrase_1 + phrase_2 +"\n"+ phrase_3 +"\n"+ phrase_4 +"\n"
+		return  phrase_0+"\n\n"+phrase_1 + phrase_2 +"\n"+ phrase_3 +"\n"+ phrase_4
 
 
 def habitants():

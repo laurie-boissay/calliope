@@ -31,31 +31,31 @@ def generer_commanditaire() :
 		- afficher_recompense.
 	"""
 	payeur = commanditaire[randrange(len(commanditaire))]
-	phrase_1 = "\nLes héros sont approchés par "
+	phrase_1 = "Les héros sont approchés par "
 
 	if payeur == "une organisation" :
 		quelle_orga = organisation[randrange(len(organisation))]
 		une_personne = commanditaire_personne("une organisation", quelle_orga)		
 		phrase_2 = quelle_orga + " en la personne de " + une_personne
 		phrase_3 = choix_quete("une organisation", quelle_orga)
-		phrase_4 = "\n\n" + aide_recue("une organisation", quelle_orga)
-		phrase_5 = "\n\n" + commanditaire_recompense("une organisation", quelle_orga)
+		phrase_4 = aide_recue("une organisation", quelle_orga)
+		phrase_5 = commanditaire_recompense("une organisation", quelle_orga)
 
 	elif payeur == "un réseau" :
 		quelle_orga = reseau[randrange(len(reseau))]
 		une_personne = commanditaire_personne("un réseau", quelle_orga)		
 		phrase_2 = "un réseau " + quelle_orga +" en la personne de " + une_personne
 		phrase_3 = choix_quete("un réseau", quelle_orga)
-		phrase_4 = "\n\n" + aide_recue("un réseau", quelle_orga)
-		phrase_5 = "\n\n" + commanditaire_recompense("un réseau", quelle_orga)
+		phrase_4 = aide_recue("un réseau", quelle_orga)
+		phrase_5 = commanditaire_recompense("un réseau", quelle_orga)
 
 	else : #"une personne"
 		phrase_2 = personne()
 		phrase_3 = afficher_quete(quete[randrange(len(quete))])
-		phrase_4 = "\n\nLes héros devront se débrouiller seuls."
-		phrase_5 = "\n\n" + afficher_recompense()
+		phrase_4 = "Les héros devront se débrouiller seuls."
+		phrase_5 = afficher_recompense()
 
-	return phrase_1 + phrase_2 + "\n\n" + phrase_3 + phrase_4 + phrase_5
+	return "\n" + phrase_1 + phrase_2 + "\n\n" + phrase_3 +"\n" + phrase_4 + "\n\n" + phrase_5
 
 def aide_recue(commanditaire, quelle_orga) :
 	"""
