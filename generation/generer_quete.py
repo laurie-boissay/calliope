@@ -84,9 +84,9 @@ def mission_enqueter():
 	elif raison == "une organisation" :
 		phrase_2 = "C'est "+organisation[randrange(len(organisation))]+".\nLes héros doivent démasquer un espion.\nC'est "+personne()
 	elif raison == "une personne" :
-		phrase_2 = "Il s'agit d'"+personne()
+		phrase_2 = "Il s'agit de "+personne()
 	elif raison == "un vol" :
-		phrase_2 = "Il s'agit d'"+ truc_a_voler() +"\n\nLe coupable est "+personne()
+		phrase_2 = "Il s'agit de "+ truc_a_voler() +"\n\nLe coupable est "+personne()
 	else : #"un réseau"
 		phrase_2 = "C'est un réseau "+reseau[randrange(len(reseau))]+".\nLes héros doivent identifier le chef du réseau.\nC'est "+personne()
 	return phrase_1 + phrase_2
@@ -113,7 +113,7 @@ def enquete_kidnaping() :
 	- qui est le coupable ;
 	- quel est le mobile.
 	"""
-	phrase_2 = "Il s'agit d'"+personne()
+	phrase_2 = "Il s'agit de "+personne()
 	scene = lieu_crime[randrange(len(lieu_crime))]
 	if scene == "lieu discret" :
 		phrase_3 = "\nCette personne est retenue "+lieu_discret[randrange(len(lieu_discret))]+"."
