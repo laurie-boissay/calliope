@@ -47,16 +47,14 @@ def is_it_cmd(message, client):
         return canal, text
 
 def all_users_cmd(message):
-    plus_de_quete = [
+    plus_de_quetes = [
     "!voler", "!infiltrer", "!protéger", "!livrer", "!enquêter",
     "!kidnaper", "!tuer", "!détruire", "!trouver", "!sauver",
     "!fabriquer", "!capturer", "!empoisonner", "!intercepter"
     ]
 
     if message.startswith('!help'):
-
-        text = ""
-        commandes = [
+        text = [
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
         "\n\n```!quete```Génère une quête."
@@ -66,10 +64,9 @@ def all_users_cmd(message):
         "\n\n```!bar```Génère un nom d'auberge."
         "\n\n```!1d20-5   !1d20+5```Lance 1 dé 20 +/-5."
         "\n\n```!macro```Affiche les macros disponibles pour tes personnages."
+        "\n\n```!info```La magie en oeuvre pour ma création."
         ]
-        for i in range(len(commandes)) :
-            text += str(commandes[i])
-        return text
+        return text[0]
 
     elif message.startswith("!quete"):
         text = generer_commanditaire()
@@ -79,8 +76,7 @@ def all_users_cmd(message):
             return all_users_cmd(message)
 
     elif message.startswith("!+quetes"):
-        text = ""
-        commandes = [
+        text = [
         "Voici les 14 types de quêtes :"
         "\n\n```!voler```"
         "\n```!infiltrer```"
@@ -97,11 +93,9 @@ def all_users_cmd(message):
         "\n```!empoisonner```"
         "\n```!intercepter```"
         ]
-        for i in range(len(commandes)) :
-            text += str(commandes[i])
-        return text
+        return text[0]
 
-    elif message in plus_de_quete:
+    elif message in plus_de_quetes:
         text = afficher_quete(message.strip("!"))
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
@@ -119,6 +113,14 @@ def all_users_cmd(message):
 
     elif message.startswith('!macro'):
         return "Tu n'as pas encore de macro.\nDemande à Jaenne pour en ajouter."
+
+    elif message.startswith('!info'):
+        text = [
+        "Vous pensez que les gnomes ont le monopole de la technologie ?"
+        "\nVous pouvez participer à mon amélioration :" 
+        "\nhttps://github.com/laurie-boissay/calliope."
+        ]
+        return text[0]
 
     else:
         return "not a cmd"

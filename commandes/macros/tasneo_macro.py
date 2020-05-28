@@ -16,18 +16,15 @@ def macro_darius (macro_text) :
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
 
     else:
-        text = afficher_une_stat(qui, perso, macro_text)
-        return text
+        return afficher_une_stat(qui, perso, macro_text)
 
 def macro_tasneo_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!darius```Affiche les macros pour darius."
-        return p1
+        return "\n\n```!darius```Affiche les macros pour darius."
 
     elif '!darius' in macro_text.lower():
-        text = ""
-        macro_darius = [
-        "\n\n```!i```Lance !2d6 + i"
+        text = [
+        "\n\n```!i```lance !2d6 + i pour i valant de -9 à 99 sans signe + devant i."
         "\n\n```!stat```Affiche les caractéristiques de Darius."
         "\n\n```!for```Darius teste sa force."
         "\n\n```!dex```Darius teste sa dextérité."
@@ -36,10 +33,7 @@ def macro_tasneo_dm (macro_text) :
         "\n\n```!sag```Darius teste sa sagesse."
         "\n\n```!cha```Darius teste son charisme."
         ]
-
-        for ligne in range(len(macro_darius)):
-            text += macro_darius[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

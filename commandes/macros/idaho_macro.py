@@ -10,7 +10,6 @@ def macro_gargrim (macro_text) :
     perso = "Gargrim"
     qui = carac_gargrim
     
-
     if "!hacheg" in macro_text.lower():
         p1 = "Gargrim donne un coup de hache de guerre (avec ses gantelets + maître d'arme) :\n" 
         p2 = roll(1, 20, qui["force"] + qui["niveau"] + qui["maitre_arme"] + qui["gantelets"]) 
@@ -105,36 +104,30 @@ def macro_gargrim (macro_text) :
         p2 = roll(1, 20, qui["sagesse"])
         return p1 + p2
 
-#_____________________________________________________________________________________
+#__________!i___________________________________________________________________________
 
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_c_o(macro_text)
     
     else:
-        text = afficher_1_stat(qui, perso, macro_text)
-        return text
+        return afficher_1_stat(qui, perso, macro_text)
+#_________________________________________________________________________________________
 
 def macro_idaho_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!gargrim```Affiche les macros pour Gargrim."
-        return p1
+        return "\n\n```!gargrim```Affiche les macros pour Gargrim."
 
     elif '!gargrim' in macro_text.lower():
-        text = ""
-        macro_gargrim = [
-        "\n\n```!i```Lance !1d20 + i"
+        text = [
+        "\n\n```!i```lance !1d20 + i pour i valant de -9 à 99 sans signe + devant i."
         "\n\n```!carac```Affiche les macros concernant les caractéristiques de Gargrim."
         "\n\n```!armes```Affiche les macros concernant les armes de Gargrim."
         "\n\n```!voies```Affiche les macros concernant les voies de Gargrim."
         ]
-
-        for ligne in range(len(macro_gargrim)):
-            text += macro_gargrim[ligne]
-        return text
+        return text[0]
 
     elif '!carac' in macro_text.lower():
-        text = ""
-        macro_gargrim = [
+        text = [
         "\n\n```!stat```Affiche les caractéristiques de Gargrim."
         "\n\n```!forg```Gargrim teste sa force (avec ses gantelets)."
         "\n\n```!for```Gargrim teste sa force."
@@ -144,14 +137,10 @@ def macro_idaho_dm (macro_text) :
         "\n\n```!sag```Gargrim teste sa sagesse."
         "\n\n```!cha```Gargrim teste son charisme."
         ]
-
-        for ligne in range(len(macro_gargrim)):
-            text += macro_gargrim[ligne]
-        return text
+        return text[0]
 
     elif '!armes' in macro_text.lower():
-        text = ""
-        macro_gargrim = [
+        text = [
         "\n\n```!hacheg```Gargrim donne un coup de hache de guerre (avec ses gantelets)."
         "\n\n```!dhacheg```Dégâts de la hache de guerre de Gargrim (avec ses gantelets).\n"
         
@@ -164,7 +153,6 @@ def macro_idaho_dm (macro_text) :
         "\n\n```!couteau```Gargrim donne un coup couteau."        
         "\n\n```!dcouteau```Dégâts du couteau de Gargrim.\n"
 
-        
         "\n\n```!jet```Gargrim envoie sa hache de jet."
         "\n\n```!djetg```Dégâts de la hache de jet de Gargrim (avec ses gantelets)."
         "\n\n```!djet```Dégâts de la hache de jet de Gargrim.\n"
@@ -172,21 +160,15 @@ def macro_idaho_dm (macro_text) :
         "\n\n```!arbalète```Gargrim tire à l'arbalète."
         "\n\n```!darbalète```Dégâts de l'arbalète de Gargrim."
         ]
-        for ligne in range(len(macro_gargrim)):
-            text += macro_gargrim[ligne]
-        return text
+        return text[0]
 
     elif '!voies' in macro_text.lower():
-        text = ""
-        macro_gargrim = [        
+        text = [        
         "\n\n```!absg```Gargrim absorbe un coup (avec ses gantelets)."
         "\n\n```!abs```Gargrim absorbe un coup."
         "\n\n```!abssort```Gargrim absorbe un sort."
         ]
-
-        for ligne in range(len(macro_gargrim)):
-            text += macro_gargrim[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

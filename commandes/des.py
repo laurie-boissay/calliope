@@ -42,8 +42,11 @@ def commande_des(cmd):
             operateur = "+"
             op = i
 
-    for i in range(d):
-        nb_des += elements[i]
+    try:
+        for i in range(d):
+            nb_des += elements[i]
+    except UnboundLocalError:
+        return "not a cmd"
 
     for i in range(op):
         if i > d:
@@ -62,7 +65,7 @@ def commande_des(cmd):
             bonus = 0
 
     except ValueError:
-        return "\net se foule le poignet ?\nPour lancer 1 dé 20 avec un bonus de 5 : ```!1d20+5```"
+        return "not a cmd"
 
     if operateur == "-":
         bonus *= -1
@@ -71,32 +74,26 @@ def commande_des(cmd):
 
 def short_w_of_d(bonus):
     bonus = bonus.strip("!")
-    text = "\net se foule le poignet ?\n!i fonctionne pour i valant de -1 à +5 inclus"
+
+    if bonus == "i":
+        return "\net se foule le poignet ?\n!i fonctionne pour i valant de -9 à 99."
 
     try:
         bonus = int(bonus)
     except ValueError:
-         return text
-
-    if (bonus >= 6) or (bonus < -1):
-        return text
-    else:
-        for i in range(-1, 6):
-            if bonus == i:
-                return roll(2, 6, bonus)
+        return "not a cmd"
+    
+    return roll(2, 6, bonus)
 
 def short_c_o(bonus):
     bonus = bonus.strip("!")
-    text = "\net se foule le poignet ?\n!i fonctionne pour i valant de -1 à +20 inclus"
+
+    if bonus == "i":
+        return "\net se foule le poignet ?\n!i fonctionne pour i valant de -9 à 99."
 
     try:
         bonus = int(bonus)
     except ValueError:
-         return text
-
-    if (bonus >= 21) or (bonus < -1):
-        return text
-    else:
-        for i in range(-1, 21):
-            if bonus == i:
-                return roll(1, 20, bonus)
+        return "not a cmd"
+    
+    return roll(1, 20, bonus)

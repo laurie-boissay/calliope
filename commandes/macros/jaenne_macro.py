@@ -163,14 +163,15 @@ def macro_merest (macro_text):
 
 def macro_jaenne_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!jaenne```Affiche les macros pour Jaenne."
-        p2 = "\n\n```!mérest```Affiche les macros pour Mérest Pala."
-        return p1+p2
+        text =[
+        "\n\n```!jaenne```Affiche les macros pour Jaenne."
+        "\n\n```!mérest```Affiche les macros pour Mérest Pala."
+        ]
+        return text[0]
 
     elif '!jaenne' in macro_text.lower():
-        text = ""
-        macro_jaenne = [
-        "\n\n```!i``` lance !2d6 + i"
+        text = [
+        "\n\n```!i``` lance !2d6 + i pour i valant de -9 à 99 sans signe + devant i."
 
         "\n\n```!darc```Dégâts du tir de Jaenne."
         "\n\n```!dlance```Dégâts de l'attaque à la lance de Jaenne.\n"
@@ -184,27 +185,19 @@ def macro_jaenne_dm (macro_text) :
         "\n\n```!sag```Jaenne teste sa sagesse."
         "\n\n```!cha```Jaenne teste son charisme."
         ]
-
-        for ligne in range(len(macro_jaenne)):
-            text += macro_jaenne[ligne]
-        return text
+        return text[0]
 
     elif '!mérest' in macro_text.lower():
-        text = ""
-        macro_merest = [
+        text = [
         "\n\n```!carac```Affiche les macros concernant les caractéristiques de Mérest."
         "\n\n```!armes```Affiche les macros concernant les armes de Mérest."
         "\n\n```!voies```Affiche les macros concernant les voies de Mérest."
         "\n\n```!animaux```Affiche les macros concernant les animaux de Mérest."
         ]
-
-        for ligne in range(len(macro_merest)):
-            text += macro_merest[ligne]
-        return text
+        return text[0]
 
     elif '!carac' in macro_text.lower():
-        text = ""
-        macro_merest = [
+        text = [
         "\n\n```!mstat```Affiche les caractéristiques de Mérest."
         "\n\n```!mfor```Mérest teste sa force."
         "\n\n```!mdex```Mérest teste sa dextérité."
@@ -213,14 +206,10 @@ def macro_jaenne_dm (macro_text) :
         "\n\n```!msag```Mérest teste sa sagesse."
         "\n\n```!mcha```Mérest teste son charisme."
         ]
-
-        for ligne in range(len(macro_merest)):
-            text += macro_merest[ligne]
-        return text
+        return text[0]
 
     elif '!armes' in macro_text.lower():
-        text = ""
-        macro_merest = [
+        text = [
         "\n\n```!marbalète```Mérest tire avec son arbalète légère."
         "\n\n```!dmarbalète```Dégâts de l'arbalète légère de Mérest."
         "\n\n```!mlourde```Mérest tire avec son arbalète lourde."
@@ -228,27 +217,19 @@ def macro_jaenne_dm (macro_text) :
         "\n\n```!mcouteau```Mérest donne un coup de couteau."
         "\n\n```!dmcouteau```Dégats du coup de couteau de Mérest.\n"
         ]
-
-        for ligne in range(len(macro_merest)):
-            text += macro_merest[ligne]
-        return text
+        return text[0]
 
     elif '!voies' in macro_text.lower():
-        text = ""
-        macro_merest = [
+        text = [
         "\n\n```!mperception```Mérest fouille du regard (+ perception)."
         "\n\n```!msurprise```Mérest est aux aguets (+ surprise + perception)."
         "\n\n```!mpistage```Mérest cherche une piste (+ surprise + perception + odorat)."
         "\n\n```!msurvie```Mérest résiste aux éléments (+ survie).\n"
         ]
-
-        for ligne in range(len(macro_merest)):
-            text += macro_merest[ligne]
-        return text
+        return text[0]
 
     elif '!animaux' in macro_text.lower():
-        text = ""
-        macro_merest = [
+        text = [
         "\n\n```!mdéfense```Pupuce donne un coup de défense."
         "\n\n```!dmdéfense```Dégâts du coup de défense."
         "\n\n```!mcharge```Pupuce charge."
@@ -257,10 +238,7 @@ def macro_jaenne_dm (macro_text) :
         "\n\n```!mmorsure```Féroce mord."
         "\n\n```!dmmorsure```Dégâts de la morsure de Féroce.\n"
         ]
-
-        for ligne in range(len(macro_merest)):
-            text += macro_merest[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

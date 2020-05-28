@@ -33,23 +33,18 @@ def macro_agmar (macro_text) :
 
 def macro_agmar_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        text = "\n\n```!agmar```Affiche les macros pour Agmar."
-        return text
+        return "\n\n```!agmar```Affiche les macros pour Agmar."
 
     elif '!agmar' in macro_text.lower():
-        text = ""
-        macro_agmar = [
-        "\n\n```!'i'``` Effectue !2d6 + 'i'"       
+        text = [
+        "\n\n```!'i'```lance !2d6 + i pour i valant de -9 à 99 sans signe + devant i."       
         "\n\n```!filtch```Affiche les caractéristiques de Filtch."
         "\n\n```!jaenne```Affiche les caractéristiques de Jaenne."
         "\n\n```!willow```Affiche les caractéristiques de Willow."
         "\n\n```!darius```Affiche les caractéristiques de Darius."
         "\n\n```!duncan```Affiche les caractéristiques de Duncan."
         ]
-
-        for ligne in range(len(macro_agmar)):
-            text += macro_agmar[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

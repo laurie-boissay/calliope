@@ -48,9 +48,7 @@ def macro_filtch (macro_text) :
         return p1 + p2
 
     else:
-        text = afficher_une_stat(qui, perso, macro_text)
-        return text
-
+        return afficher_une_stat(qui, perso, macro_text)
 
 def macro_lex (macro_text) :    
     if "!mérest" in macro_text.lower():
@@ -67,13 +65,15 @@ def macro_lex (macro_text) :
 
 def macro_lex_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!filtch```Affiche les macros pour Filtch."
-        p2 = "\n\n```!lex```Affiche les macros pour Lex."
-        return p1 + p2
+        text = [
+        "\n\n```!filtch```Affiche les macros pour Filtch."
+        "\n\n```!lex```Affiche les macros pour Lex."
+        ]
+        return text[0]
 
     elif '!filtch' in macro_text.lower():
-        text = ""
-        macro_filtch = [
+        text = [
+        "\n\n```!i```lance !2d6 + i pour i valant de -9 à 99 sans signe + devant i."
         "\n\n```!dex```Jet de dextérité."
         "\n\n```!dexh```Jet de dextérité avec le bonus de hobbit."
         "\n\n```!int```Jet d'intelligence."
@@ -87,24 +87,16 @@ def macro_lex_dm (macro_text) :
         "\n\n```!cha```Jet de Charisme."
         "\n\n```!chah```Jet de Charisme avec le bonus de hobbit."
         "\n\n```!stat```Affiche les caractéristiques."
-        "\n\n```!i```Lance 2d6 + i"
         ]
-
-        for ligne in range(len(macro_filtch)):
-            text += macro_filtch[ligne]
-        return text
+        return text[0]
 
     elif '!lex' in macro_text.lower():
-        text = ""
-        macro_lex = [
+        text = [
         "\n\n```!mérest```Affiche les caractéristiques de Mérest."
         "\n\n```!gargrim```Affiche les caractéristiques de Gargrim."
         "\n\n```!eustache```Affiche les caractéristiques de Eustache."
         ]
-
-        for ligne in range(len(macro_lex)):
-            text += macro_lex[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

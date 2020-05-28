@@ -16,18 +16,15 @@ def macro_duncan (macro_text) :
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
 
     else:
-        text = afficher_une_stat(qui, perso, macro_text)
-        return text
+        return afficher_une_stat(qui, perso, macro_text)
 
 def macro_stevendeo_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!duncan```Affiche les macros pour Duncan."
-        return p1
+        return "\n\n```!duncan```Affiche les macros pour Duncan."
 
     elif '!duncan' in macro_text.lower():
-        text = ""
-        macro_duncan = [
-        "\n\n```!'i'``` Effectue !2d6 + 'i'"
+        text = [
+        "\n\n```!'i'```lance !2d6 + i pour i valant de -9 à 99 sans signe + devant i."
         "\n\n```!stat```Affiche les caractéristiques de Duncan."
         "\n\n```!for```Duncan teste sa force."
         "\n\n```!dex```Duncan teste sa dextérité."
@@ -36,10 +33,7 @@ def macro_stevendeo_dm (macro_text) :
         "\n\n```!sag```Duncan teste sa sagesse."
         "\n\n```!cha```Duncan teste son charisme."
         ]
-
-        for ligne in range(len(macro_duncan)):
-            text += macro_duncan[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"

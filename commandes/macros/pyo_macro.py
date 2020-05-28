@@ -9,12 +9,10 @@ def macro_eustache (macro_text) :
     perso = "Eustache"
     qui = carac_eustache
     
-
     if "!arbalète" in macro_text.lower():
         p1 = "Eustache tire à l'arbalète :\n" 
         p2 = roll(1, 20, qui["dextérité"] + qui["niveau"]) 
         return p1 + p2
-
 
     elif "!dague" in macro_text.lower():
         p1 = "Eustache donne un coup de dague :\n" 
@@ -87,26 +85,20 @@ def macro_eustache (macro_text) :
 
 def macro_pyo_dm (macro_text) :
     if '!macro' in macro_text.lower():
-        p1 = "\n\n```!eustache```Affiche les macros pour Eustache."
-        return p1
+        return "\n\n```!eustache```Affiche les macros pour Eustache."
 
     elif '!eustache' in macro_text.lower():
-        text = ""
-        macro_eustache = [
-        "\n\n```!i```Lance !1d20 + i"
-        "\n\n```!carac```Affiche les macros concernant les caractéristiques de Eustache."
-        "\n\n```!armes```Affiche les macros concernant les armes de Eustache."
-        "\n\n```!voies```Affiche les macros concernant les voies de Eustache."
+        text = [
+        "\n\n```!i```lance !1d20 + i pour i valant de -9 à 99 sans signe + devant i."
+        "\n\n```!carac```Affiche les macros concernant les caractéristiques d'Eustache."
+        "\n\n```!armes```Affiche les macros concernant les armes d'Eustache."
+        "\n\n```!voies```Affiche les macros concernant les voies d'Eustache."
         ]
-
-        for ligne in range(len(macro_eustache)):
-            text += macro_eustache[ligne]
-        return text
+        return text[0]
 
     elif '!carac' in macro_text.lower():
-        text = ""
-        macro_eustache = [
-        "\n\n```!stat```Affiche les caractéristiques de Eustache."
+        text = [
+        "\n\n```!stat```Affiche les caractéristiques d'Eustache."
         "\n\n```!for```Eustache teste sa force."
         "\n\n```!dex```Eustache teste sa dextérité."
         "\n\n```!con```Eustache teste sa constitution."
@@ -115,14 +107,10 @@ def macro_pyo_dm (macro_text) :
         "\n\n```!cha```Eustache teste son charisme."
         "\n\n```!surpise```Jet de perception d'Eustache en cas de surprise."
         ]
-
-        for ligne in range(len(macro_eustache)):
-            text += macro_eustache[ligne]
-        return text
+        return text[0]
 
     elif '!armes' in macro_text.lower():
-        text = ""
-        macro_eustache = [
+        text = [
         "\n\n```!arbalète```Eustache tire à l'arbalète."
         "\n\n```!darbalète```Dégâts de l'arbalète d'Eustache.\n"
 
@@ -135,22 +123,15 @@ def macro_pyo_dm (macro_text) :
         "\n\n```!rapière```Eustache donne un coup de rapière."
         "\n\n```!dlpierres```Dégâts de la rapière d'Eustache.\n"
         ]
-
-        for ligne in range(len(macro_eustache)):
-            text += macro_eustache[ligne]
-        return text
+        return text[0]
 
     elif '!voies' in macro_text.lower():
-        text = ""
-        macro_eustache = [
+        text = [
         "\n\n```!sort```Eustache lance un sort."
         "\n\n```!surpise```Jet de perception d'Eustache en cas de surprise."
         "\n\n```!sommeil```Nombre de cibles du sort de sommeil d'Eustache."
         ]
-
-        for ligne in range(len(macro_eustache)):
-            text += macro_eustache[ligne]
-        return text
+        return text[0]
 
     else:
         return "pas perso"
