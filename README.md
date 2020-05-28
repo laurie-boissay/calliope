@@ -42,4 +42,6 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - correction de coquilles dans la syntaxe ;
 
-- correction des bugs créés par l'ajout de commandes.
+- correction des bugs créés par l'ajout de commandes ;
+
+- nettoyage du code.
