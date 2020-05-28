@@ -31,15 +31,14 @@ def is_it_cmd(message, client):
     
     else: # Other Users.
 
-        if message.content.startswith('!') and ('d' in message.content):
-            text = commande_des(message.content)
-            if text != "not a cmd" :
-                text = str(message.author.name) + " s'empare des dés : " + text
-
-        elif message.content.startswith('!'):
+        if message.content.startswith('!'):
             text = all_users_cmd(message.content)
             if text != "not a cmd":
                 canal = message.author
+            else :
+                text = commande_des(message.content)
+                if text != "not a cmd" :
+                    text = str(message.author.name) + " s'empare des dés : " + text
 
         elif 'calliope calliope calliope' in message.content.lower():
             canal = message.author
@@ -56,6 +55,7 @@ def all_users_cmd(message):
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
         "\n\n```!quete```Génère une quête."
+        "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj```Génère un personnage."
         "\n\n```!bar```Génère un nom d'auberge."
@@ -68,6 +68,127 @@ def all_users_cmd(message):
 
     elif message.startswith("!quete"):
         text = generer_commanditaire()
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!+quetes"):
+        text = ""
+        commandes = [
+        "Voici les 14 types de quêtes :"
+        "\n\n```!voler```"
+        "\n```!infiltrer```"
+        "\n```!protéger```"
+        "\n```!livrer```"
+        "\n```!enquêter```"
+        "\n```!kidnaper```"
+        "\n```!tuer```"
+        "\n```!détruire```"
+        "\n```!trouver```"
+        "\n```!sauver```"
+        "\n```!fabriquer```"
+        "\n```!capturer```"
+        "\n```!empoisonner```"
+        "\n```!intercepter```"
+        ]
+        for i in range(len(commandes)) :
+            text += str(commandes[i])
+        return text
+
+    elif message.startswith("!voler"):
+        text = afficher_quete("voler")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!infiltrer"):
+        text = afficher_quete("infiltrer")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!protéger"):
+        text = afficher_quete("protéger")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!livrer"):
+        text = afficher_quete("livrer")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!enquêter"):
+        text = afficher_quete("enquêter")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!kidnaper"):
+        text = afficher_quete("kidnaper")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!tuer"):
+        text = afficher_quete("tuer")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!détruire"):
+        text = afficher_quete("détruire")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!trouver"):
+        text = afficher_quete("trouver")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!sauver"):
+        text = afficher_quete("sauver")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!fabriquer"):
+        text = afficher_quete("fabriquer")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!capturer"):
+        text = afficher_quete("capturer")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!empoisonner"):
+        text = afficher_quete("empoisonner")
+        if len(text) < 1950: # max discord text lenght = 2000.
+            return text
+        else :
+            return all_users_cmd(message)
+
+    elif message.startswith("!intercepter"):
+        text = afficher_quete("intercepter")
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
         else :
