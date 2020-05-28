@@ -36,4 +36,6 @@ Il n'y a plus qu'un bot sur mon serveur Discord pour éviter les conflits de com
 Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile aux besoin de mes groupes de JDR et je peux la personnaliser à l'envie.
 
 27/05/20 : nettoyage du code ajout d'une poignée de prénoms humains.
-
+28/05/20 : - ajout de commandes pour accéder directement à un type de quête ;
+           - correction de coquilles dans la syntaxe ;
+           - correction des bugs créés par l'ajout de commandes.
