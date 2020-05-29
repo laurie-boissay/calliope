@@ -56,17 +56,14 @@ def is_it_macro(message, client):
 
     for i in range(len(players)):
         if message.author.name == players[i]:
-            canal, text = is_it_a_macro_for_nickname(message, players_macro[i], characters_macro[i])
-    return canal, text
+            macro_nickname_dm = players_macro[i] 
+            macro_personnage = characters_macro[i]
 
-
-def is_it_a_macro_for_nickname(message, macro_nickname_dm, macro_personnage):
-    canal = message.channel
-    text = "not a macro"
     if message.content.startswith('!'):
         text = macro_nickname_dm(message.content)
         if text != "pas perso":
             canal = message.author
         else :
             text = macro_personnage(message.content)
+    
     return canal, text
