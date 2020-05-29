@@ -45,3 +45,7 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 - correction des bugs créés par l'ajout de commandes ;
 
 - nettoyage du code.
+
+29/05/20 : 
+
+- nettoyage du code.
