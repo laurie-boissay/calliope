@@ -93,44 +93,44 @@ def nom_pers(genre, race) :
 		- sa race.
 	"""
 	if genre == "féminin" :
-		if race == "humains" :
+		if race == "humains" or race == "humain":
 			nom = prenoms_humains_f[randrange(len(prenoms_humains_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "nains" :
+		elif race == "nains" or race == "nain" :
 			nom = prenoms_nains_f[randrange(len(prenoms_nains_f))] + " " + noms_nains[randrange(len(noms_nains))]
-		elif race == "elfes" :
+		elif race == "elfes" or race == "elfe":
 			nom = prenoms_elfes_f[randrange(len(prenoms_elfes_f))] + " " + noms_elfes[randrange(len(noms_elfes))]
-		elif race == "orcs" :
-			nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du clan de " + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
-		elif race == "demi-elfes" :
+		elif race == "orcs" or race == "orc":
+			nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du-clan-de-" + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
+		elif race == "demi-elfes" or race == "demi-elfe":
 			nom = prenoms_elfes_f[randrange(len(prenoms_elfes_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "demi-orcs" :
+		elif race == "demi-orcs" or race == "demi-orc":
 			race = race_nom[randrange(len(race_nom))]
-			if race == "orc" :
-				nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du clan de " + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
+			if race == "orcs" or race == "orc":
+				nom = prenoms_orcs_f[randrange(len(prenoms_orcs_f))] + " du-clan-de-" + prenoms_orcs_f[randrange(len(prenoms_orcs_f))]
 			else : #humain
 				nom = prenoms_humains_f[randrange(len(prenoms_humains_f))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "halfelins" :
+		elif race == "halfelins" or race =="halfelin":
 			nom = prenoms_halfelins_f[randrange(len(prenoms_halfelins_f))] + " " + noms_halfelins[randrange(len(noms_halfelins))]
 		else : # "gnomes"
 			nom = prenoms_gnomes_f[randrange(len(prenoms_gnomes_f))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
 	elif genre == "masculin" :
-		if race == "humains" :
+		if race == "humains" or race == "humain":
 			nom = prenoms_humains_m[randrange(len(prenoms_humains_m))] + " " + noms_humains[randrange(len(noms_humains))] 
-		elif race == "nains" :
+		elif race == "nains" or race == "nain":
 			nom = prenoms_nains_m[randrange(len(prenoms_nains_m))] +" "+ noms_nains[randrange(len(noms_nains))]
-		elif race == "elfes" :
+		elif race == "elfes" or race == "elfe" :
 			nom = prenoms_elfes_m[randrange(len(prenoms_elfes_m))] + " " + noms_elfes[randrange(len(noms_elfes))]
-		elif race == "orcs" :
-			nom =prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du clan de " + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
-		elif race == "demi-elfes" :
+		elif race == "orcs" or race == "orc":
+			nom =prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du-clan-de-" + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
+		elif race == "demi-elfes" or race == "demi-elfe":
 			nom = prenoms_elfes_m[randrange(len(prenoms_elfes_m))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "demi-orcs" :
+		elif race == "demi-orcs" or race == "demi-orc":
 			race = race_nom[randrange(len(race_nom))]
-			if race == "orc" :
-				nom = prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du clan de " + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
+			if race == "orcs" or race == "orc":
+				nom = prenoms_orcs_m[randrange(len(prenoms_orcs_m))] + " du-clan-de-" + prenoms_orcs_m[randrange(len(prenoms_orcs_m))]
 			else : #humain
 				nom = prenoms_humains_m[randrange(len(prenoms_humains_m))] + " " + noms_humains[randrange(len(noms_humains))]
-		elif race == "halfelins" :
+		elif race == "halfelins" or race == "halfelin":
 			nom = prenoms_halfelins_m[randrange(len(prenoms_halfelins_m))] + " " + noms_halfelins[randrange(len(noms_halfelins))]
 		else : # "gnomes"
 			nom = prenoms_gnomes_m[randrange(len(prenoms_gnomes_m))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
