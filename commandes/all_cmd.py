@@ -15,6 +15,7 @@ from commandes.des import *
 from generation.generer_quete import *
 from generation.generer_commanditaire import *
 from generation.generer_nom import *
+from generation.generer_pj import *
 
 from collection_de_mots.calliope_reaction import *
 
@@ -122,6 +123,9 @@ def all_users_cmd(message):
         "\nhttps://github.com/laurie-boissay/calliope."
         ]
         return text[0]
+
+    elif message.startswith('!pj'):
+        return arguments_reroll(message)
 
     else:
         return "not a cmd"
