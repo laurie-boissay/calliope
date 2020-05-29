@@ -17,14 +17,14 @@ from commandes.macros.tasneo_macro import *
 
 
 players = [
-"Agmar",
-"Idaho",
-"Jaenne",
-"Lex",
-"Mel",
-"PYo",
-"Stevendeo",
-"tasneo",
+"Agmar", # 0
+"Idaho", # 1
+"Jaenne", # 2
+"Lex", # 3
+"Mel", # 4
+"PYo", # 5
+"Stevendeo", # 6
+"tasneo", #7
 ]
 
 players_macro = [ #liste de fonctions
@@ -54,11 +54,15 @@ def is_it_macro(message, client):
     canal = message.channel
     text = "not a macro"
 
+    #macro_nickname_dm = players_macro[7] # teste les macro d'autres utilisateurs.
+    #macro_personnage = characters_macro[7] # teste les macro des perso d'autres utilisateurs.
+
+  
     for i in range(len(players)):
         if message.author.name == players[i]:
             macro_nickname_dm = players_macro[i] 
             macro_personnage = characters_macro[i]
-
+   
     if message.content.startswith('!'):
         text = macro_nickname_dm(message.content)
         if text != "pas perso":

@@ -12,10 +12,10 @@ def macro_filtch (macro_text) :
     hobbit = 1
 
     if "!stat" in macro_text.lower():
-        return stat_w_of_d(qui, perso)
+        return toutes_stat(qui, perso)
 
     elif len(macro_text) < 4:
-        return perso + " saisit ses dés :" + short_w_of_d(macro_text)
+        return short_dice(macro_text, perso, 2, 6)
     
     if "!dexh" in macro_text.lower():
         p1 = perso + " teste sa dextérité (avec le bonus de hobbit) :\n"

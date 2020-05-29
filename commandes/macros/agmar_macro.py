@@ -25,10 +25,10 @@ def macro_agmar (macro_text) :
         return toutes_stat(carac_duncan, "Duncan")
         
     elif len(macro_text) < 4:
-        return perso + " saisit ses dés :" + short_w_of_d(macro_text)
+        return short_dice(macro_text, perso, 2, 6)
 
     else:
-        return "pas Agmar"
+        return "not a macro"
 
 
 def macro_agmar_dm (macro_text) :

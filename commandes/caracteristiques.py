@@ -119,6 +119,7 @@ def afficher_une_stat(qui, perso, macro_text, nb_des, valeur_des):
     for k, v in commandes_stat.items():
         if k.strip("!") in macro_text.lower():        
             return perso + " teste une caractéristique : " + v + " :\n" + roll(nb_des, valeur_des, qui[v])
+    return "not a macro"
 
 
 #cd /home/jaenne/Python/calliope/commandes

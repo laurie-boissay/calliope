@@ -72,28 +72,16 @@ def commande_des(cmd):
 
     return roll(nb_des, valeur_des, bonus)
 
-def short_w_of_d(bonus):
+def short_dice(bonus, perso, nb_des, valeur_des):
     bonus = bonus.strip("!")
 
     if bonus == "i":
-        return "\net se foule le poignet ?\n!i fonctionne pour i valant de -9 à 99."
+        return perso + " saisit ses dés :" + "\net se foule le poignet ?\n!i fonctionne pour i valant de -9 à 99."
 
     try:
         bonus = int(bonus)
     except ValueError:
-        return "not a cmd"
+        return "not a macro"
     
-    return roll(2, 6, bonus)
+    return  perso + " saisit ses dés :\n" + roll(nb_des, valeur_des, bonus)
 
-def short_c_o(bonus):
-    bonus = bonus.strip("!")
-
-    if bonus == "i":
-        return "\net se foule le poignet ?\n!i fonctionne pour i valant de -9 à 99."
-
-    try:
-        bonus = int(bonus)
-    except ValueError:
-        return "not a cmd"
-    
-    return roll(1, 20, bonus)

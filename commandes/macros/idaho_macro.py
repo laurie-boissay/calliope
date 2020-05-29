@@ -107,7 +107,7 @@ def macro_gargrim (macro_text) :
 #__________!i___________________________________________________________________________
 
     elif len(macro_text) < 4:
-        return perso + " saisit ses dés :" + short_c_o(macro_text)
+        return short_dice(macro_text, perso, 1, 20)
     
     elif len(macro_text) == 4:
         return afficher_une_stat(qui, perso, macro_text, 1, 20)

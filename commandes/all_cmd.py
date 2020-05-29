@@ -14,6 +14,7 @@ from commandes.des import *
 
 from generation.generer_quete import *
 from generation.generer_commanditaire import *
+from generation.generer_nom import *
 
 from collection_de_mots.calliope_reaction import *
 
@@ -61,7 +62,7 @@ def all_users_cmd(message):
         "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj```Génère un personnage."
-        "\n\n```!bar```Génère un nom d'auberge."
+        "\n\n```!auberge```Génère un nom d'auberge."
         "\n\n```!1d20-5   !1d20+5```Lance 1 dé 20 +/-5."
         "\n\n```!macro```Affiche les macros disponibles pour tes personnages."
         "\n\n```!info```La magie en oeuvre pour ma création."
@@ -108,7 +109,7 @@ def all_users_cmd(message):
     elif message.startswith('!pnj'):
         return "C'est "+ personne()
 
-    elif message.startswith('!bar'):
+    elif message.startswith('!auberge'):
         return nom_auberge()
 
     elif message.startswith('!macro'):

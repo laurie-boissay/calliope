@@ -33,7 +33,7 @@ def macro_jaenne (macro_text):
         return toutes_stat(qui, perso)
 
     elif len(macro_text) < 4:
-        return perso + " saisit ses dés :" + short_w_of_d(macro_text)
+        return short_dice(macro_text, perso, 2, 6)
 
 
     elif len(macro_text) == 4:
