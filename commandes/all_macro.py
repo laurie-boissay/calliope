@@ -22,100 +22,39 @@ def is_it_macro(message, client):
 
     if (message.author != client.user):
 
-        #_________Agmar___________________________________________________________________________
-
         if (message.author.name == "Agmar"):
-
-            if message.content.startswith('!'):
-                text = macro_agmar_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else :
-                    text = macro_agmar(message.content)
-        
-        #_________Idaho___________________________________________________________________________
+            canal, text = is_it_a_macro_for_nickname(message, macro_agmar_dm, macro_agmar)
             
         elif (message.author.name == "Idaho"):
-
-            if message.content.startswith('!'):
-                text = macro_idaho_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_gargrim(message.content)
-                  
-        #_________Jaenne_________________________________________________________________________
+            canal, text = is_it_a_macro_for_nickname(message, macro_idaho_dm, macro_gargrim)
 
         elif (message.author.name == "Jaenne"): #"Jaenne"
-
-            if message.content.startswith('!'):
-                text = macro_jaenne_dm(message.content)
-                if (text != "pas perso"):
-                    canal = message.author
-                else :
-                    if (message.content.startswith('!dm')) or (message.content.startswith('!m')):
-                        text = macro_merest(message.content)
-                       
-                    else:
-                        text = macro_jaenne(message.content)
-        #_________Lex_____________________________________________________________________________
-            
+            canal, text = is_it_a_macro_for_nickname(message, macro_jaenne_dm, macro_personnages_jaenne)
+    
         elif (message.author.name == "Lex"):
-
-            if message.content.startswith('!'):
-                text = macro_lex_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_lex(message.content)
-                    if text == "pas Lex":
-                        text = macro_filtch(message.content)           
-                        
-        #_________Mel_____________________________________________________________________________
+            canal, text = is_it_a_macro_for_nickname(message, macro_lex_dm, macro_filtch)
             
         elif (message.author.name == "Mel"):
-
-            if message.content.startswith('!'):
-                text = macro_mel_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_willow(message.content)
-                   
-        #_________PYo_____________________________________________________________________________
+            canal, text = is_it_a_macro_for_nickname(message, macro_mel_dm, macro_willow)
             
         elif (message.author.name == "PYo"):
-
-            if message.content.startswith('!'):
-                text = macro_pyo_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_eustache(message.content)
-                    
-        #_________Stevendeo_____________________________________________________________________________
+            canal, text = is_it_a_macro_for_nickname(message, macro_pyo_dm, macro_eustache)
             
         elif (message.author.name == "Stevendeo"):
+            canal, text = is_it_a_macro_for_nickname(message, macro_stevendeo_dm, macro_duncan)
 
-            if message.content.startswith('!'):
-                text = macro_stevendeo_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_duncan(message.content)
-
-        #_________tasneo_____________________________________________________________________________
-            
         elif (message.author.name == "tasneo"):
-
-            if message.content.startswith('!'):
-                text = macro_tasneo_dm(message.content)
-                if text != "pas perso":
-                    canal = message.author
-                else:
-                    text = macro_darius(message.content)
+            canal, text = is_it_a_macro_for_nickname(message, macro_tasneo_dm, macro_darius)
           
-        #__________________________________________________________________________________________
-
     return canal, text
 
+def is_it_a_macro_for_nickname(message, macro_nickname_dm, macro_personnage):
+    canal = message.channel
+    text = "not a macro"
+    if message.content.startswith('!'):
+        text = macro_nickname_dm(message.content)
+        if text != "pas perso":
+            canal = message.author
+        else :
+            text = macro_personnage(message.content)
+    return canal, text

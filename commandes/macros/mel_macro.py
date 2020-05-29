@@ -12,6 +12,11 @@ def macro_willow (macro_text) :
     if "!stat" in macro_text.lower():
         return toutes_stat(qui, perso)
 
+    if "!darc" in macro_text.lower():
+        p1 = "Dégâts du tir de " + perso + " + (bonus de dégâts arc) :\n"
+        p2 = roll(1, 6, 1 + qui["bonus de dégâts arc"])
+        return p1 + p2
+
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
 
@@ -35,6 +40,7 @@ def macro_mel_dm (macro_text) :
         "\n\n```!int```Willow teste son intelligence."
         "\n\n```!sag```Willow teste sa sagesse."
         "\n\n```!cha```Willow teste son charisme."
+        "\n\n```!darc```Dégats de l'arc de Willow avec bonus + 2."
         ]
         return text[0]
 

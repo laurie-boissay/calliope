@@ -6,7 +6,16 @@ Les macros des personnages de Jaenne :  - Jaenne
 from commandes.des import *
 from commandes.caracteristiques import *
 
-def macro_jaenne (macro_text) :
+def macro_personnages_jaenne(macro_text): 
+    if (macro_text.startswith('!dm')) or (macro_text.startswith('!m')):
+        text = macro_merest(macro_text)
+       
+    else:
+        text = macro_jaenne(macro_text)
+
+    return text
+
+def macro_jaenne (macro_text):
     perso = "Jaenne"
     qui = carac_jaenne
 

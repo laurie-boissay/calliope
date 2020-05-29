@@ -70,7 +70,8 @@ carac_jaenne = {
     "constitution" : 0,
     "intelligence" : 1,
     "sagesse" : 1,
-    "charisme" : 2
+    "charisme" : 2,
+    "armure" : 1,
     }
 
 carac_merest = {
@@ -95,9 +96,9 @@ carac_willow = {
     "constitution" : 0,
     "intelligence" : 1,
     "sagesse" : 0,
-    "charisme" : -1
+    "charisme" : -1,
+    "bonus de dégâts arc" : 2,
     }
-
 
 def toutes_stat(qui, perso):
     text = "Caractéristiques de " + perso + " : \n"
@@ -107,17 +108,17 @@ def toutes_stat(qui, perso):
 
 def afficher_une_stat(qui, perso, macro_text, nb_des, valeur_des):
     commandes_stat = {
-    "!for" : "force",
-    "!dex" : "dextérité",
-    "!con" : "constitution",
-    "!int" : "intelligence",
-    "!sag" : "sagesse",
-    "!cha" : "charisme" 
+    "for" : "force",
+    "dex" : "dextérité",
+    "con" : "constitution",
+    "int" : "intelligence",
+    "sag" : "sagesse",
+    "cha" : "charisme" 
     }
 
     for k, v in commandes_stat.items():
         if k.strip("!") in macro_text.lower():        
-            return perso + " teste une caractéristique : " + v + " : " + roll(nb_des, valeur_des, qui[v])
+            return perso + " teste une caractéristique : " + v + " :\n" + roll(nb_des, valeur_des, qui[v])
 
 
 #cd /home/jaenne/Python/calliope/commandes

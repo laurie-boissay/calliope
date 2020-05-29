@@ -53,21 +53,17 @@ def macro_filtch (macro_text) :
     else:
         return "not a macro"
 
-def macro_lex (macro_text) :    
+def macro_lex_dm (macro_text) :
     if "!mérest" in macro_text.lower():
         return toutes_stat(carac_merest, "Mérest")
 
-    if "!gargrim" in macro_text.lower():
+    elif "!gargrim" in macro_text.lower():
         return toutes_stat(carac_gargrim, "Gargrim")
 
-    if "!eustache" in macro_text.lower():
+    elif "!eustache" in macro_text.lower():
         return toutes_stat(carac_eustache, "Eustache")
 
-    else:
-        return "pas Lex"
-
-def macro_lex_dm (macro_text) :
-    if '!macro' in macro_text.lower():
+    elif '!macro' in macro_text.lower():
         text = [
         "\n\n```!filtch```Affiche les macros pour Filtch."
         "\n\n```!lex```Affiche les macros pour Lex."
