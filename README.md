@@ -48,4 +48,6 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 29/05/20 : 
 
-- nettoyage du code.
+- nettoyage du code ;
+
+- corrections des nouveaux bugs.
