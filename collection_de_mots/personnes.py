@@ -426,10 +426,10 @@ noms_humains = (
 	"Dubourg",
 	"Marchand",
 	"Tavernier",
-	"lenoir",
-	"legrand",
-	"lepetit",
-	"legros"
+	"Lenoir",
+	"Legrand",
+	"Lepetit",
+	"Legros"
 	)
 
 noms_halfelins =(
@@ -459,25 +459,25 @@ noms_gnomes = (
 
 noms_elfes = (
 	"Amastacia",
-	"Fleur d'Etoile",
+	"Fleur-d'Etoile",
 	"Amakiir",
-	"Fleur de Gemme",
+	"Fleur-de-Gemme",
 	"Galanodel",
-	"Murmure de Lune",
+	"Murmure-de-Lune",
 	"Holimion",
-	"Rosée de Diamant",
+	"Rosée-de-Diamant",
 	"Liadon",
-	"Feuille d'Argent",
+	"Feuille-d'Argent",
 	"Meliamne",
-	"Pied de Chêne",
+	"Pied-de-Chêne",
 	"Naïlo",
-	"Brise Nocturne",
+	"Brise-Nocturne",
 	"Siannodel",
-	"Ruisseau de Lune",
+	"Ruisseau-de-Lune",
 	"Ilphukiir",
-	"Bouton de Gemme",
+	"Bouton-de-Gemme",
 	"Xiloscient",
-	"Pétale d'Or"
+	"Pétale-d'Or"
 	)
 
 poste_palais_justice = (
