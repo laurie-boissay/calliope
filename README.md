@@ -50,4 +50,6 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - nettoyage du code ;
 
-- corrections des nouveaux bugs.
+- corrections des nouveaux bugs ;
+
+- travail en cours : ajout d'une fonction pour générer un personnage jouable semi-aléatoirement.
