@@ -47,8 +47,11 @@ def macro_filtch (macro_text) :
         p2 =roll(2, 6, qui["charisme"] + hobbit)
         return p1 + p2
 
+    elif len(macro_text) == 4:
+        return afficher_une_stat(qui, perso, macro_text, 2, 6)
+
     else:
-        return afficher_une_stat(qui, perso, macro_text)
+        return "not a macro"
 
 def macro_lex (macro_text) :    
     if "!mérest" in macro_text.lower():

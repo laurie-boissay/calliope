@@ -26,9 +26,13 @@ def macro_jaenne (macro_text) :
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
 
+
+    elif len(macro_text) == 4:
+        return afficher_une_stat(qui, perso, macro_text, 2, 6)
+
     else:
-        text = afficher_une_stat(qui, perso, macro_text)
-        return text
+        return "not a macro"
+    
 
 def macro_merest (macro_text):
     perso = "Mérest"
@@ -125,38 +129,8 @@ def macro_merest (macro_text):
 
 #_____________Stats_______________________________________________
 
-    elif "!mfor" in macro_text.lower():
-        p1 = perso + " teste sa force :\n"
-        p2 = roll(1, 20, qui("force"))
-        return p1 + p2
-
-    elif "!mdex" in macro_text.lower():
-        p1 = perso + " teste sa dextérité :\n"
-        p2 = roll(1, 20, qui["dextérité"])
-        return p1 + p2
-
-    elif "!mcon" in macro_text.lower():
-        p1 = perso + " teste sa constitution :\n"
-        p2 = roll(1, 20, qui["constitution"])
-        return p1 + p2
-
-    elif "!mint" in macro_text.lower():
-        p1 = perso + " teste son intelligence :\n"
-        p2 = roll(1, 20, qui["intelligence"])
-        return p1 + p2
-
-    elif "!msag" in macro_text.lower():
-        p1 = perso + " teste sa sagesse :\n"
-        p2 = roll(1, 20, qui["sagesse"])
-        return p1 + p2
-
-    elif "!mcha" in macro_text.lower():
-        p1 = perso + " teste son charisme :\n"
-        p2 = roll(1, 20, qui["charisme"])
-        return p1 + p2
-
-    elif "!mstat" in macro_text.lower():
-        return toutes_stat(qui, perso)
+    elif len(macro_text) == 5:
+        return afficher_une_stat(qui, perso, macro_text, 1, 20)
 
     else:
         return "not a macro"

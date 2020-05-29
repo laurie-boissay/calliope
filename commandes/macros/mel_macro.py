@@ -15,8 +15,11 @@ def macro_willow (macro_text) :
     elif len(macro_text) < 4:
         return perso + " saisit ses dés :" + short_w_of_d(macro_text)
 
+    elif len(macro_text) == 4:
+        return afficher_une_stat(qui, perso, macro_text, 2, 6)
+
     else:
-        return afficher_une_stat(qui, perso, macro_text)
+        return "not a macro"
 
 def macro_mel_dm (macro_text) :
     if '!macro' in macro_text.lower():

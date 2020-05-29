@@ -105,73 +105,19 @@ def toutes_stat(qui, perso):
         text += k.capitalize() + " : " + str(v) + "\n"
     return text
 
-def afficher_une_stat(qui, perso, macro_text):
+def afficher_une_stat(qui, perso, macro_text, nb_des, valeur_des):
+    commandes_stat = {
+    "!for" : "force",
+    "!dex" : "dextérité",
+    "!con" : "constitution",
+    "!int" : "intelligence",
+    "!sag" : "sagesse",
+    "!cha" : "charisme" 
+    }
 
-    if len(macro_text) > 4:
-        text = "not a macro"
-
-    elif "!for" in macro_text.lower():
-        carac = "force"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
-
-    elif "!dex" in macro_text.lower():
-        carac = "dextérité"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
-
-    elif "!con" in macro_text.lower():
-        carac = "constitution"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
-
-    elif "!int" in macro_text.lower():
-        carac = "intelligence"
-        text = perso + " teste son " + carac + " : " + roll(2, 6, qui[carac])
-
-    elif "!sag" in macro_text.lower():
-        carac = "sagesse"
-        text = perso + " teste sa " + carac + " : " + roll(2, 6, qui[carac])
-
-    elif "!cha" in macro_text.lower():
-        carac = "charisme"
-        text = perso + " teste son " + carac + " : " + roll(2, 6, qui[carac])
-
-    else:
-        text = "not a macro"
-    
-    return text
-
-#______Chroniques_oubliées______________________________________
-
-
-def afficher_1_stat(qui, perso, macro_text):
-
-    if "!for" in macro_text.lower():
-        carac = "force"
-        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
-
-    elif "!dex" in macro_text.lower():
-        carac = "dextérité"
-        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
-
-    elif "!con" in macro_text.lower():
-        carac = "constitution"
-        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
-
-    elif "!int" in macro_text.lower():
-        carac = "intelligence"
-        text = perso + " teste son " + carac + roll(1, 20, qui[carac])
-
-    elif "!sag" in macro_text.lower():
-        carac = "sagesse"
-        text = perso + " teste sa " + carac + roll(1, 20, qui[carac])
-
-    elif "!cha" in macro_text.lower():
-        carac = "charisme"
-        text = perso + " teste son " + carac + roll(1, 20, qui[carac])
-
-    else:
-        text = "pas " + perso
-    
-    return text
+    for k, v in commandes_stat.items():
+        if k.strip("!") in macro_text.lower():        
+            return perso + " teste une caractéristique : " + v + " : " + roll(nb_des, valeur_des, qui[v])
 
 
 #cd /home/jaenne/Python/calliope/commandes
