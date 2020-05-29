@@ -150,7 +150,7 @@ def truc_a_voler() :
 	"""
 	truc = vol[randrange(len(vol))]
 	if truc == "objet" :
-		objet[randrange(len(objet))]
+		truc = objet[randrange(len(objet))]
 		if truc ==  "uniforme(s)" :
 			return str(randrange(1, 10, 1)) + " " + truc + " dans " + type_lieu_ville()
 		else :
@@ -249,7 +249,7 @@ def cible_livraison() :
 	if truc == "une personne" :
 		phrase_1 = personne() + "\n\nLa cible se cache "
 	elif truc == "un objet" :
-		objet[randrange(len(objet))]
+		truc = objet[randrange(len(objet))]
 		phrase_1 = str(randrange(1, 10, 1))+" "+truc + " "
 	elif truc == "un objet personnel" :
 		phrase_1 = objet_pers[randrange(len(objet_pers))]+" "
