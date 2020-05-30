@@ -45,6 +45,12 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 	"Pense à le sauvegarder s'il te convient :\n\n"
 	]
 
+	erreur_nb_neg = [
+		"Dans la commande :"
+		"```!pj, x, y```"
+		"x et y doivent être positifs."
+		]
+
 	for k, v in pj.items():
 		pj[k] = ""
 
@@ -96,6 +102,9 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 		]
 		return text[0]
 
+	if nb_points_de_carac < 0 or valeur_max < 0:
+		return erreur_nb_neg[0]
+
 	text_pj[0] += distribuer_points_carac(nb_points_de_carac, valeur_max, pj["métier"])
 	return text_pj[0]
 
@@ -107,12 +116,16 @@ def distribuer_points_carac(nb_points_de_carac, valeur_max, metier):
 	metier[0] = metier[0].lower()
 	points_distribues = 0
 
+	bonus = valeur_max + 1
+	if valeur_max > nb_points_de_carac:
+		bonus = nb_points_de_carac +1
+
 	for k, v in carac_et_points.items():
 		carac_et_points[k] = 0
 
 	for k, v in metiers_et_carac_associee.items():
 		if metier[0] == k:
-			nb_points = randrange(1, valeur_max+1)
+			nb_points = randrange(1, bonus)
 			carac_et_points[v] += nb_points
 			points_distribues += nb_points
 
