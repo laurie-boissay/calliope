@@ -52,8 +52,8 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - corrections des nouveaux bugs ;
 
-- travail en cours : ajout d'une fonction pour générer un personnage jouable semi-aléatoirement.
+- travail en cours : ajout d'une commande pour générer un personnage jouable semi-aléatoirement.
 
 30/05/20 : 
 
-- ajout d'une fonction pour générer un personnage jouable semi-aléatoirement et des fonctions pour y accéder.
+- ajout d'une commande pour générer un personnage jouable semi-aléatoirement et des commandes pour y accéder.
