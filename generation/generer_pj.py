@@ -27,7 +27,6 @@ def arguments_reroll(message):
 		"Ou tu n'as pas précisé les paramètres obligatoires. Ex :"
 		" ```!pj, 8, 2 ```"
 		]
-
 		return text[0]
 	
 	for i in range(3, len(message), 1):
@@ -35,6 +34,9 @@ def arguments_reroll(message):
 		couple[0]=couple[0].strip(" ")
 		couple[1]=couple[1].strip(" ")
 		arguments[couple[0]] = couple[1]
+
+	nb_points_de_carac = make_int(nb_points_de_carac)
+	valeur_max = make_int(valeur_max)
 	
 	return reroll(nb_points_de_carac, valeur_max, **arguments)
 	
@@ -59,6 +61,19 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 			if key == k:
 				pj[key] = v
 
+	generer_particularites()
+
+	for k, v in pj.items(): # afficher le tableau PJ.
+		text_pj[0] += k + " : " + v + "\n"
+
+	if nb_points_de_carac < 0 or valeur_max < 0:
+		return erreur_nb_neg[0]
+
+	text_pj[0] += distribuer_points_carac(nb_points_de_carac, valeur_max, pj["métier"])
+	return text_pj[0]
+
+
+def generer_particularites():
 	if pj["race"] == "":
 		pj["race"] = pers_race[randrange(len(pers_race))][:-1]
 	else:
@@ -89,12 +104,14 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 	if pj['age'] == "":
 		pj['age'] = pers_age[randrange(len(pers_age))]
 
-	for k, v in pj.items(): # afficher le tableau PJ.
-		text_pj[0] += k + " : " + v + "\n"
+	if pj['leitmotiv'] == "":
+		pj['leitmotiv'] = leitmotiv[randrange(len(leitmotiv))]
 
+
+def make_int(number):
 	try :
-		nb_points_de_carac = int(nb_points_de_carac)
-		valeur_max = int(valeur_max)
+		number = int(number)
+
 	except ValueError:
 		text = [
 		"Tu as peut être oublié une virgule entre les paramètres."
@@ -102,11 +119,7 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 		]
 		return text[0]
 
-	if nb_points_de_carac < 0 or valeur_max < 0:
-		return erreur_nb_neg[0]
-
-	text_pj[0] += distribuer_points_carac(nb_points_de_carac, valeur_max, pj["métier"])
-	return text_pj[0]
+	return(number)
 
 
 def distribuer_points_carac(nb_points_de_carac, valeur_max, metier):

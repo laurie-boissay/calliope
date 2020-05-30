@@ -146,14 +146,13 @@ def secret_personne() :
 	return pers_secret[randrange(len(pers_secret))]
 
 
-
 def metier_pers() :
 	"""
 	Pioche un métier pour la personne. 
 	Précise pour certains métiers le domaine ou un nom de bâtiment.
 	"""
 	metier = pers_metier[randrange(len(pers_metier))]
-	if metier == "haut placé/e" :
+	if metier == "haut-placé/e" :
 		phrase_1 = metier + " dans " +organisation[randrange(len(organisation))]
 	elif metier == "éleveur/éleveuse" :
 		phrase_1 = metier + " de/d' " + animal_elevage[randrange(len(animal_elevage))]
@@ -169,6 +168,16 @@ def metier_pers() :
 		phrase_1 = metier + " du bateau " + nom_navire()
 	elif metier == "artisan/ne" :
 		phrase_1 = metier + " " + artisanat[randrange(len(artisanat))]
+	elif metier == "apprenti/e" :
+		metier_appris = specialite()
+		phrase_1 = metier + " " + metier_appris
 	else :
 		phrase_1 = metier
 	return phrase_1
+
+def specialite():
+	metier = pers_metier[randrange(len(pers_metier))]
+	if metier in pas_apprenti_e:
+		return specialite()
+	else:
+		return metier
