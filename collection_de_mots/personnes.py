@@ -22,36 +22,80 @@ pers_genre = (
 	)
 
 pers_metier = (
-	"reine/roi",
-	"prince/sse",
-	"duc/duchesse",
-	"maire",
-	"prefet",
-	"juge",
-	"bourreau",
-	"servante/serviteur",
-	"marchand/e",
-	"tavernier/e",
-	"serveur/serveuse",
-	"haut placé/e",
-	"contremaître",
-	"prêtre/sse",
-	"chasseur/chasseuse",
-	"pêcheur/pêcheuse",
-	"paysan/ne",
-	"éleveur/éleveuse",
-	"mineur/mineuse",
-	"tanneur/tanneuse",
-	"médecin",
-	"sorcier/e",
-	"mage",
-	"forgeron/ne",
-	"marin",
-	"capitaine",
+
+	"alchimiste",
 	"artisan/ne",
-	"mendiant/e",
+	"archer/archère",
+	"architecte",
+	"assassin",
+	"astrologue",
+
+	"barde",
 	"boulanger/e",
-	"meunier/e"
+	"bourreau",
+
+	"capitaine",
+	"cartographe",
+	"chasseur/chasseuse",
+	"comédienne/comédien",
+	"conseillère/conseiller royal/e",
+	"contremaître",
+	"courtisant/courtisanne",
+	"couturier/couturière",
+	"cuisinière/cuisinier",
+
+	"duc/duchesse",
+	"druide",
+
+	"écuyère/écuyer",
+	"écrivain/e publique/public",
+	"éleveur/éleveuse",
+	"étudiant/e",
+
+	"forgeron/ne",
+
+	"garde",
+	"géographe",
+	"guerrière/guerrier",
+	
+	"haut-placé/e",
+
+	"juge",
+	"joalière/joalier",
+
+	"linguiste",
+
+	"maçon/maçonne",
+	"maire",
+	"mage",
+	"marchand/e",
+	"maréchal/e ferrant/e",
+	"marin",
+	"médecin",
+	"mendiant/e",
+	"meunière/meunier",
+	"mineur/mineuse",
+	"ministre",
+
+	"paysan/ne",
+	"pêcheur/pêcheuse",
+	"peintre",
+	"prefet",
+	"prêtre/sse",
+	"prince/sse",
+	"professeur/e",
+	
+	"reine/roi",	
+	
+	"servante/serviteur",
+	"serveur/serveuse",
+	"sorcier/sorcière",
+	"soldat/e",
+	
+	"tanneur/tanneuse",
+	"tavernier/e",
+
+	"voleur/voleuse",
 	)
 
 pers_secret = (
@@ -77,7 +121,7 @@ pers_secret = (
 	"de ses activités caritatives",
 	"de sa nature malfaisante",
 	"de ses activités séditieuses",
-	"de sa tête mise à prix dans une ville lointaine"
+	"de sa tête mise à prix dans une ville lointaine",
 	)
 
 mobile = (
@@ -543,3 +587,96 @@ poste_temple =(
 	"moine",
 	"moine"
 	)
+
+pj = {
+	'prénom' : "",
+	'nom' : "",
+	'age' : "",
+	'race' : "",
+	'métier' : "",
+	'genre' : "",
+	'secret' : "",
+	'ville' : "",
+	}
+	
+metiers_et_carac_associee = {
+	"alchimiste" : "Intelligence",
+	"artisan/ne" : "Dextérité",
+	"archer/archère" : "Dextérité",
+	"architecte" : "Intelligence",
+	"assassin" : "Dextérité",
+	"astrologue" : "Sagesse",
+	"barbare" : "Force",
+	"barde" : "Charisme",
+	#"boulanger/e" : ,
+	"bourreau" : "Force",
+	"capitaine" : "Sagesse",
+	"cartographe" : "Intelligence",
+	"chasseur/chasseuse" : "Dextérité",
+	"comédienne/comédien" : "Charisme",
+	"conseillère/conseiller" : "Sagesse",
+	"contremaître" : "Sagesse",
+	"couturier/couturière" : "Dextérité",
+	"courtisant/courtisanne" : "Charisme",
+	#"cuisinière/cuisinier" : ,
+	"duc/duchesse" : "Charisme",
+	"druide" : "Sagesse",
+	"écuyère/écuyer" : "Constitution",
+	"écrivain/e" : "Intelligence",
+	"éleveur/éleveuse" : "Constitution",
+	"étudiant/e" : "Intelligence",
+	"forgeron/ne" : "Force",
+	"garde" : "Force",
+	"géographe" : "Intelligence",
+	"guerrière/guerrier" : "Force",
+	"haut-placé/e" : "Charisme",
+	"juge" : "Sagesse",
+	"joalière/joalier" : "Dextérité",
+	"linguiste" : "Intelligence",
+	"maçon/maçonne" : "Force",
+	"maire" : "Charisme",
+	"mage" : "Intelligence",
+	"marchand/e" : "Charisme",
+	"maréchal/e" : "Constitution",
+	"marin" : "Constitution",
+	"médecin" : "Intelligence",
+	"mendiant/e" : "Constitution",
+	#"meunière/meunier" : ,
+	"mineur/mineuse" : "Force",
+	"ministre" : "Charisme",
+	"moine" : "Sagesse",
+	"paysan/ne" : "Constitution",
+	"pêcheur/pêcheuse" :"Constitution" ,
+	"peintre" : "Sagesse",
+	"prefet" : "Charisme",
+	"prêtre/sse" : "Sagesse",
+	"prince/sse" : "Charisme",
+	"professeur/e" : "Intelligence",
+	"reine/roi" : "Charisme",
+	"rodeur/rodeuse" : "Dextérité",
+	"servante/serviteur" : "Constitution",
+	"serveur/serveuse" : "Constitution",
+	"sorcier/sorcière" : "Intelligence",
+	"soldat/e" : "Force",
+	"tanneur/tanneuse" : "Constitution",
+	"tavernier/e" : "Sagesse",
+	"voleur/voleuse" : "Dextérité",
+	}
+
+carac = [
+	"Force",
+	"Dextérité",
+	"Constitution",
+	"Intelligence",
+	"Sagesse",
+	"Charisme",
+	]
+
+carac_et_points = {
+	"Force" : 0,
+	"Dextérité" : 0,
+	"Constitution" : 0,
+	"Intelligence" : 0,
+	"Sagesse" : 0,
+	"Charisme" : 0,
+	}
