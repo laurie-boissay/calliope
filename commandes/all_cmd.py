@@ -157,7 +157,7 @@ def all_users_cmd(message):
 
         "\n\nTu peux préciser autant de paramètres facultatifs que tu le souhaites en les séparant chacun d'une virgule."
         "\nJe comblerait tous les paramètres laissés vides :"
-        "\n```!pj, 12, 3, prénom=Toto, nom=du clan de Toto, race=orc, métier=mage, age=20, ville=Trifouillis les oies, genre=androgyne, secret=est violent```"
+        "\n```!pj, 12, 3, prénom=Toto, nom=du clan de Toto, race=orc, métier=mage, age=20, leitmotiv=Apprendre pleins de blagues., ville=Trifouillis les oies, genre=androgyne, secret=est violent```"
 
         "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
         "\n\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
