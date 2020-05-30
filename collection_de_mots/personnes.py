@@ -22,18 +22,16 @@ pers_genre = (
 	)
 
 pers_metier = (
-
 	"alchimiste",
+	"apprenti/e",
 	"artisan/ne",
 	"archer/archère",
 	"architecte",
 	"assassin",
 	"astrologue",
-
 	"barde",
 	"boulanger/e",
 	"bourreau",
-
 	"capitaine",
 	"cartographe",
 	"chasseur/chasseuse",
@@ -43,28 +41,19 @@ pers_metier = (
 	"courtisant/courtisanne",
 	"couturier/couturière",
 	"cuisinière/cuisinier",
-
 	"duc/duchesse",
 	"druide",
-
 	"écuyère/écuyer",
 	"écrivain/e publique/public",
 	"éleveur/éleveuse",
-	"étudiant/e",
-
 	"forgeron/ne",
-
 	"garde",
 	"géographe",
 	"guerrière/guerrier",
-	
 	"haut-placé/e",
-
 	"juge",
 	"joalière/joalier",
-
 	"linguiste",
-
 	"maçon/maçonne",
 	"maire",
 	"mage",
@@ -76,7 +65,6 @@ pers_metier = (
 	"meunière/meunier",
 	"mineur/mineuse",
 	"ministre",
-
 	"paysan/ne",
 	"pêcheur/pêcheuse",
 	"peintre",
@@ -84,17 +72,13 @@ pers_metier = (
 	"prêtre/sse",
 	"prince/sse",
 	"professeur/e",
-	
 	"reine/roi",	
-	
 	"servante/serviteur",
 	"serveur/serveuse",
 	"sorcier/sorcière",
 	"soldat/e",
-	
 	"tanneur/tanneuse",
 	"tavernier/e",
-
 	"voleur/voleuse",
 	)
 
@@ -595,12 +579,14 @@ pj = {
 	'race' : "",
 	'métier' : "",
 	'genre' : "",
+	'leitmotiv' : "",
 	'secret' : "",
 	'ville' : "",
 	}
 	
 metiers_et_carac_associee = {
 	"alchimiste" : "Intelligence",
+	"apprenti/e" : "Intelligence",
 	"artisan/ne" : "Dextérité",
 	"archer/archère" : "Dextérité",
 	"architecte" : "Intelligence",
@@ -624,7 +610,6 @@ metiers_et_carac_associee = {
 	"écuyère/écuyer" : "Constitution",
 	"écrivain/e" : "Intelligence",
 	"éleveur/éleveuse" : "Constitution",
-	"étudiant/e" : "Intelligence",
 	"forgeron/ne" : "Force",
 	"garde" : "Force",
 	"géographe" : "Intelligence",
@@ -680,3 +665,44 @@ carac_et_points = {
 	"Sagesse" : 0,
 	"Charisme" : 0,
 	}
+
+leitmotiv = [
+	"Devenir un/e héro/ïne.",
+	"Obtenir plus de pouvoir.",
+	"Amasser des richesses.",
+	"Faire naître une révolution.",
+	"Découvrir le monde.",
+	"Fuire sa condition.",
+	"Retouver un/e proche kidnapé.",
+	"Libérer un/e ami/e emprisonné/e.",
+	"Fuire un/e assassin/e.",
+	"Rendre le monde meilleur.",
+	"Venir en aide aux opprimés.",
+	"Devenir le/la plus grand/e dresseur/dresseuse.",
+	"Gouter aux plaisirs de tous les pays du monde.",
+	"Faire une découverte extraordinaire.",
+	"Prouver sa valeur.",
+	"Trouver le remède qui sauvera un/e proche.",
+	"Etancher sa soif de connaissances.",
+	"Retrouver un artefact.",
+	"Faire prospérer son entreprise.",
+	"Dominer le monde.",
+	"Prouver une hypothèse sur la forme de la terre.",
+	"Rétablir l'honneur de sa famille.",
+	"Etudier une compétence.",
+	]
+
+pas_apprenti_e = [
+	"apprenti/e",
+	"barbare",
+	"capitaine",
+	"duc/duchesse",
+	"écuyère/écuyer",
+	"haut-placé/e",
+	"maire",
+	"mendiant/e",
+	"ministre",
+	"prince/sse",
+	"reine/roi",
+	]
+	
