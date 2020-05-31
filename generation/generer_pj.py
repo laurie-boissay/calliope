@@ -11,22 +11,24 @@ from collection_de_mots.trucs import *
 Génère un héro/une héroïne ou un PNJ.
 """
 
+arguments = {}
+
 def arguments_reroll(message):
 	"""
-	Récupère la commande et la traduit en arguments
-	pour la fonction reroll.
+	Sépare la commande en paramètres de commande.
 
-	Renvoit un message d'erreur si les arguments obligatoires
+	Renvoit un message d'erreur si les paramètres obligatoires
 	ne peuvent être utilisés.
 
 	Appelle la fonction make_int.
+
+	Appelle la fonction découpage_en_arguments.
 
 	Appelle la fonction reroll.
 
 	Renvoit les caractéristiques et particularités du PJ généré et leur valeur.
 	"""
 	message = list(message.split(","))
-	arguments = {}
 
 	for i in range(3, len(message), 1):
 		message[i] = message[i].strip(" ")
@@ -36,25 +38,61 @@ def arguments_reroll(message):
 		valeur_max = message[2]
 	except IndexError:
 		text = [
-		"Il manque peut être une virgule après !pj.\n"
-		"Ou tu n'as pas précisé les paramètres obligatoires. Ex :"
+		"Il manque peut être une virgule après !pj\n"
+		"Ou tu n'as pas précisé les paramètres obligatoires juste après !pj,"
 		" ```!pj, 8, 2 ```"
 		]
 		return text[0]
-	
-	for i in range(3, len(message), 1):
-		couple = message[i].split("=")
-		couple[0]=couple[0].strip(" ")
-		couple[1]=couple[1].strip(" ")
-		arguments[couple[0]] = couple[1]
 
 	nb_points_de_carac = make_int(nb_points_de_carac)
 	valeur_max = make_int(valeur_max)
-	
-	return reroll(nb_points_de_carac, valeur_max, **arguments)
-	
 
-def reroll(nb_points_de_carac, valeur_max, **kwargs):
+	genre_proscrit, races_proscrites, metiers_proscrits = découpage_en_arguments(message)
+	
+	return reroll(nb_points_de_carac, valeur_max, genre_proscrit, races_proscrites, metiers_proscrits, **arguments)
+
+
+def découpage_en_arguments(message):
+	"""
+	Prend les paramètres listés dans message 
+		si le paramètre contient le symbole = :
+			découpe le paramètre en arguments et les stocke 
+			dans le dictionnaire arguments.
+		si le paramètre contient le symbole / :
+			récupère les mots proscrits par l'utilisateur et
+			les stock dans la liste adaptée.
+
+	Renvoit les listes : genre_proscrit, races_proscrites, metiers_proscrits
+
+	"""
+
+	genre_proscrit = []
+	races_proscrites = []
+	metiers_proscrits = []
+
+	for i in range(3, len(message), 1):
+
+		if "=" in message[i]:
+			couple = message[i].split("=")
+			couple[0]=couple[0].strip(" ")
+			couple[1]=couple[1].strip(" ")
+			arguments[couple[0]] = couple[1]
+
+		elif "_"in message[i]:
+			couple = message[i].split("_")
+			couple[0]=couple[0].strip(" ")
+			couple[1]=couple[1].strip(" ")
+			if couple[0] == "race":
+				races_proscrites.append(couple[1])
+			elif couple[0] == "genre":
+				genre_proscrit.append(couple[1])
+			elif couple[0] == "métier":
+				metiers_proscrits.append(couple[1])
+	
+	return genre_proscrit, races_proscrites, metiers_proscrits
+		
+
+def reroll(nb_points_de_carac, valeur_max, genre_proscrit, races_proscrites, metiers_proscrits, **kwargs):
 	"""
 	Vérifie que nb_points_de_carac, valeur_max sont positifs et renvoie
 	un message d'erreur si ce n'est pas le cas.
@@ -89,7 +127,7 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 			if key == k:
 				pj[key] = v
 
-	generer_particularites()
+	generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
 
 	for k, v in pj.items(): # afficher le tableau PJ.
 		text_pj[0] += k + " : " + v + "\n"
@@ -98,24 +136,38 @@ def reroll(nb_points_de_carac, valeur_max, **kwargs):
 	return text_pj[0]
 
 
-def generer_particularites():
+def generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits):
 	"""
-	Génère des valeurs pour les paramètres
-	laissés vide par l'utilisateur.
+	Génère des valeurs pour les paramètres laissés vide par l'utilisateur.
+
+	Et vérifie que la valeur générée ne fait pas partie d'une liste d'interdits.
 	"""
 
 	if pj["race"] == "":
-		pj["race"] = pers_race[randrange(len(pers_race))][:-1]
+		race = pers_race[randrange(len(pers_race))][:-1]
+		if race not in races_proscrites:
+			pj["race"] = race
+		else :
+			generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
 	else:
 		pj["race"] = pj["race"].lower()
 		
 	if pj["genre"] == "":
-		pj["genre"] = genre = pers_genre[randrange(len(pers_genre))]
+		genre = pers_genre[randrange(len(pers_genre))]
+		if genre not in genre_proscrit:
+			pj["genre"] = genre
+		else:
+			generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
 	else:
 		pj["genre"] = pj["genre"].lower()
 			
 	if pj["métier"] == "":
-		pj["métier"] = metier_pers()
+		metier_long =  metier_pers()
+		metier_court = racourcir_metier(metier_long)
+		if metier_court not in metiers_proscrits:
+			pj["métier"] = metier_long
+		else:
+			generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
 
 	if pj["ville"] == "":
 		pj["ville"] = zone() + "\n"
@@ -136,6 +188,21 @@ def generer_particularites():
 
 	if pj['leitmotiv'] == "":
 		pj['leitmotiv'] = leitmotiv[randrange(len(leitmotiv))]
+
+
+def racourcir_metier(metier):
+	"""
+	Découpe le nom de métier et ne garder que le premier
+	mot sans espace.
+
+	Mets le nom de métier en minuscule.
+
+	Renvoit le métier raccourci.
+	"""
+	metier = metier.split(" ")
+	metier[0] = metier[0].lower()
+
+	return metier[0]
 
 
 def make_int(number):
@@ -161,15 +228,14 @@ def make_int(number):
 	return(number)
 
 
-def distribuer_points_carac(nb_points_de_carac, valeur_max, metier):
+def distribuer_points_carac(nb_points_de_carac, valeur_max, metier_long):
 	"""
-	Cette fonction doit définir si le métier du pnj lui donne droit à 
+	Cette fonction doit définir si le métier du pj lui donne droit à 
 	une caractéristique prioritaire.
+	
+	Appelle la fonction racourcir_metier
 
-	Pour cela il faut découper le nom de métier et ne garder que le premier
-	mot sans espace.
-
-	Le mot métier ainsi préparé est comparé au dictionnaire : metiers_et_carac_associee.
+	Le mot métier_court ainsi préparé est comparé au dictionnaire : metiers_et_carac_associee.
 
 	On utilise le plus petit nombre entre nb_points_de_carac et valeur_max
 	pour générer un nombre aléatoire de points "bonus" à associer à la caractéristique
@@ -180,12 +246,9 @@ def distribuer_points_carac(nb_points_de_carac, valeur_max, metier):
 
 	Renvoit les caractéristiques du perso généré ainsi que leur valeur.
 	"""
-	
 	text = ""
-	metier = metier.split(" ")
-	metier[0] = metier[0].lower()
+	metier = racourcir_metier(metier_long)
 	points_distribues = 0
-
 	bonus = valeur_max + 1
 	if valeur_max > nb_points_de_carac:
 		bonus = nb_points_de_carac +1
@@ -194,7 +257,7 @@ def distribuer_points_carac(nb_points_de_carac, valeur_max, metier):
 		carac_et_points[k] = 0
 
 	for k, v in metiers_et_carac_associee.items():
-		if metier[0] == k:
+		if metier == k:
 			nb_points = randrange(1, bonus)
 			carac_et_points[v] += nb_points
 			points_distribues += nb_points
