@@ -70,5 +70,4 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 !pj, 8, 2, genre_masculin, métier_mage, leitmotiv=Conquérir le monde !, race_demi-orc
 
-- - correction des nouveaux bugs ;
 
