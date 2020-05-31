@@ -58,7 +58,7 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout d'une commande pour générer un personnage jouable semi-aléatoirement et des commandes pour y accéder.
 
-!pj, 12, 3,  race=demi-orc, genre=masculin
+!pj, 12, 3,  race=demi-orc, genre=masculin, secret=Shhhut I'm Batman !
 
 31/05/20 :
 
