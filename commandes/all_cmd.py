@@ -153,40 +153,10 @@ def all_users_cmd(message):
         # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
         return nom_auberge()
 
-    elif message.startswith('!races'):
-        # Renvoi la liste des races qui influencent la génération d'un patronyme
-        # avec la commande !pj, x, y
-        text = "Vous pouvez choisir la race des :\n"
-        for i in range(len(pers_race)):
-            text += pers_race[i] + ", "
-        return text
+    elif message.startswith('!pj'):
+            # Appelle la fonction arguments_reroll, renvoi un texte.
+            return arguments_reroll(message)
 
-    elif message.startswith('!genres'):
-        # Renvoi la liste des genres qui influencent la génération d'un patronyme
-        # avec la commande !pj, x, y
-        text = ""
-        for i in range(len(pers_genre)):
-            text += pers_genre[i] + ", "
-        return text
-
-    elif message.startswith('!métiers'):
-        # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
-        # et une aide à l'utilisation de la commande !pj, x, y
-        text = [
-        "Enlever un ou plusieurs métier de la liste :"
-        "```!pj, 12, 3, métier_bourreau, métier_contremaître```\n"
-
-        "Choisir un métier qui a une caractéristique prioritaire :"
-        "```!pj, 12, 3, métier=archer/archère```"
-        "A noter que :"
-        "```!pj, 12, 3, métier=archer/archère de la garde royale```"
-        "Favorise aussi la caractéristique dextérité lors de la distribution des points de compétences.\n"
-        '''Seul le premier mot sans espace après le signe = compte. Ici c'est "archer/archère".\n\n'''
-
-        ]
-        for k, v in metiers_et_carac_associee.items():
-            text[0] += k + " : " + v + "\n"
-        return text[0]
 
     elif message.startswith('!macro'):
         # La commande !macro est une macro si un utilisateur ayant tapé !macro
@@ -201,10 +171,6 @@ def all_users_cmd(message):
         "\nhttps://github.com/laurie-boissay/calliope."
         ]
         return text[0]
-
-    elif message.startswith('!pj'):
-        # Appelle la fonction arguments_reroll, renvoi un texte.
-        return arguments_reroll(message)
 
     elif message.startswith('!personnage'):
         # Renvoi le texte d'aide pour utiliser la commande !pj, x, y
@@ -228,9 +194,43 @@ def all_users_cmd(message):
         ]
         return text[0]
 
+    elif message.startswith('!races'):
+        # Renvoi la liste des races qui influencent la génération d'un patronyme
+        # avec la commande !pj, x, y
+        text = "Vous pouvez choisir la race des :\n"
+        for i in range(len(pers_race)):
+            text += pers_race[i] + ", "
+        return text
+
+    elif message.startswith('!genres'):
+        # Renvoi la liste des genres qui influencent la génération d'un patronyme
+        # avec la commande !pj, x, y
+        text = ""
+        for i in range(len(pers_genre)):
+            text += pers_genre[i] + ", "
+        return text
+    
+    elif message.startswith('!métiers'):
+        # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
+        # et une aide à l'utilisation de la commande !pj, x, y
+        text = [
+        "Enlever un ou plusieurs métier de la liste :"
+        "```!pj, 12, 3, métier_bourreau, métier_contremaître```\n"
+
+        "Choisir un métier qui a une caractéristique prioritaire :"
+        "```!pj, 12, 3, métier=archer/archère```"
+        "A noter que :"
+        "```!pj, 12, 3, métier=archer/archère de la garde royale```"
+        "Favorise aussi la caractéristique dextérité lors de la distribution des points de compétences.\n"
+        '''Seul le premier mot sans espace après le signe = compte. Ici c'est "archer/archère".\n\n'''
+        ]
+        for k, v in metiers_et_carac_associee.items():
+            text[0] += k + " : " + v + "\n"
+        return text[0]
+
     else:
         return "not a cmd"
-    
+
 
 def reaction_crit(message):
     """
