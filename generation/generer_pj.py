@@ -28,6 +28,9 @@ def arguments_reroll(message):
 
 	Renvoit les caractéristiques et particularités du PJ généré et leur valeur.
 	"""
+	for k in arguments.keys():
+		arguments[k] = ""
+
 	message = list(message.split(","))
 
 	for i in range(3, len(message), 1):
@@ -58,14 +61,12 @@ def découpage_en_arguments(message):
 		si le paramètre contient le symbole = :
 			découpe le paramètre en arguments et les stocke 
 			dans le dictionnaire arguments.
-		si le paramètre contient le symbole / :
+		si le paramètre contient le symbole _ :
 			récupère les mots proscrits par l'utilisateur et
 			les stock dans la liste adaptée.
 
 	Renvoit les listes : genre_proscrit, races_proscrites, metiers_proscrits
-
 	"""
-
 	genre_proscrit = []
 	races_proscrites = []
 	metiers_proscrits = []
@@ -116,16 +117,19 @@ def reroll(nb_points_de_carac, valeur_max, genre_proscrit, races_proscrites, met
 		"x et y doivent être positifs."
 		]
 
-	if nb_points_de_carac < 0 or valeur_max < 0:
-		return erreur_nb_neg[0]
+	try:
+		if nb_points_de_carac < 0 or valeur_max < 0:
+			return erreur_nb_neg[0]
+	except TypeError:
+		return "Il manque peut être une virgule quelque part :```!pj, x, y, prénom=Toto``"
 
-	for k, v in pj.items():
+	for k in pj.keys():
 		pj[k] = ""
 
-	for k, v in kwargs.items():
-		for key, value in pj.items():
+	for k in kwargs.keys():
+		for key in pj.keys():
 			if key == k:
-				pj[key] = v
+				pj[key] = kwargs[k].lower()
 
 	generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
 
@@ -149,8 +153,6 @@ def generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits):
 			pj["race"] = race
 		else :
 			generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
-	else:
-		pj["race"] = pj["race"].lower()
 		
 	if pj["genre"] == "":
 		genre = pers_genre[randrange(len(pers_genre))]
@@ -158,8 +160,6 @@ def generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits):
 			pj["genre"] = genre
 		else:
 			generer_particularites(genre_proscrit, races_proscrites, metiers_proscrits)
-	else:
-		pj["genre"] = pj["genre"].lower()
 			
 	if pj["métier"] == "":
 		metier_long =  metier_pers()
