@@ -58,9 +58,15 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout d'une commande pour générer un personnage jouable semi-aléatoirement et des commandes pour y accéder.
 
+!pj, 12, 3,  race=demi-orc, genre=masculin
+
 31/05/20 :
 
 - correction des nouveaux bugs ;
 
 - ajout de la particularité leitmotiv.
+
+- possibilité de générer un personnage jouable semi-aléatoirement en choisissant quelles valeurs ne pas choisir.
+
+!pj, 8, 2, genre_masculin, métier_mage, race=demi-orc
 
