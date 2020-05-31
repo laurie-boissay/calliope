@@ -173,11 +173,16 @@ def all_users_cmd(message):
         # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
         # et une aide à l'utilisation de la commande !pj, x, y
         text = [
-        "```!pj, 12, 3, métier=archer/archère```\n"
+        "Enlever un ou plusieurs métier de la liste :"
+        "```!pj, 12, 3, métier_bourreau, métier_contremaître```\n"
+
+        "Choisir un métier qui a une caractéristique prioritaire :"
+        "```!pj, 12, 3, métier=archer/archère```"
         "A noter que :"
         "```!pj, 12, 3, métier=archer/archère de la garde royale```"
         "Favorise aussi la caractéristique dextérité lors de la distribution des points de compétences.\n"
         '''Seul le premier mot sans espace après le signe = compte. Ici c'est "archer/archère".\n\n'''
+
         ]
         for k, v in metiers_et_carac_associee.items():
             text[0] += k + " : " + v + "\n"
@@ -213,8 +218,12 @@ def all_users_cmd(message):
         "\nJe comblerait tous les paramètres laissés vides :"
         "\n```!pj, 12, 3, prénom=Toto, nom=du clan de Toto, race=orc, métier=mage, age=20, leitmotiv=Apprendre pleins de blagues., ville=Trifouillis les oies, genre=androgyne, secret=est violent```"
 
+        "\n\nTu peux aussi supprimer certaines valeurs de la liste des paramètres  :"
+        "```!pj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
+        "Fonctionne pour : ```race_xxxx, métier_xxxx, genre_xxxx```"
+
         "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
-        "\n\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
+        "\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
         "\n```!métiers```Affiche la liste des métiers qui favorisent une caractéristiques."
         ]
         return text[0]
