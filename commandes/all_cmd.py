@@ -21,6 +21,29 @@ from collection_de_mots.personnes import *
 from collection_de_mots.calliope_reaction import *
 
 def is_it_cmd(message, client):
+    """
+    Un canal de réponse et un texte sont définits par défaut.
+
+    Vérifie si Calliope est l'auteur du message. Si oui, vérifie
+    si le canal du message est le canal "JDR" de mon serveur Discord.
+
+        Dans ce cas, appelle la fonction reaction_crit qui va modifier
+        le texte.
+
+    Si Calliope n'est pas l'auteur du message :
+
+        Vérifie si le message commence par : !
+            si oui, appelle all_users_cmd et selon sa réponse, modifie
+            le text et le canal réponse ou appelle commande_des
+
+                Modifie le texte selon la réponse de commande_des
+
+        Vérifie si le message contient 'calliope calliope calliope'
+            si oui, modifie le texte et le canal réponse.
+
+    Dans tous les cas renvoit le canal réponse et le texte.
+
+    """
 
     canal = message.channel
     text = "not a cmd"
@@ -29,8 +52,6 @@ def is_it_cmd(message, client):
 
         if message.channel.id == 692765037231603734 :
             text = reaction_crit(message.content)
-
-        return canal, text
     
     else: # Other Users.
 
@@ -47,11 +68,25 @@ def is_it_cmd(message, client):
             canal = message.author
             text = ("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Flarondepoetique.com%2Fwa_import187.jpg%3Fv%3D24zc2o6a5we22v1&f=1&nofb=1")
 
-        return canal, text
+    return canal, text
 
 def all_users_cmd(message):
+    """
+    Vérifie si le message commence par (ou contient) une commande.
+        
+        La majorité des commandes définissent simplement un texte.
+        
+        D'autres commandes définissent un texte, vérifient sa longueur
+        et peuvent boucler sur elles mêmes si le texte est trop long.
 
-    if message.startswith('!help'):
+        Et enfin certaines commandes appellent une fonction.
+
+    Dans tous les cas, renvoit un texte.   
+
+    """
+
+    if message.startswith('!help'): 
+        # Renvoi un message d'aide.
         text = [
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
@@ -67,7 +102,9 @@ def all_users_cmd(message):
         ]
         return text[0]
 
-    elif message.startswith("!quete"):
+    elif message.startswith("!quete"): 
+        # Appelle la fonction generer_commanditaire et vérifie la longueur
+        # du texte reçu puis renvoi le texte ou boucle sur la fonction.
         text = generer_commanditaire()
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
@@ -75,6 +112,7 @@ def all_users_cmd(message):
             return all_users_cmd(message)
 
     elif message.startswith("!+quetes"):
+        # Renvoi les commandes pour choisir un type de quete.
         text = [
         "Voici les 14 types de quêtes :"
         "\n\n```!voler```"
@@ -95,6 +133,8 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.strip("!") in quete:
+        # Appelle la fonction afficher_quete et vérifie la longueur
+        # du texte reçu puis renvoi le texte ou boucle sur la fonction.
         text = afficher_quete(message.strip("!"))
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
@@ -102,27 +142,36 @@ def all_users_cmd(message):
             return all_users_cmd(message)
 
     elif message.startswith('!zone'):
+        # Appelle la fonction qui génère une zone et renvoi un texte.
         return "Bienvenue dans "+ zone()
 
-    elif message.startswith('!pnj'):
+    elif message.startswith('!pnj'): 
+        # Appelle la fonction qui génère un PNJ et renvoi un texte.
         return "C'est "+ personne()
 
-    elif message.startswith('!auberge'):
+    elif message.startswith('!auberge'): 
+        # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
         return nom_auberge()
 
     elif message.startswith('!races'):
+        # Renvoi la liste des races qui influencent la génération d'un patronyme
+        # avec la commande !pj, x, y
         text = "Vous pouvez choisir la race des :\n"
         for i in range(len(pers_race)):
             text += pers_race[i] + ", "
         return text
 
     elif message.startswith('!genres'):
+        # Renvoi la liste des genres qui influencent la génération d'un patronyme
+        # avec la commande !pj, x, y
         text = ""
         for i in range(len(pers_genre)):
             text += pers_genre[i] + ", "
         return text
 
     elif message.startswith('!métiers'):
+        # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
+        # et une aide à l'utilisation de la commande !pj, x, y
         text = [
         "```!pj, 12, 3, métier=archer/archère```\n"
         "A noter que :"
@@ -135,9 +184,12 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!macro'):
+        # La commande !macro est une macro si un utilisateur ayant tapé !macro
+        # n'a pas de macro enregistrées, renvoi ce message :
         return "Tu n'as pas encore de macro.\nDemande à Jaenne pour en ajouter."
 
     elif message.startswith('!info'):
+        # Renvoi le lien vers mon Github.
         text = [
         "Vous pensez que les gnomes ont le monopole de la technologie ?"
         "\nVous pouvez participer à mon amélioration :" 
@@ -146,9 +198,11 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!pj'):
+        # Appelle la fonction arguments_reroll, renvoi un texte.
         return arguments_reroll(message)
 
     elif message.startswith('!personnage'):
+        # Renvoi le texte d'aide pour utiliser la commande !pj, x, y
         text = [
         "\n\n```!pj, x, y```Génère un pj x et y sont obligatoires."
         "\nx correspond au points de caractéristiques à dépenser."
@@ -170,6 +224,11 @@ def all_users_cmd(message):
     
 
 def reaction_crit(message):
+    """
+    Calliope va réagir messages contenant (1) ou (20).
+
+    Renvoi un text.
+    """
 
     if '(1)' in message:
         text = echec_crit[randrange(len(echec_crit))]
