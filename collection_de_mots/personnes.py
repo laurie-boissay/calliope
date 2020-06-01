@@ -648,6 +648,23 @@ metiers_et_carac_associee = {
 	"voleur/voleuse" : "Dextérité",
 	}
 
+classe_pers = [
+	"archer/archère",
+	"assassin",
+	"barbare",
+	"barde",
+	"chasseur/chasseuse",
+	"druide",
+	"guerrière/guerrier",
+	"mage",
+	"moine",
+	"prêtre/sse",
+	"rodeur/rodeuse",
+	"sorcier/sorcière",
+	"soldat/e",
+	"voleur/voleuse",
+	]
+
 carac = [
 	"Force",
 	"Dextérité",
@@ -706,3 +723,6 @@ pas_apprenti_e = [
 	"reine/roi",
 	]
 	
+"""
+!pj, 8, 2, métier_alchimiste,métier_apprenti/e,	métier_artisan/ne,métier_archer/archère,métier_architecte,métier_assassin,métier_astrologue,métier_barde,métier_boulanger/e,métier_bourreau,métier_capitaine,métier_cartographe,métier_chasseur/chasseuse,métier_comédienne/comédien,métier_conseillère/conseiller royal/e,métier_contremaître,métier_courtisant/courtisanne,métier_couturier/couturière,métier_cuisinière/cuisinier,métier_duc/duchesse,métier_druide,métier_écuyère/écuyer,métier_écrivain/e publique/public,métier_éleveur/éleveuse,métier_forgeron/ne,métier_garde,métier_géographe,métier_guerrière/guerrier,métier_haut-placé/e,métier_joalière/joalier,métier_juge,
+"""
