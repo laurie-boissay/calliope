@@ -70,4 +70,9 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 !pj, 8, 2, genre_masculin, métier_mage, leitmotiv=Conquérir le monde !, race_demi-orc
 
+01/06/20 :
+
+- Travail en cours (testes et nettoyage à faire) la commande PJ semi-aléatoire est améliorée (création d'une classe Personnage). Les PJ ont moins de métiers. Leur métiers correspondent mieux aux archétypes des livres de JDR.
+
+- ajout d'une commande pour PNJ semi-aléatoire sur le modèle de la commande PJ semi-aléatoire.
 
