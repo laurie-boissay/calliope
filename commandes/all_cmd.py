@@ -15,7 +15,8 @@ from commandes.des import *
 from generation.generer_quete import *
 from generation.generer_commanditaire import *
 from generation.generer_nom import *
-from generation.generer_pj import *
+from generation.generer_pnj import *
+from generation.generer_perso import *
 from collection_de_mots.personnes import *
 
 from collection_de_mots.calliope_reaction import *
@@ -145,18 +146,21 @@ def all_users_cmd(message):
         # Appelle la fonction qui génère une zone et renvoi un texte.
         return "Bienvenue dans "+ zone()
 
-    elif message.startswith('!pnj'): 
-        # Appelle la fonction qui génère un PNJ et renvoi un texte.
-        return "C'est "+ personne()
-
     elif message.startswith('!auberge'): 
         # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
         return nom_auberge()
 
-    elif message.startswith('!pj'):
-            # Appelle la fonction arguments_reroll, renvoi un texte.
-            return arguments_reroll(message)
+    elif message.startswith('!pnj') and len(message) < 5: 
+        # Appelle la fonction qui génère un PNJ et renvoi un texte.
+        return "C'est "+ personne()
 
+    #elif message.startswith('!pnj'):
+            # Appelle la fonction arguments_reroll, renvoi un texte.
+            #return arguments_reroll(message)
+
+    elif message.startswith('!pj') or message.startswith('!pnj'):
+            # Appelle la fonction arguments_reroll, renvoi un texte.
+            return comprendre_souhaits_utilisateur(message)
 
     elif message.startswith('!macro'):
         # La commande !macro est une macro si un utilisateur ayant tapé !macro
@@ -173,30 +177,35 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!personnage'):
-        # Renvoi le texte d'aide pour utiliser la commande !pj, x, y
+        # Renvoi le texte d'aide pour utiliser la commande !pnj, x, y
         text = [
-        "\n\n```!pj, x, y```Génère un pj x et y sont obligatoires."
+        "\n\n```!pnj, x, y```Génère un personnage x et y sont obligatoires."
         "\nx correspond au points de caractéristiques à dépenser."
         "\ny correspond au maximum de points à dépenser dans une caractéristique."
         "\n```!pj, 12, 3```Exemple de PJ généré sans aucun paramètre facultatif."
 
         "\n\nTu peux préciser autant de paramètres facultatifs que tu le souhaites en les séparant chacun d'une virgule."
+        " __/!\\\__ Il ne faut pas utiliser de virgule dans les paramètres !"
         "\nJe comblerait tous les paramètres laissés vides :"
-        "\n```!pj, 12, 3, prénom=Toto, nom=du clan de Toto, race=orc, métier=mage, age=20, leitmotiv=Apprendre pleins de blagues., ville=Trifouillis les oies, genre=androgyne, secret=est violent```"
+        "\n```!pnj, 12, 3, prénom=Toto, age=20, ville=Trifouillis les oies, genre=androgyne, secret=est violent.```"
+        "Fonctionne pour : ```prénom=XXXX, nom=XXXX, race=XXXX, métier=XXXX, age=XXXX, leitmotiv=XXXX, ville=XXXX, genre=XXXX, secret=XXXX```"
 
-        "\n\nTu peux aussi supprimer certaines valeurs de la liste des paramètres  :"
-        "```!pj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
+        "\n\nTu peux aussi supprimer certaines valeurs de la liste des paramètres que tu laisseras vide :"
+        "```!pnj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
         "Fonctionne pour : ```race_xxxx, métier_xxxx, genre_xxxx```"
 
         "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
         "\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
         "\n```!métiers```Affiche la liste des métiers qui favorisent une caractéristiques."
+
+        "\n\nIl ne sert à rien de faire : ```!pnj, 8, 2, race=orc, race_orc```Dans ce cas, la race du PJ sera Orc." 
+        "\nDans le même ordre d'idée : ```!pnj, 8, 2, race=orc, race=elfe```Dans ce cas, la race du PJ sera Elfe."
         ]
         return text[0]
 
     elif message.startswith('!races'):
         # Renvoi la liste des races qui influencent la génération d'un patronyme
-        # avec la commande !pj, x, y
+        # avec la commande !pnj, x, y
         text = "Vous pouvez choisir la race des :\n"
         for i in range(len(pers_race)):
             text += pers_race[i] + ", "
@@ -204,7 +213,7 @@ def all_users_cmd(message):
 
     elif message.startswith('!genres'):
         # Renvoi la liste des genres qui influencent la génération d'un patronyme
-        # avec la commande !pj, x, y
+        # avec la commande !pnj, x, y
         text = ""
         for i in range(len(pers_genre)):
             text += pers_genre[i] + ", "
@@ -214,13 +223,13 @@ def all_users_cmd(message):
         # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
         # et une aide à l'utilisation de la commande !pj, x, y
         text = [
-        "Enlever un ou plusieurs métier de la liste :"
-        "```!pj, 12, 3, métier_bourreau, métier_contremaître```\n"
+        "Enlever un ou plusieurs métier(s) de la liste :"
+        "```!pnj, 12, 3, métier_bourreau, métier_contremaître```\n"
 
         "Choisir un métier qui a une caractéristique prioritaire :"
-        "```!pj, 12, 3, métier=archer/archère```"
+        "```!pnj, 12, 3, métier=archer/archère```"
         "A noter que :"
-        "```!pj, 12, 3, métier=archer/archère de la garde royale```"
+        "```!pnj, 12, 3, métier=archer/archère de la garde royale```"
         "Favorise aussi la caractéristique dextérité lors de la distribution des points de compétences.\n"
         '''Seul le premier mot sans espace après le signe = compte. Ici c'est "archer/archère".\n\n'''
         ]
