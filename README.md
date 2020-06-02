@@ -76,3 +76,11 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout d'une commande pour PNJ semi-aléatoire sur le modèle de la commande PJ semi-aléatoire.
 
+02/06/20 :
+
+- correction des nouveaux bugs ;
+
+- ajout d'un atout pour les personnages de type PJ ;
+
+- ajout de quelques secrets et leitmotivs.
+
