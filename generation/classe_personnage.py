@@ -198,14 +198,14 @@ class Personnage:
 			if race not in self.races_proscrites:
 				self.race = race
 			else :
-				self.generer_particularites()
+				self.set_particularites()
 			
 		if self.genre == "":
 			genre = pers_genre[randrange(len(pers_genre))]
 			if genre not in self.genre_proscrit:
 				self.genre = genre
 			else:
-				self.generer_particularites()
+				self.set_particularites()
 				
 		if self.metier == "":
 
@@ -218,7 +218,7 @@ class Personnage:
 			if metier_court not in self.metiers_proscrits:
 				self.metier = metier_long
 			else:
-				self.generer_particularites()
+				self.set_particularites()
 
 		if self.ville == "":
 			self.ville = zone() + "\n"
