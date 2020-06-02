@@ -3,6 +3,18 @@ from random import randrange
 from generation.classe_personnage import Personnage
 
 def comprendre_souhaits_utilisateur(message):
+	"""
+	Prend une commande utilisateur en argument.
+
+	Appelle la classe Personnage.
+
+	Appelle certaines fonction de la classe Personnage
+	afin de générer un personage généré semi-aléatoirement 
+	correspondant aux souhaits de l'utilisateur.
+
+	Renvoie un texte décrivant le personnage.
+	
+	"""
 	text = [""]
 	perso = Personnage()
 
@@ -15,7 +27,7 @@ def comprendre_souhaits_utilisateur(message):
 	
 	perso.set_param_identite()
 	perso.set_param_proscrits()
-	perso.generer_particularites()
+	perso.set_particularites()
 	perso.bonus_de_metier()
 
 	return perso.afficher_personnage()

@@ -1,8 +1,6 @@
 from random import randrange
 
 from generation.generer_personne import *
-from generation.generer_quete import *
-
 
 from collection_de_mots.zone import *
 from collection_de_mots.personnes import *
@@ -10,8 +8,20 @@ from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
 
 class Personnage:
+	"""
+	Définit les caractéristiques et attributs d'un PJ ou d'un PNJ d'après 
+	les paramètres saisits par l'utilisateur.
+
+	Associe les informations pour créer un texte d'ambiance décrivant
+	le personnage.
+
+	Renvoie ce texte.
+	"""
 
 	def __init__(self):
+		"""
+		caractéristiques des personnages.
+		"""
 		self.cmd_text = ""
 
 		self.type = ""
@@ -24,33 +34,61 @@ class Personnage:
 		self.race = ""
 		self.genre = ""
 
+		self.pronom = ""
+
 		self.metier = ""
 		self.leitmotiv = ""
 		self.secret = ""
 		self.ville = ""
 
-		self.force = 0
-		self.dexterite = 0
-		self.intelligence = 0
-		self.sagesse = 0
-		self.charisme = 0
+		
+		self.carac = {
+			"Force" : 0,
+			"Constitution" : 0,
+			"Dextérité" : 0,
+			"Intelligence" : 0,
+			"Sagesse" : 0,
+			"Charisme" : 0,
+			}
+
+		self.atout = "" # uniquement pour les PJ
 
 		self.genre_proscrit = []
 		self.races_proscrites = []
 		self.metiers_proscrits = []
 
 
+
 	def set_cmd_text(self, message):
+		"""
+		Découpe la saisie de l'utilisateur en paramètres utilisables
+		et les index dans cmd_text.
+
+		Les attributs proscrits, les attributs et Les caractéristiques
+		commencent à patir de l'indice 3.
+		"""
 		self.cmd_text = list(message.split(","))
 		for i in range(3, len(self.cmd_text), 1):
 			self.cmd_text[i] = self.cmd_text[i].strip(" ")
 
 
 	def set_type_de_personnage(self):
+		"""
+		Récupère le début de la commande saisie (index 0) qui indique le 
+		type de personnage : PJ ou PNJ.
+		"""
 		type_de_perso = self.cmd_text[0].strip("!")
 		self.type = type_de_perso.lower()
 
 	def set_total_points_et_valeur_max(self):
+		"""
+		Récupère l'index 1 et 2 de la commande saisie qui correspondent
+		respectivement au total des points de caractéristiques à dépenser
+		et au maximum de points à dépenser dans une caractéristique.
+
+		Teste la validité de ces éléments et renvoie, si besoin un message
+		d'erreur.
+		"""
 		try :
 			self.total_points = self.cmd_text[1]	
 			self.valeur_max = self.cmd_text[2]
@@ -75,15 +113,24 @@ class Personnage:
 			return text[0], False
 
 		try:
-			if self.total_points < 0 or self.valeur_max < 0:
-				return "Dans la commande :```!pj, x, y```x et y doivent être positifs.", False
+			if self.total_points < 1 or self.valeur_max < 1:
+				return "Dans la commande :```!pj, x, y```x et y doivent être supérieurs à 1.", False
 		except TypeError:
 			return "Il manque peut être une virgule quelque part :```!pj, x, y, prénom=Toto``", False
+
+		if self.total_points > self.valeur_max * 6:
+			self.total_points = self.valeur_max * 6
 
 		return "", True
 
 
 	def set_param_identite(self):
+		"""
+		Découpe chaque paramètre en couple attribut + valeur.
+
+		Lorsqu'un attribut a été définit par l'utilisateur,
+		la valeur lui correspondant est enregistrée. 
+		"""
 		for i in range(3, len(self.cmd_text), 1):
 
 			if "=" in self.cmd_text[i]:
@@ -111,6 +158,12 @@ class Personnage:
 
 
 	def set_param_proscrits(self):
+		"""
+		Pour 3 attributs : race, genre, métier, sans choisir la valeur
+		de l'attribut en question, l'utilisateur peut définir des valeurs interdites.
+		
+		Ces valeurs sont stockées dans la liste correspondante.
+		"""
 		for i in range(3, len(self.cmd_text), 1):
 
 			if "_"in self.cmd_text[i]:
@@ -125,7 +178,20 @@ class Personnage:
 					self.metiers_proscrits.append(couple[1])
 
 
-	def generer_particularites(self):
+	def set_particularites(self):
+		"""
+		Pour chaque attribut vide, on génère une valeur.
+
+		Si cette valeur est interdite pour l'attribut en cours
+		de génération, la fonction boucle sur elle même.
+
+		Pour un PNJ on appelle la fonction metier_pers(), pour
+		un Pj, on pioche dans la liste classe_pers.
+
+		Les valeurs des attributs générés sont enregistrées.
+
+		Un pronom est définit en fonction du genre du personnage.
+		"""
 
 		if self.race == "":
 			race = pers_race[randrange(len(pers_race))][:-1]
@@ -146,7 +212,7 @@ class Personnage:
 			if self.type == "pj":
 				metier_long =  classe_pers[randrange(len(classe_pers))]
 			else :
-				metier_long =  metier_pers[randrange(len(metier_pers))]
+				metier_long =  metier_pers()
 
 			metier_court = self.raccourcir_nom_metier(metier_long)
 			if metier_court not in self.metiers_proscrits:
@@ -174,29 +240,47 @@ class Personnage:
 		if self.leitmotiv == "":
 			self.leitmotiv = leitmotiv[randrange(len(leitmotiv))]
 
+		if self.genre == "masculin":
+			self.pronom = "Il"
+
+		elif self.genre == "féminin":
+			self.pronom = "Elle"
+
+		else:
+			self.pronom = "Iel"
+
 
 	def raccourcir_nom_metier(self, metier_long):
+		"""
+		Prend un nom de métier qui peut être composé de
+		plusieurs mots.
+
+		Coupe ce nom de métier aux espaces.
+
+		Renvoie le premier mot sans espace.
+		"""
 		metier = metier_long.split(" ")
 		metier_court = metier[0]
 		return metier_court
 
 	def bonus_de_metier(self):
 		"""
-		Cette fonction doit définir si le métier du pj lui donne droit à 
+		Cette fonction doit définir si le métier du personnage lui donne droit à 
 		une caractéristique prioritaire.
 		
-		Appelle la fonction racourcir_metier
+		Appelle la fonction racourcir_metier.
 
-		Le mot métier_court ainsi préparé est comparé au dictionnaire : metiers_et_carac_associee.
+		Le mot métier_court est comparé au dictionnaire : metiers_et_carac_associee.
 
-		On utilise le plus petit nombre entre nb_points_de_carac et valeur_max
-		pour générer un nombre aléatoire de points "bonus" à associer à la caractéristique
+		On utilise le plus petit nombre entre total_points et valeur_max
+		pour générer nb_points aléatoire "bonus" à associer à la caractéristique
 		prioritaire.
 
-		Appelle la fonction ajoute_1_dans_carac tant que points_distribues est
-		inférieur au nb_points_de_carac.
+		Le nb_points est ajouté à la valeur de la caractéristique associé au métier.
+		Le nb_points est ajouté au points_distribues.
 
-		Renvoit les caractéristiques du perso généré ainsi que leur valeur.
+		Appelle la fonction ajoute_1_dans_carac tant que points_distribues est
+		inférieur au total_points.
 		"""
 
 		metier = self.raccourcir_nom_metier(self.metier)
@@ -207,30 +291,11 @@ class Personnage:
 		else:
 			bonus = self.valeur_max + 1
 
+		nb_points = randrange(1, bonus)
+
 		for k, v in metiers_et_carac_associee.items():
-			if metier == k:
-				nb_points = randrange(1, bonus)
-
-				if v == "Force":
-					self.force += nb_points
-					print(v, " : ", str(self.force))
-
-				elif v == "Dextérité":
-					self.dexterite += nb_points
-					print(v, " : ", str(self.dexterite))
-
-				elif v == "Intelligence":
-					self.intelligence += nb_points
-					print(v, " : ", str(self.intelligence))
-
-				elif v == "Sagesse":
-					self.sagesse += nb_points
-					print(v, " : ", str(self.sagesse))
-
-				else:				
-					self.charisme += nb_points
-					print(v, " : ", str(self.charisme))
-					
+			if metier == k:				
+				self.carac[v] += nb_points
 				points_distribues += nb_points
 
 		while points_distribues < self.total_points:
@@ -245,50 +310,40 @@ class Personnage:
 
 		Si valeur_max est déjà atteinte, la fonction boucle sur elle même.
 		"""	
-		text = ""
-		j = randrange(5)
-		print("j : ", j)
-
-		if j == 0:
-			if self.force < self.valeur_max:
-				self.force += 1
-			else :
-				self.ajoute_1_dans_carac()
 		
-		elif j == 1:
-			if self.dexterite < self.valeur_max:
-				self.dexterite += 1
-			else :
-				self.ajoute_1_dans_carac()
+		j = carac[randrange(len(carac))]
 
-		elif j == 2:
-			if self.intelligence < self.valeur_max:
-				self.intelligence += 1
-			else :
-				self.ajoute_1_dans_carac()
-
-		elif j == 3:
-			if self.sagesse < self.valeur_max:
-				self.sagesse += 1
-			else :
-				self.ajoute_1_dans_carac()
+		if self.carac[j] < self.valeur_max:
+			self.carac[j] += 1
 		else:
-			if self.charisme < self.valeur_max:
-				self.charisme += 1
-			else :
-				self.ajoute_1_dans_carac()
-			
+			self.ajoute_1_dans_carac()
+
+
+	def set_atout_pj(self):
+		"""
+		Appelle raccourcir_nom_metier.
+
+		Pioche un atout pour le PJ dans la liste correspondant
+		aux atouts de son métier.
+		"""
+		
+		metier_court = self.raccourcir_nom_metier(self.metier)
+
+		for i in range(len(classe_pers)):
+			if metier_court == classe_pers[i]:
+				atout = randrange(len(atouts_pj[i]))
+				self.atout = atouts_pj[i][atout]
+
 
 	def afficher_personnage(self):
 		"""
-		print(self.genre)
-		print(self.races_proscrites)
-		print(self.metiers_proscrits)
-		print(self.type)
-		print(self.total_points)
-		print(self.valeur_max)
-		"""
+		Mets en forme le texte qui sera renvoyé.
 
+		Si le type de personnage est PJ, génère l'atout du PJ et l'ajoute
+		au texte.
+
+		Massage de Calliope + Attributs (+ Atout) + Caractéristiques.
+		"""
 		text_a_afficher = ""
 		text = [
 		"J'ai façonné un personnage qui pourrait correspondre à tes attentes.\n"
@@ -301,16 +356,17 @@ class Personnage:
 		"\nGenre : " , self.genre,
 
 		"\n\nMétier : " , self.metier,
-		"\nLeitmotiv : " , self.leitmotiv,
-		"\nSecret : " , self.secret,
-		"\nVille d'origine : " , self.ville,
-
-		"\nForce : " , str(self.force),
-		"\nDextérité : " , str(self.dexterite),
-		"\nIntelligence : " , str(self.intelligence),
-		"\nSagesse : " , str(self.sagesse),
-		"\nCharisme : " , str(self.charisme),
+		"\n", self.prenom, " souhaite plus que tout ", self.leitmotiv,
+		"\n", self.pronom, " cache un secret " , self.secret, ".",
+		"\nSa ville d'origine est " , self.ville, "\n"
 		]
+
+		if self.type == "pj":
+			self.set_atout_pj()
+			text += "Le principal atout de " + self.prenom + " est " + self.atout + ".\n\n"
+
+		for k in self.carac.keys():
+			text += k + " : " + str(self.carac[k]) + "\n"
 
 		for i in range(len(text)):
 			text_a_afficher += text[i]
