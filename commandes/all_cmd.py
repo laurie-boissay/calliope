@@ -15,7 +15,6 @@ from commandes.des import *
 from generation.generer_quete import *
 from generation.generer_commanditaire import *
 from generation.generer_nom import *
-from generation.generer_pnj import *
 from generation.generer_perso import *
 from collection_de_mots.personnes import *
 
@@ -177,9 +176,9 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!personnage'):
-        # Renvoi le texte d'aide pour utiliser la commande !pnj, x, y
+        # Renvoi le texte d'aide pour utiliser les commande !pnj, x, y, !pj, x, y
         text = [
-        "\n\n```!pnj, x, y```Génère un personnage x et y sont obligatoires."
+        "\n\n```!pnj, x, y      !pj, x, y```Génère un personnage x et y sont obligatoires."
         "\nx correspond au points de caractéristiques à dépenser."
         "\ny correspond au maximum de points à dépenser dans une caractéristique."
         "\n```!pj, 12, 3```Exemple de PJ généré sans aucun paramètre facultatif."
@@ -191,15 +190,16 @@ def all_users_cmd(message):
         "Fonctionne pour : ```prénom=XXXX, nom=XXXX, race=XXXX, métier=XXXX, age=XXXX, leitmotiv=XXXX, ville=XXXX, genre=XXXX, secret=XXXX```"
 
         "\n\nTu peux aussi supprimer certaines valeurs de la liste des paramètres que tu laisseras vide :"
-        "```!pnj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
+        "```!pj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
         "Fonctionne pour : ```race_xxxx, métier_xxxx, genre_xxxx```"
 
         "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
         "\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
-        "\n```!métiers```Affiche la liste des métiers qui favorisent une caractéristiques."
+        "\n```!métiers```Affiche la liste des métiers de PNJ et PJ qui favorisent une caractéristiques."
+         "\n```!métierspj```Affiche la liste plus courte des métiers générés pour les PJ."
 
         "\n\nIl ne sert à rien de faire : ```!pnj, 8, 2, race=orc, race_orc```Dans ce cas, la race du PJ sera Orc." 
-        "\nDans le même ordre d'idée : ```!pnj, 8, 2, race=orc, race=elfe```Dans ce cas, la race du PJ sera Elfe."
+        "\nDans le même ordre d'idée : ```!pj, 8, 2, race=orc, race=elfe```Dans ce cas, la race du PJ sera Elfe."
         ]
         return text[0]
 
@@ -218,10 +218,18 @@ def all_users_cmd(message):
         for i in range(len(pers_genre)):
             text += pers_genre[i] + ", "
         return text
+
+    elif message.startswith('!métierspj'):
+        text = [
+        "Lors de la génération d'un PJ, seul les métiers suivants peuvent être générés.\n\n"
+        ]
+        for i in range(len(classe_pers)):
+            text[0] += classe_pers[i] + "\n"
+        return text[0]
     
     elif message.startswith('!métiers'):
         # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
-        # et une aide à l'utilisation de la commande !pj, x, y
+        # et une aide à l'utilisation de la commande !pnj, x, y
         text = [
         "Enlever un ou plusieurs métier(s) de la liste :"
         "```!pnj, 12, 3, métier_bourreau, métier_contremaître```\n"
