@@ -9,8 +9,8 @@ pers_race = (
 	"demi-elfes"
 	)
 pers_age = (
-	"agée",
-	"très agée",
+	"agé.e",
+	"très agé.e",
 	"jeune",
 	"très jeune"
 	)
@@ -19,67 +19,6 @@ pers_genre = (
 	"féminin",
 	"masculin",
 	"androgyne"
-	)
-
-pers_metier = (
-	"alchimiste",
-	"apprenti/e",
-	"artisan/ne",
-	"archer/archère",
-	"architecte",
-	"assassin",
-	"astrologue",
-	"barde",
-	"boulanger/e",
-	"bourreau",
-	"capitaine",
-	"cartographe",
-	"chasseur/chasseuse",
-	"comédienne/comédien",
-	"conseillère/conseiller royal/e",
-	"contremaître",
-	"courtisant/courtisanne",
-	"couturier/couturière",
-	"cuisinière/cuisinier",
-	"duc/duchesse",
-	"druide",
-	"écuyère/écuyer",
-	"écrivain/e publique/public",
-	"éleveur/éleveuse",
-	"forgeron/ne",
-	"garde",
-	"géographe",
-	"guerrière/guerrier",
-	"haut-placé/e",
-	"joalière/joalier",
-	"juge",
-	"linguiste",
-	"maçon/maçonne",
-	"maire",
-	"mage",
-	"marchand/e",
-	"maréchal/e ferrant/e",
-	"marin",
-	"médecin",
-	"mendiant/e",
-	"meunière/meunier",
-	"mineur/mineuse",
-	"ministre",
-	"paysan/ne",
-	"pêcheur/pêcheuse",
-	"peintre",
-	"prefet",
-	"prêtre/sse",
-	"prince/sse",
-	"professeur/e",
-	"reine/roi",	
-	"servante/serviteur",
-	"serveur/serveuse",
-	"sorcier/sorcière",
-	"soldat/e",
-	"tanneur/tanneuse",
-	"tavernier/e",
-	"voleur/voleuse",
 	)
 
 pers_secret = (
@@ -93,19 +32,29 @@ pers_secret = (
 	"d'une fausse identité",
 	"d'un kidnaping",
 	"de sa pratique d'une religion interdite",
+	"de crimes de guerre",
 	"d'un trésor caché",
 	"d'un vice de gourmandise",
 	"d'un penchant pour le jeu",
 	"d'un penchant pour l'aclool",
 	"d'un penchant pour la drogue",
 	"d'une collection improbable",
-	"d'une attirance homosexuelle",
+	"de sa sexualité jugée déviante par la société",
 	"de son caractère collerique",
 	"de son réel métier d'espion/ne",
 	"de ses activités caritatives",
 	"de sa nature malfaisante",
 	"de ses activités séditieuses",
 	"de sa tête mise à prix dans une ville lointaine",
+	"de son statut marital",
+	"de ses origines",
+	"de son appartenance à un réseau qui vient en aide aux esclaves",
+	"de son ancienne vie d'ésclave",
+	"de son ancienne vie d'excés en tous genres",
+	"de son enfance passée dans un cirque",
+	"de son adoption par une famille de loups",
+	"de ses années passées dans une communauté aux croyances étranges",
+	"de ses années passées dans une communauté paienne",
 	)
 
 mobile = (
@@ -280,7 +229,7 @@ prenoms_halfelins_f = (
 
 prenoms_gnomes_f = (
 	"Thérèse",
-	"Hugette",
+	"Huguette",
 	"Rose",
 	"Marceline",
 	"Jeannette",
@@ -572,17 +521,69 @@ poste_temple =(
 	"moine"
 	)
 
-pj = {
-	'prénom' : "",
-	'nom' : "",
-	'age' : "",
-	'race' : "",
-	'métier' : "",
-	'genre' : "",
-	'leitmotiv' : "",
-	'secret' : "",
-	'ville' : "",
-	}
+pers_metier = (
+	"alchimiste",
+	"apprenti/e",
+	"artisan/ne",
+	"archer/archère",
+	"architecte",
+	"assassin",
+	"astrologue",
+	"barde",
+	"boulanger/e",
+	"bourreau",
+	"capitaine",
+	"cartographe",
+	"chasseur/chasseuse",
+	"chevalier/chevalière",
+	"comédienne/comédien",
+	"conseillère/conseiller royal/e",
+	"contremaître",
+	"courtisant/courtisanne",
+	"couturier/couturière",
+	"cuisinière/cuisinier",
+	"duc/duchesse",
+	"druide",
+	"écuyère/écuyer",
+	"écrivain/e publique/public",
+	"éleveur/éleveuse",
+	"forgeron/ne",
+	"garde",
+	"géographe",
+	"guerrière/guerrier",
+	"haut-placé/e",
+	"joalière/joalier",
+	"juge",
+	"linguiste",
+	"maçon/maçonne",
+	"maire",
+	"mage",
+	"marchand/e",
+	"maréchal/e ferrant/e",
+	"marin",
+	"médecin",
+	"mendiant/e",
+	"meunière/meunier",
+	"mineur/mineuse",
+	"nécromancien/ne",
+	"ministre",
+	"paladin/e",
+	"paysan/ne",
+	"pêcheur/pêcheuse",
+	"peintre",
+	"prefet",
+	"prêtre/sse",
+	"prince/sse",
+	"professeur/e",
+	"reine/roi",	
+	"servante/serviteur",
+	"serveur/serveuse",
+	"sorcier/sorcière",
+	"soldat/e",
+	"tanneur/tanneuse",
+	"tavernier/e",
+	"voleur/voleuse",
+	)
 	
 metiers_et_carac_associee = {
 	"alchimiste" : "Intelligence",
@@ -599,6 +600,7 @@ metiers_et_carac_associee = {
 	"capitaine" : "Sagesse",
 	"cartographe" : "Intelligence",
 	"chasseur/chasseuse" : "Dextérité",
+	"chevalier/chevalière" : "Force",
 	"comédienne/comédien" : "Charisme",
 	"conseillère/conseiller" : "Sagesse",
 	"contremaître" : "Sagesse",
@@ -628,8 +630,10 @@ metiers_et_carac_associee = {
 	"mendiant/e" : "Constitution",
 	#"meunière/meunier" : ,
 	"mineur/mineuse" : "Force",
+	"nécromancien/ne" : "Intelligence",
 	"ministre" : "Charisme",
 	"moine" : "Sagesse",
+	"paladin/e" : "Charisme",
 	"paysan/ne" : "Constitution",
 	"pêcheur/pêcheuse" :"Constitution" ,
 	"peintre" : "Sagesse",
@@ -649,20 +653,21 @@ metiers_et_carac_associee = {
 	}
 
 classe_pers = [
-	"archer/archère",
-	"assassin",
-	"barbare",
-	"barde",
-	"chasseur/chasseuse",
-	"druide",
-	"guerrière/guerrier",
-	"mage",
-	"moine",
-	"prêtre/sse",
-	"rodeur/rodeuse",
-	"sorcier/sorcière",
-	"soldat/e",
-	"voleur/voleuse",
+	"archer/archère", # 0
+	"assassin", # 1
+	"barbare", # 2
+	"barde", # 3
+	"druide", # 4
+	"guerrière/guerrier", # 5
+	"mage", # 6
+	"moine", # 7
+	"nécromancien/ne", # 8
+	"paladin/e", # 9
+	"prêtre/sse", # 10
+	"rodeur/rodeuse", # 11
+	"sorcier/sorcière", # 12
+	"voleur/voleuse", # 13
+	
 	]
 
 carac = [
@@ -674,39 +679,164 @@ carac = [
 	"Charisme",
 	]
 
-carac_et_points = {
-	"Force" : 0,
-	"Dextérité" : 0,
-	"Constitution" : 0,
-	"Intelligence" : 0,
-	"Sagesse" : 0,
-	"Charisme" : 0,
-	}
+
+atouts_pj = [
+	#meilleur_atout_archer.e = 0
+	[
+	"la maîtrise de son arme de prédilection",
+	"sa vue perçante",
+	"sa cadence de tir",
+	"sa capacité à trouver les points faibles de sa cible",
+	"sa connaissance des champs de batailles",
+	],
+
+	#meilleur_atout_assassin = 1
+	[
+	"sa maîtrise des armes à distances",
+	"sa maîtrise des petites armes blanches",
+	"sa maîtrise des poisons",
+	"sa connaissance des points vitaux",
+	"sa capacité à passer inaperçu",
+	],
+
+	#meilleur_atout_barbare = 2
+	[
+	"sa force extraordinaire",
+	"son arme fétiche",
+	"sa résistance à la douleur",
+	"sa rage au combat",
+	"sa technique de combat brutale",
+	],
+
+	#meilleur_atout_barde = 3
+	[
+	"sa musique",
+	"sa magnifique tenue en dentelle",
+	"sa collection de déguisements",
+	"sa maîtrise du combat à la rapière",
+	"sa débrouillardise",
+	],
+
+	#meilleur_atout_druide = 4
+	[
+	"sa maîtrise des sorts de protection",
+	"son compagnon animal",
+	"son affinité avec les animaux",
+	"sa capacité à survivre dans la nature",
+	"son affinité avec les végétaux",
+	],
+
+	#meilleur_atout_guerrière_guerrier = 5 
+	[
+	"sa maîtrise du bouclier",
+	"la maîtrise de son arme de prédilection",
+	"sa résistance au combat",
+	"sa technique de combat",
+	"sa capacité d'adaptation en combat",
+	],
+
+	#meilleur_atout_mage = 6
+	[
+	"sa maîtrise des sorts d'altération de la matière",
+	"sa maîtrise des sorts de combat",
+	"sa maîtrise des sorts de bufs et de débufs",
+	"sa maîtrise des sorts de protections",
+	"sa maîtrise des sorts basiques mais très pratiques",
+	],
+
+	#meilleur_atout_moine = 7
+	[
+	"sa maîtrise des techniques de combat",
+	"le combat à mains nues",
+	"sa maîtrise de son esprit",
+	"sa connaissance de l'anatomie",
+	"sa maîtrise de son corps",
+	],
+
+	#meilleur_atout_necromancien.ne = 8
+	[
+	"sa maîtrise des sorts de démonologie",
+	"sa maîtrise des sorts de mort",
+	"sa maîtrise des sorts de pure nécromancie",
+	"sa maîtrise des sorts du sang",
+	"sa maîtrise des sorts de magie noire",
+	],
+
+	#meilleur_atout_paladin.e = 9
+	[
+	"sa monture",
+	"sa foi",
+	"sa noblesse",
+	"son héroïsme",
+	"son esprit stratégique",
+	],
+
+	#meilleur_atout_prêtre.sse = 10
+	[
+	"sa foi",
+	"de pouvoir bénir ami.e.s et objet.s",
+	"la prière",
+	"sa capacité à soigner",
+	"la formulation de mots de protection",
+	],
+
+	#meilleur_atout_rodeur_rodeuse = 11
+	[
+	"sa maîtrise de l'arc",
+	"son animal",
+	"sa maîtrise des techniques de combat",
+	"sa capacité à survivre en pleine nature",
+	"sa connaissance de la nature",
+	],
+
+	#meilleur_atout_sorcier_sorcière = 12
+	[
+	"sa maîtrise des sorts d'air",
+	"sa capacité de divination",
+	"sa maîtrise des envoutements",
+	"sa maîtrise des sorts d'illusion",
+	"sa maîtrise des sorts d'invocation",
+	],
+
+	#meilleur_atout_voleur_voleuse = 13
+	[
+	"sa capacité à passer inaperçu",
+	"sa technique de combat nerveuse",
+	"son agilité féline",
+	"son absence d'étique au combat",
+	"sa technique de combat précise",
+	],
+]
 
 leitmotiv = [
-	"Devenir un/e héro/ïne.",
-	"Obtenir plus de pouvoir.",
-	"Amasser des richesses.",
-	"Faire naître une révolution.",
-	"Découvrir le monde.",
-	"Fuire sa condition.",
-	"Retouver un/e proche kidnapé.",
-	"Libérer un/e ami/e emprisonné/e.",
-	"Fuire un/e assassin/e.",
-	"Rendre le monde meilleur.",
-	"Venir en aide aux opprimés.",
-	"Devenir le/la plus grand/e dresseur/dresseuse.",
-	"Gouter aux plaisirs de tous les pays du monde.",
-	"Faire une découverte extraordinaire.",
-	"Prouver sa valeur.",
-	"Trouver le remède qui sauvera un/e proche.",
-	"Etancher sa soif de connaissances.",
-	"Retrouver un artefact.",
-	"Faire prospérer son entreprise.",
-	"Dominer le monde.",
-	"Prouver une hypothèse sur la forme de la terre.",
-	"Rétablir l'honneur de sa famille.",
-	"Etudier une compétence.",
+	"devenir un/e héro/ïne.",
+	"obtenir plus de pouvoir.",
+	"amasser des richesses.",
+	"faire naître une révolution.",
+	"fécouvrir le monde.",
+	"fuire sa condition.",
+	"retouver un/e proche kidnapé.e.",
+	"libérer un/e ami/e emprisonné/e.",
+	"fuire un/e chasseur/chasseuse de tête.",
+	"rendre le monde meilleur.",
+	"venir en aide aux opprimés.",
+	"devenir le/la plus grand/e dresseur/dresseuse.",
+	"gouter aux plaisirs de tous les pays du monde.",
+	"faire une découverte extraordinaire.",
+	"prouver sa valeur.",
+	"trouver le remède qui sauvera un/e proche.",
+	"etancher sa soif de connaissances.",
+	"retrouver un artefact.",
+	"faire prospérer son entreprise.",
+	"dominer le monde.",
+	"prouver une hypothèse sur la forme de la terre.",
+	"rétablir l'honneur de sa famille.",
+	"étudier une compétence en particulier.",
+	"venger son amour assassiné.e",
+	"fuir un mariage arrangé.",
+	"empêcher un événement apocalyptique.",
+	"convertir un maximum de personnes à sa cause/religion.",
+	"détruire le mal.",
 	]
 
 pas_apprenti_e = [
@@ -722,7 +852,3 @@ pas_apprenti_e = [
 	"prince/sse",
 	"reine/roi",
 	]
-	
-"""
-!pj, 8, 2, métier_alchimiste,métier_apprenti/e,	métier_artisan/ne,métier_archer/archère,métier_architecte,métier_assassin,métier_astrologue,métier_barde,métier_boulanger/e,métier_bourreau,métier_capitaine,métier_cartographe,métier_chasseur/chasseuse,métier_comédienne/comédien,métier_conseillère/conseiller royal/e,métier_contremaître,métier_courtisant/courtisanne,métier_couturier/couturière,métier_cuisinière/cuisinier,métier_duc/duchesse,métier_druide,métier_écuyère/écuyer,métier_écrivain/e publique/public,métier_éleveur/éleveuse,métier_forgeron/ne,métier_garde,métier_géographe,métier_guerrière/guerrier,métier_haut-placé/e,métier_joalière/joalier,métier_juge,
-"""
