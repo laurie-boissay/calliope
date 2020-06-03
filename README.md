@@ -84,3 +84,6 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout de quelques secrets et leitmotivs.
 
+0/06/20 :
+
+- refonte de la génération de quête. Travail en cours.
