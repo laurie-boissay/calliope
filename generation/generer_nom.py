@@ -7,6 +7,7 @@ from collection_de_mots.personnes import *
 from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
 
+
 """
 Génère des noms de lieux, d'objets, d'animaux.
 	Ne génére pas les noms de personnes.
