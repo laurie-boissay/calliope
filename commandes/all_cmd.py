@@ -15,9 +15,12 @@ from commandes.des import *
 from generation.generer_quete import *
 from generation.generer_commanditaire import *
 from generation.generer_nom import *
-from generation.generer_perso import *
-from collection_de_mots.personnes import *
+from generer.perso import *
 
+from generer.perso import *
+from generer.quete import *
+
+from collection_de_mots.personnes import *
 from collection_de_mots.calliope_reaction import *
 
 def is_it_cmd(message, client):
@@ -195,7 +198,7 @@ def all_users_cmd(message):
 
         "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
         "\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
-        "\n```!métiers```Affiche la liste des métiers de PNJ et PJ qui favorisent une caractéristiques."
+        "\n```!métiers```Affiche la liste des métiers de PNJ et PJ qui favorisent une caractéristique."
          "\n```!métierspj```Affiche la liste plus courte des métiers générés pour les PJ."
 
         "\n\nIl ne sert à rien de faire : ```!pnj, 8, 2, race=orc, race_orc```Dans ce cas, la race du PJ sera Orc." 
@@ -235,7 +238,7 @@ def all_users_cmd(message):
         "```!pnj, 12, 3, métier_bourreau, métier_contremaître```\n"
 
         "Choisir un métier qui a une caractéristique prioritaire :"
-        "```!pnj, 12, 3, métier=archer/archère```"
+        "```!pj, 12, 3, métier=archer/archère```"
         "A noter que :"
         "```!pnj, 12, 3, métier=archer/archère de la garde royale```"
         "Favorise aussi la caractéristique dextérité lors de la distribution des points de compétences.\n"
@@ -244,6 +247,10 @@ def all_users_cmd(message):
         for k, v in metiers_et_carac_associee.items():
             text[0] += k + " : " + v + "\n"
         return text[0]
+
+    elif message.startswith('!test'):
+        text = texte_de_quete(message)
+        return text
 
     else:
         return "not a cmd"
