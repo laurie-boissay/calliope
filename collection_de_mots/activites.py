@@ -64,7 +64,7 @@ organisation = (
 	"la guilde des voleurs",
 	"la guilde des marchands",
 	"le palais de justice",
-	"La guilde des assassins",
+	"la guilde des assassins",
 	"la caserne",
 	"la guilde des prostituées",
 	"La capitainerie",
@@ -87,12 +87,10 @@ champ = (
 	)
 
 commerce = (
-	"drogue",
-	"alcool",
+	"herbes médicinales et récréatives",
+	"alcools",
 	"armes et armures",
-	"alimentation",
 	"tissus",
-	"meubles",
 	"informations",
 	"esclaves",
 	"animaux d'élevage",
@@ -100,13 +98,11 @@ commerce = (
 	"bijoux",
 	"minerais",
 	"peaux",
-	"achimie",
-	"magie",
-	"petit matériel pour la vie de tous les jours",
+	"potions",
+	"parchemins magiques",
 	"épices",
 	"parfums",
 	"livres",
-	"vêtements d'occasion"
 	)
 
 artisanat = (

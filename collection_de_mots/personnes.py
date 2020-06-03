@@ -492,7 +492,8 @@ poste_chateau = (
 	"soldat",
 	"serviteur/servante",
 	"soldat",
-	"serviteur/servante"
+	"serviteur/servante",
+	"cuisinier/cuisinière"
 	)
 
 poste_guilde = (
@@ -805,6 +806,16 @@ atouts_pj = [
 	"son agilité féline",
 	"son absence d'étique au combat",
 	"sa technique de combat précise",
+	],
+
+	#meilleur_atout_autre = 14
+	[
+	"son carnet de contacts bien rempli",
+	"un bijou de grande valeur, facile à revendre",
+	"son animal de compagnie qui connait quelques tours",
+	"son encyclopédie de voyage qui a réponse à tout",
+	"la recette du thé revivifiant écrite sur un coin de page d'un vieux livre moisi",
+	"une arme de grande qualité achetée à un vieux pouilleux"
 	],
 ]
 
