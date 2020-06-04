@@ -588,7 +588,7 @@ pers_metier = (
 	
 metiers_et_carac_associee = {
 	"alchimiste" : "Intelligence",
-	"apprenti/e" : "Intelligence",
+	"apprenti/e" : "Selon le métier étudié",
 	"artisan/ne" : "Dextérité",
 	"archer/archère" : "Dextérité",
 	"architecte" : "Intelligence",
@@ -824,7 +824,7 @@ leitmotiv = [
 	"obtenir plus de pouvoir.",
 	"amasser des richesses.",
 	"faire naître une révolution.",
-	"fécouvrir le monde.",
+	"découvrir le monde.",
 	"fuire sa condition.",
 	"retouver un/e proche kidnapé.e.",
 	"libérer un/e ami/e emprisonné/e.",

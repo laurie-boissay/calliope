@@ -67,7 +67,7 @@ organisation = (
 	"la guilde des assassins",
 	"la caserne",
 	"la guilde des prostituées",
-	"La capitainerie",
+	"la capitainerie",
 	"la guilde des médecins",
 	"le chateau",
 	"le temple"
@@ -123,7 +123,6 @@ artisanat = (
 	)
 
 batiment = (
-	"une maison",
 	"le temple",
 	"la mairie",
 	"la taverne",

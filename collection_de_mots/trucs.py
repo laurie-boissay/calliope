@@ -1,8 +1,5 @@
 vol = (
-	"objet",
 	"objet personnel",
-	"animal",
-	"argent",
 	"caisse"
 	)
 

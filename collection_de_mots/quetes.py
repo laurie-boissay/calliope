@@ -128,71 +128,9 @@ quetes_caserne = [
 	"enquêter"
 	]
 
-
-
-commanditaires_voler = [
-	"la guilde des voleurs",
-	"une personne",
-	]
-
-commanditaires_infiltrer = [
-	"la caserne",
-	]
-
-commanditaires_protéger = [
-	"la caserne",
-	"le chateau",
-	"une personne",
-	]
-
-commanditaires_livrer = [
-	"la caserne",
-	"un réseau d'esclavage",
-	"un réseau de résistance",
-	]
-
-commanditaires_enquêter = [
-	"une personne",
-	"la caserne",
-	"le chateau",
-	]
-
-commanditaires_kidnaper = [
-	"un réseau de chantage",
-	"un réseau de résistance",
-	"une personne",
-	]
-
-commanditaires_tuer = [
-	"une personne",
-	"la guilde des assassins",
-	]
-
-commanditaires_détruire = [
-	"une personne",
-	"un réseau de résistance",
-	]
-
-commanditaires_trouver = [
-	"une personne",
-	"un réseau de résistance",
-	]
-
-commanditaires_sauver = [
-	"une personne",
-	]
-
-commanditaires_fabriquer = [
-	"une personne",
+commanditaires_enqueter_meurtre = [
 	"le temple",
+	"la caserne",
+	"le chateau",
 	]
 
-commanditaires_capturer = [
-	]
-
-commanditaires_intercepter = [
-	]
-
-commanditaires_empoisonner = [
-	]
- 
