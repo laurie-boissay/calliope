@@ -105,44 +105,22 @@ def all_users_cmd(message):
         ]
         return text[0]
 
-    elif message.startswith("!quete"): 
+    elif message.startswith("!quête"): 
         # Appelle la fonction generer_commanditaire et vérifie la longueur
         # du texte reçu puis renvoi le texte ou boucle sur la fonction.
-        text = generer_commanditaire()
+        text = texte_de_quete(message)
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
         else :
-            return all_users_cmd(message)
+            return texte_de_quete(message)
 
     elif message.startswith("!+quetes"):
         # Renvoi les commandes pour choisir un type de quete.
-        text = [
-        "Voici les 14 types de quêtes :"
-        "\n\n```!voler```"
-        "\n```!infiltrer```"
-        "\n```!protéger```"
-        "\n```!livrer```"
-        "\n```!enquêter```"
-        "\n```!kidnaper```"
-        "\n```!tuer```"
-        "\n```!détruire```"
-        "\n```!trouver```"
-        "\n```!sauver```"
-        "\n```!fabriquer```"
-        "\n```!capturer```"
-        "\n```!empoisonner```"
-        "\n```!intercepter```"
-        ]
-        return text[0]
-
-    elif message.strip("!") in quete:
-        # Appelle la fonction afficher_quete et vérifie la longueur
-        # du texte reçu puis renvoi le texte ou boucle sur la fonction.
-        text = afficher_quete(message.strip("!"))
-        if len(text) < 1950: # max discord text lenght = 2000.
-            return text
-        else :
-            return all_users_cmd(message)
+        text = "```!quête, enquêter```Affiche une quête d'enquête.\n"
+        text += "Voici les différents types de quêtes :"
+        for i in range(len(quete)):
+            text += "\n" + quete[i]
+        return text
 
     elif message.startswith('!zone'):
         # Appelle la fonction qui génère une zone et renvoi un texte.
@@ -247,10 +225,6 @@ def all_users_cmd(message):
         for k, v in metiers_et_carac_associee.items():
             text[0] += k + " : " + v + "\n"
         return text[0]
-
-    elif message.startswith('!test'):
-        text = texte_de_quete(message)
-        return text
 
     else:
         return "not a cmd"
