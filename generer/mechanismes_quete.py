@@ -9,20 +9,37 @@ from collection_de_mots.personnes import *
 from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
 
+from generer.classe_personnage import Personnage
 from generer.nom import *
-from generation.generer_personne import *
+
 
 """
-Le type de quête ;
 Les détails de la quête :
-	cible, lieux, objet, mobile...
+cible, lieux, objet, mobile...
 """
+def gen_pnj_light() :
 
+	perso = Personnage()
+	text = ""
 
+	perso.set_particularites()
+	personne = perso.pnj_light()
+		
+	text += personne["prénom"] + " " + personne["nom"] + ". C'est une personne "
+	text += personne["age"] + " de genre " + personne["genre"] 
+	text += ", de la race des " + personne["race"] + "s.\n"
+	text += personne["pronom"] + " est " + personne["métier"] + ". "
+	text += personne["prénom"] + " cache un secret " + personne["secret"] + "."
+	
+	text += "\n\n*!pnj, 12, 3, prénom=" + personne['prénom'] + ", nom=" + personne['nom']
+	text += ", métier=" + personne['métier'] + ", race=" + personne['race'] 
+	text += ", genre=" + personne["genre"] + ", secret=" + personne["secret"]
+	text += ", age=" + personne["age"] + "*" + "\n"
+	
+	return text
+		
 
 #_____enquete___________________________________________________________
-
-
 
 def scene_crime() :
 	"""
@@ -30,33 +47,17 @@ def scene_crime() :
 	un lieu discret, une maison, une organisation.
 	"""
 	scene = lieu_crime[randrange(len(lieu_crime))]
-	if scene == "lieu discret" :
-		phrase_1 = lieu_discret[randrange(len(lieu_discret))]+"."
-	elif scene == "une maison" :
-		phrase_1 = maison[randrange(len(maison))]+"."
-	else : # "une organisation" :
-		phrase_1 = "dans "+ organisation[randrange(len(organisation))]+"."
-	return phrase_1
 
-def enquete_kidnaping() :
-	"""
-	Détails pour résoudre l'enquête du kidnaping.
-	- qui a été enlevé ;
-	- ou cette personne est-elle retenue ;
-	- qui est le coupable ;
-	- quel est le mobile.
-	"""
-	phrase_2 = "Il s'agit de "+personne()
-	scene = lieu_crime[randrange(len(lieu_crime))]
 	if scene == "lieu discret" :
-		phrase_3 = "\nCette personne est retenue "+lieu_discret[randrange(len(lieu_discret))]+"."
+		text = lieu_discret[randrange(len(lieu_discret))] + "."
+
 	elif scene == "une maison" :
-		phrase_3 = "\nCette personne est retenue "+maison[randrange(len(maison))]+"."
+		text = maison[randrange(len(maison))] + "."
+
 	else : # "une organisation" :
-		phrase_3 = "\nCette personne est retenue dans "+organisation[randrange(len(organisation))]+"."
-	phrase_4 = "\n\nLe coupable est "+personne()
-	phrase_5 = "\nLe mobile est "+mobile[randrange(len(mobile))]+"."
-	return phrase_2+phrase_3+phrase_4+phrase_5
+		text = "dans " + organisation[randrange(len(organisation))] + "."
+			
+	return text
 
 #_______________________________________________________________________________________________
 
@@ -67,54 +68,15 @@ def type_lieu_ville() :
 	"""
 	type = batiment[randrange(len(batiment))]
 	if type == "une maison":
-		phrase_1 = "la maison de "+personne() + ".\nCette personne vit " + ou_en_ville()
+		text = "la maison de " + gen_pnj_light() + ".\nCette personne vit " + ou_en_ville()
 	elif type == "la taverne":
-		phrase_1 = "une taverne : "+nom_auberge() + " " + ou_en_ville()
+		text = "une taverne : " + nom_auberge() + " " + ou_en_ville()
 	elif type == "un navire":
-		phrase_1 = "un navire : "+nom_navire() + " " + ou_en_ville()
+		text = "un navire : " + nom_navire() + " " + ou_en_ville()
 	else : # "le temple" "la mairie" "la serre royale" "l'orphelinat" "l'hôpital" "la prison"
-		phrase_1 = type + " " + ou_en_ville()
-	return phrase_1
+		text = type + " " + ou_en_ville()
+	return text
 
-def truc_a_voler() :
-	"""
-	Définit un nombre d'objets ou d'animaux et génère des détails sur l'endroit ou les trouver
-	et la personne à qui ils appartiennent.
-	"""
-	truc = vol[randrange(len(vol))]
-	if truc == "objet" :
-		truc = objet[randrange(len(objet))]
-		if truc ==  "uniforme(s)" :
-			return str(randrange(1, 10, 1)) + " " + truc + " dans " + type_lieu_ville()
-		else :
-			return str(randrange(1, 10, 1)) + " " + truc + "."
-	elif truc == "objet personnel" :
-		return objet_pers[randrange(len(objet_pers))] + ". Chez " + personne() + "\nCette personne vit " + ou_en_ville()
-	elif truc == "animal" :
-		return animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne() + "\nCette personne vit " + ou_en_ville()
-	elif truc == "caisse" :
-		return str(randrange(1 , 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))]+" dans "+ type_lieu_ville()
-	else : #argent
-		return "de l'"+truc+" en "+quantite[randrange(len(quantite))]+"."
-
-
-def qui_paye() :
-	"""
-	Définit un point de livraison.
-	une organisation, un lieu discret, la maison de quelqu'un, une auberge.
-	"""
-	payeur = commanditaire[randrange(len(commanditaire))]
-	if payeur == "une organisation" :
-		return "\nLa livraison se fera dans "+organisation[randrange(len(organisation))]+". Ils seront attendus."
-	elif payeur == "un réseau" :
-		contact = lieu_discret[randrange(len(lieu_discret))]
-		phrase_1 = "\nLa livraison est pour un réseau "+reseau[randrange(len(reseau))]+". Ils trouverons leur contact "+contact
-		if contact == "dans la taverne" :
-			return phrase_1+" : "+nom_auberge()+"."
-		else :
-			return phrase_1+"."
-	else :
-		return "\nLa livraison se fera chez "+personne()
 
 def cible_protection() :
 	"""
@@ -124,13 +86,14 @@ def cible_protection() :
 	Beaucoup de détails si la cible est un convoi :
 	type de convoi, date de départ, durée du trajet, destination du convoi.
 	"""
+
 	cible = protection[randrange(len(protection))]
 	if cible == "une personne" :
-		proteger = personne()
+		proteger = gen_pnj_light()
 	elif cible == "un secret" :
-		proteger = "le secret de "+personne()
+		proteger = "le secret de "+ gen_pnj_light()
 	elif cible == "un objet personnel" :
-		proteger = objet_pers[randrange(len(objet_pers))]+" appartenant à "+personne()
+		proteger = objet_pers[randrange(len(objet_pers))]+" appartenant à "+ gen_pnj_light()
 	elif cible == "un convoi" :
 		phrase_1 = type_convoi()+".\nIl part dans "+str(randrange(1, 3, 1))+" jour(s) pour"
 		phrase_2 = zone()
@@ -169,7 +132,7 @@ def entite():
 	if qui == "une organisation" :
 		qui = organisation[randrange(len(organisation))]+"."
 	elif qui == "une personne" :
-		qui = personne()
+		qui = gen_pnj_light()
 	else : #"un réseau"
 		qui = "un réseau " + reseau[randrange(len(reseau))]+"."
 	return qui
@@ -180,7 +143,7 @@ def cible_livraison() :
 	"""
 	truc = livraison[randrange(len(livraison))]
 	if truc == "une personne" :
-		phrase_1 = personne() + "\n\nLa cible se cache "
+		phrase_1 = gen_pnj_light() + "\n\nLa cible se cache "
 	elif truc == "un objet" :
 		truc = objet[randrange(len(objet))]
 		phrase_1 = str(randrange(1, 10, 1))+" "+truc + " "
@@ -204,7 +167,7 @@ def type_animal() :
 	if type == "animal sauvage" :
 		return "un "+animal_sauvage[randrange(len(animal_sauvage))]+" sauvage"
 	elif type == "animal domestique" :
-		return animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()
+		return animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+ gen_pnj_light()
 	else :
 		return "des "+animal_elevage[randrange(len(animal_elevage))]+"."
 
@@ -227,9 +190,9 @@ def mission_infiltrer() :
 	if raison == "voler" :
 		phrase_2 = "\nIls pourront alors voler "+objet_pers[randrange(len(objet_pers))]+"."
 	elif raison == "protéger" or raison == "libérer" or raison == "sauver" :
-		phrase_2 = "\nIls pourront alors "+raison+" "+personne()
+		phrase_2 = "\nIls pourront alors "+raison+" "+ gen_pnj_light()
 	elif raison == "tuer" :
-		phrase_2 = "\nIls pourront alors tuer la personne à la tête de cette organisation.\nC'est "+personne()
+		phrase_2 = "\nIls pourront alors tuer la personne à la tête de cette organisation.\nC'est "+ gen_pnj_light()
 	else : #"détruire"
 		phrase_2 = "\nIls pourront alors détruire cette organisation de l'intérieur."
 	return phrase_1 + phrase_2
@@ -251,10 +214,10 @@ def mission_kidnaper() :
 	"""
 	cible = kid[randrange(len(kid))]
 	if cible == "personne" :
-		phrase_1 = personne()  + "\nLa cible réside " + ou_en_ville()
+		phrase_1 = gen_pnj_light()  + "\nLa cible réside " + ou_en_ville()
 	else : #"animal"
 		cible = animal_domestique[randrange(len(animal_domestique))]
-		phrase_1 = cible + " appartenant à "+personne()
+		phrase_1 = cible + " appartenant à "+gen_pnj_light()
 	return phrase_1
 
 def mission_tuer() :
@@ -264,13 +227,13 @@ def mission_tuer() :
 	"""
 	cible = kill[randrange(len(kill))]	
 	if cible == "personne" :
-		phrase_1 = personne() + "\n\nLa cible vit " + ou_en_ville()
+		phrase_1 = gen_pnj_light() + "\n\nLa cible vit " + ou_en_ville()
 	elif cible == "monstre" :
 		phrase_1 = creature[randrange(len(creature))] + " dans " + lieu_quete() + "." + ou_nature()
 	elif cible == "animal sauvage" :
 		phrase_1 = str(randrange(1, 10, 1))+" "+animal_sauvage[randrange(len(animal_sauvage))]+"."+qui_paye()
 	else : #"animal"
-		phrase_1 ="un animal.\nC'est "+animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()
+		phrase_1 ="un animal.\nC'est "+animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+gen_pnj_light()
 	return phrase_1
 
 def mission_detruire() :
@@ -279,7 +242,7 @@ def mission_detruire() :
 	"""
 	cible = destruction[randrange(len(destruction))]
 	if cible == "un objet" :
-		phrase_1 = objet_pers[randrange(len(objet_pers))]+" appartenant à "+ personne() + "\n\nCette personne vit " + ou_en_ville()
+		phrase_1 = objet_pers[randrange(len(objet_pers))]+" appartenant à "+ gen_pnj_light() + "\n\nCette personne vit " + ou_en_ville()
 	elif cible == "une organisation" :
 		phrase_1 = organisation[randrange(len(organisation))]+" " + ou_en_ville()
 	elif cible == "un réseau" :
@@ -313,9 +276,9 @@ def mission_intercepter() :
 	if cible == "un convoi" :
 		phrase_1 = type_convoi()+ phrase_2 + "\n\nCe convoi doit arriver"
 	elif cible == "des documents sensibles" :
-		phrase_1 = cible + phrase_3 + "\n\nLe porteur est "+personne()+"\nSon arrivée est prévu"
+		phrase_1 = cible + phrase_3 + "\n\nLe porteur est "+gen_pnj_light()+"\nSon arrivée est prévu"
 	else : #"une lettre"
-		phrase_1 = cible + phrase_2 + "\n\nLe porteur est "+personne()+"\nSon arrivée est prévu"
+		phrase_1 = cible + phrase_2 + "\n\nLe porteur est "+gen_pnj_light()+"\nSon arrivée est prévu"
 	return phrase_1 + " dans " + str(randrange(1, 3, 1))+ " jour(s)."
 
 def mission_empoisonement() :
@@ -325,9 +288,9 @@ def mission_empoisonement() :
 	"""
 	cible = poison[randrange(len(poison))]
 	if cible == "un animal domestique" :
-		phrase_1 = animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+personne()+ "\nSa demeure se trouve " + ou_en_ville()
+		phrase_1 = animal_domestique[randrange(len(animal_domestique))]+" appartenant à "+gen_pnj_light()+ "\nSa demeure se trouve " + ou_en_ville()
 	elif cible ==  "une personne" :
-		phrase_1 = personne() + "\nSa demeure se trouve " + ou_en_ville()
+		phrase_1 = gen_pnj_light() + "\nSa demeure se trouve " + ou_en_ville()
 	elif cible ==  "des caisses de nourriture" :
 		phrase_1 = cible + ". Elles sont dans " + type_lieu_ville()
 	else : #  "le puit d'un village"
@@ -361,17 +324,4 @@ def ou_nature() :
 
 	return phrase_1 + phrase_2
 
-def mission_fabriquer() :
-	"""
-	Définit les 3 étapes nécessaires pour résoudre une quête de type "fabriquer":
-		- ou trouver les composants ;
-		- ou fabriquer l'objet ;
-		- quel monstre tuer avec cet objet et ou le trouver.
-	"""
-	phrase_1 = objet_precieux() + " :\n"
-	phrase_2 = "\n1) Il leur faudra d'abord trouver les composants dans " + lieu_quete()+ "." + ou_nature()
-	phrase_3 = "\n\n2) Puis ils se rendront dans " + lieu_quete()+ " pour fabriquer l'objet." + ou_nature()
-	phrase_4 = "\n\n3) Leur quête prendra fin lorsqu'ils aurront tué " + quel_monstre() + " dans "+ lieu_quete_ext() + "." + ou_nature()
-
-	return phrase_1 + phrase_2 + phrase_3 + phrase_4
 

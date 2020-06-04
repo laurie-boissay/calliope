@@ -261,6 +261,10 @@ class Personnage:
 		"""
 		metier = metier_long.split(" ")
 		metier_court = metier[0]
+
+		if metier[0] == "apprenti/e":
+			metier_court = metier[1]
+			
 		return metier_court
 
 	def bonus_de_metier(self):
