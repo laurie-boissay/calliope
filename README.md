@@ -84,6 +84,17 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout de quelques secrets et leitmotivs.
 
-0/06/20 :
+03/06/20 :
 
 - refonte de la génération de quête. Travail en cours.
+
+03/06/20 :
+
+- Renfonte de la génération de quête toujours en cours. Les quêtes modifiées sont + coérentes du début à la fin.
+(commanditaire, quête, récompense, aide)
+
+- Au texte d'ambiance est ajouté, pour chaque PNJ (vivant), la commande préremplie pour générer sa fiche personnage détaillée.
+
+- le métier "apprentie/e" prend en carractéristique principale, le second métier. Ex apprenti/e mage : intelligence.
+
+Ajout de différents types de récompenses : réductions, recrutement d'un PNJ dans le groupe des PJ et services. Générées par rapport au commanditaire.
