@@ -52,7 +52,7 @@ pers_secret = (
 	"de son ancienne vie d'ésclave",
 	"de son ancienne vie d'excés en tous genres",
 	"de son enfance passée dans un cirque",
-	"de son adoption par une famille de loups",
+	"de son adoption, bébé, par une famille de loups",
 	"de ses années passées dans une communauté aux croyances étranges",
 	"de ses années passées dans une communauté paienne",
 	)
@@ -69,7 +69,7 @@ mobile = (
 	"l'argent"
 	)
 
-description = (
+description_scene = (
 	"Tous les os de la victime sont brisés",
 	"La tête de la victime n'est pas là",
 	"La peau de la victime a pris une teinte bleue qui ne semble pas naturelle",
