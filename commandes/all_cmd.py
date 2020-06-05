@@ -14,6 +14,7 @@ from commandes.des import *
 
 from generer.perso import *
 from generer.quete import *
+from generer.mechanismes_quete import *
 
 from collection_de_mots.calliope_reaction import *
 
@@ -81,7 +82,6 @@ def all_users_cmd(message):
     Dans tous les cas, renvoit un texte.   
 
     """
-
     if message.startswith('!help'): 
         # Renvoi un message d'aide.
         text = [
@@ -90,7 +90,7 @@ def all_users_cmd(message):
         "\n\n```!quete```Génère une quête."
         "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
-        "\n\n```!pnj```Génère un personnage."
+        "\n\n```!pnj    !pj```Génère un personnage."
         "\n\n```!personnage```Affiche les détails de la commande permettant de créer un PJ ou PNJ personnalisé."
         "\n\n```!auberge```Génère un nom d'auberge."
         "\n\n```!1d20-5   !1d20+5```Lance 1 dé 20 +/-5."
@@ -124,13 +124,9 @@ def all_users_cmd(message):
         # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
         return nom_auberge()
 
-    elif message.startswith('!pnj') and len(message) < 5: 
-        # Appelle la fonction qui génère un PNJ et renvoi un texte.
-        return "C'est "+ gen_pnj_light()
-
-    #elif message.startswith('!pnj'):
-            # Appelle la fonction arguments_reroll, renvoi un texte.
-            #return arguments_reroll(message)
+    elif (message.startswith('!pnj') or message.startswith('!pj') ) and len(message) < 5: 
+        # Appelle la fonction qui génère un PNJ ou un PJ et renvoi un texte.
+        return genere_affiche_perso_light()
 
     elif message.startswith('!pj') or message.startswith('!pnj'):
             # Appelle la fonction arguments_reroll, renvoi un texte.
@@ -197,7 +193,7 @@ def all_users_cmd(message):
 
     elif message.startswith('!métierspj'):
         text = [
-        "Lors de la génération d'un PJ, seul les métiers suivants peuvent être générés.\n\n"
+        "Lors de la génération d'un PJ, seuls les métiers suivants peuvent être générés.\n\n"
         ]
         for i in range(len(classe_pers)):
             text[0] += classe_pers[i] + "\n"
