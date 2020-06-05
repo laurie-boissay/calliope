@@ -87,7 +87,7 @@ def all_users_cmd(message):
         text = [
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
-        "\n\n```!quete```Génère une quête."
+        "\n\n```!quête```Génère une quête."
         "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj    !pj```Génère un personnage."
