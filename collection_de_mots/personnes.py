@@ -828,7 +828,7 @@ leitmotiv = [
 	"fuire sa condition.",
 	"retouver un/e proche kidnapé.e.",
 	"libérer un/e ami/e emprisonné/e.",
-	"fuire un/e chasseur/chasseuse de tête.",
+	"fuire un/e chasseur/chasseuse de primes.",
 	"rendre le monde meilleur.",
 	"venir en aide aux opprimés.",
 	"devenir le/la plus grand/e dresseur/dresseuse.",
