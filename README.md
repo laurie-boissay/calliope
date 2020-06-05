@@ -93,10 +93,16 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 - Renfonte de la génération de quête toujours en cours. Les quêtes modifiées sont + coérentes du début à la fin.
 (commanditaire, quête, récompense, aide)
 
-- Au texte d'ambiance est ajouté, pour chaque PNJ (vivant), la commande préremplie pour générer sa fiche personnage détaillée.
+- au texte d'ambiance est ajouté, pour chaque PNJ (vivant), la commande préremplie pour générer sa fiche personnage détaillée.
 
 - le métier "apprentie/e" prend en carractéristique principale, le second métier. Ex apprenti/e mage : intelligence.
 
-Ajout de différents types de récompenses : réductions, recrutement d'un PNJ dans le groupe des PJ et services. Générées par rapport au commanditaire.
+- ajout de différents types de récompenses : réductions, recrutement d'un PNJ dans le groupe des PJ et services. Générées par rapport au commanditaire.
 
 - le commanditaire de la quête (pour les quêtes modifiées) est généré en fonction du type de quête et de son objet.
+
+05/06/20 : 
+
+- nettoyage du code ;
+
+- correction des nouveaux bugs.
