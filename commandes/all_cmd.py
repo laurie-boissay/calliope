@@ -12,15 +12,9 @@ from random import randrange
 
 from commandes.des import *
 
-from generation.generer_quete import *
-from generation.generer_commanditaire import *
-from generation.generer_nom import *
-from generer.perso import *
-
 from generer.perso import *
 from generer.quete import *
 
-from collection_de_mots.personnes import *
 from collection_de_mots.calliope_reaction import *
 
 def is_it_cmd(message, client):
@@ -97,7 +91,7 @@ def all_users_cmd(message):
         "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj```Génère un personnage."
-        "\n\n```!personnage```Affiche les détais de la commande permettant de créer un PJ ou PNJ personnalisé."
+        "\n\n```!personnage```Affiche les détails de la commande permettant de créer un PJ ou PNJ personnalisé."
         "\n\n```!auberge```Génère un nom d'auberge."
         "\n\n```!1d20-5   !1d20+5```Lance 1 dé 20 +/-5."
         "\n\n```!macro```Affiche les macros disponibles pour tes personnages."
@@ -112,11 +106,11 @@ def all_users_cmd(message):
         if len(text) < 1950: # max discord text lenght = 2000.
             return text
         else :
-            return texte_de_quete(message)
+            return all_users_cmd(message)
 
     elif message.startswith("!+quetes"):
         # Renvoi les commandes pour choisir un type de quete.
-        text = "```!quête, enquêter```Affiche une quête d'enquête.\n"
+        text = "```!quête=enquêter```Affiche une quête d'enquête.\n"
         text += "Voici les différents types de quêtes :"
         for i in range(len(quete)):
             text += "\n" + quete[i]
@@ -132,7 +126,7 @@ def all_users_cmd(message):
 
     elif message.startswith('!pnj') and len(message) < 5: 
         # Appelle la fonction qui génère un PNJ et renvoi un texte.
-        return "C'est "+ personne()
+        return "C'est "+ gen_pnj_light()
 
     #elif message.startswith('!pnj'):
             # Appelle la fonction arguments_reroll, renvoi un texte.
@@ -159,7 +153,7 @@ def all_users_cmd(message):
     elif message.startswith('!personnage'):
         # Renvoi le texte d'aide pour utiliser les commande !pnj, x, y, !pj, x, y
         text = [
-        "\n\n```!pnj, x, y      !pj, x, y```Génère un personnage x et y sont obligatoires."
+        "\n\n```!pnj, x, y      !pj, x, y```Génère un personnage, x et y sont obligatoires."
         "\nx correspond au points de caractéristiques à dépenser."
         "\ny correspond au maximum de points à dépenser dans une caractéristique."
         "\n```!pj, 12, 3```Exemple de PJ généré sans aucun paramètre facultatif."
@@ -170,14 +164,15 @@ def all_users_cmd(message):
         "\n```!pnj, 12, 3, prénom=Toto, age=20, ville=Trifouillis les oies, genre=androgyne, secret=est violent.```"
         "Fonctionne pour : ```prénom=XXXX, nom=XXXX, race=XXXX, métier=XXXX, age=XXXX, leitmotiv=XXXX, ville=XXXX, genre=XXXX, secret=XXXX```"
 
-        "\n\nTu peux aussi supprimer certaines valeurs de la liste des paramètres que tu laisseras vide :"
+        "\n\nTu peux aussi supprimer certaines valeurs : "
         "```!pj, 8, 2, prénom=Toto, race_elfe, race_demi-elfe, genre_féminin```"
+        "Dans cet exemple, le PJ généré ne sera ni un elfe ni un demi-elfe ni de genre féminin. "
         "Fonctionne pour : ```race_xxxx, métier_xxxx, genre_xxxx```"
 
-        "\n\n```!races```Affiche la liste des races qui influencent le choix du nom et du prénom."
-        "\n```!genres```Affiche la liste des genres qui influencent le choix du nom et du prénom."
+        "\n\n```!races```Affiche la liste des races implémentées."
+        "\n```!genres```Affiche la liste des genres implémentés."
         "\n```!métiers```Affiche la liste des métiers de PNJ et PJ qui favorisent une caractéristique."
-         "\n```!métierspj```Affiche la liste plus courte des métiers générés pour les PJ."
+         "\n```!métierspj```Affiche la liste plus courte des métiers pour les PJ."
 
         "\n\nIl ne sert à rien de faire : ```!pnj, 8, 2, race=orc, race_orc```Dans ce cas, la race du PJ sera Orc." 
         "\nDans le même ordre d'idée : ```!pj, 8, 2, race=orc, race=elfe```Dans ce cas, la race du PJ sera Elfe."
@@ -232,9 +227,9 @@ def all_users_cmd(message):
 
 def reaction_crit(message):
     """
-    Calliope va réagir messages contenant (1) ou (20).
+    Calliope va réagir aux messages contenant (1) ou (20).
 
-    Renvoi un text.
+    Renvoie un texte.
     """
 
     if '(1)' in message:
