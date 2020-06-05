@@ -88,7 +88,7 @@ def all_users_cmd(message):
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
         "\n\n```!quête```Génère une quête."
-        "\n\n```!+quetes```Affiche les commandes pour choisir le type de quête."
+        "\n\n```!+quêtes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj    !pj```Génère un personnage."
         "\n\n```!personnage```Affiche les détails de la commande permettant de créer un PJ ou PNJ personnalisé."
@@ -108,7 +108,7 @@ def all_users_cmd(message):
         else :
             return all_users_cmd(message)
 
-    elif message.startswith("!+quetes"):
+    elif message.startswith("!+quêtes"):
         # Renvoi les commandes pour choisir un type de quete.
         text = "```!quête=enquêter```Affiche une quête d'enquête.\n"
         text += "Voici les différents types de quêtes :"
