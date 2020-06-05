@@ -382,6 +382,8 @@ class Personnage:
 		for i in range(len(text)):
 			text_a_afficher += text[i]
 
+		text_a_afficher += "\n\n```!personnage```*Explique les détails du fonctionnement de cette commande.*"
+
 		return text_a_afficher
 
 
