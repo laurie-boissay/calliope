@@ -156,14 +156,13 @@ navire_adj = (
 	"vert/e",
 	"étincelant/e"
 	)
+
 lieu_discret = (
 	"dans la forêt",
 	"dans les égouts",
 	"dans une grotte",
 	"dans les docs",
-	"dans la montagne",
-	"dans la taverne",
-	"sur les berges de la rivière"
+	"sous le pont"
 	)
 
 lieu_quete_nom = (

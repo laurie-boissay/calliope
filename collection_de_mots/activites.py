@@ -73,6 +73,16 @@ organisation = (
 	"le temple"
 	)
 
+reseau = [
+	"de braconnage",
+	"de prostitution",
+	"d'esclavage",
+	"de trafic de drogue",
+	"de chantage",
+	"de résistance",
+	"de contrebande"
+	]
+
 champ = (
 	"du maïs",
 	"du blé",
@@ -133,24 +143,6 @@ batiment = (
 	"un navire"
 	)
 
-raison_inf = (
-	"voler",
-	"protéger",
-	"libérer",
-	"tuer",	
-	"détruire",
-	"sauver"
-	)
-
-enquete = (
-	"un meurtre",
-	"un kidnaping",
-	"une organisation",
-	"une personne",
-	"un vol",
-	"un réseau"
-	)
-
 maison = (
 	"à son domicile",
 	"chez le coupable"
@@ -161,3 +153,26 @@ adjuvant = (
 	"matériel",
 	"non"
 	)
+
+la_ligue_de_l_ombre = [
+	"la guilde des voleurs",
+	"la guilde des assassins",
+	"de braconnage",
+	"de prostitution",
+	"d'esclavage",
+	"de trafic de drogue",
+	"de chantage",
+	"de résistance",
+	"de contrebande",
+	]
+
+la_ligue_de_la_lumiere = [
+	"la guilde des marchands",
+	"le palais de justice",
+	"la caserne",
+	"la guilde des prostituées",
+	"la capitainerie",
+	"la guilde des médecins",
+	"le chateau",
+	"le temple",
+	]
