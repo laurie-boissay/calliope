@@ -124,9 +124,13 @@ def all_users_cmd(message):
         # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
         return nom_auberge()
 
-    elif (message.startswith('!pnj') or message.startswith('!pj') ) and len(message) < 5: 
+    elif message.startswith('!pnj') and len(message) < 5: 
         # Appelle la fonction qui génère un PNJ ou un PJ et renvoi un texte.
         return genere_affiche_perso_light()
+
+    elif  message.startswith('!pj') and len(message) < 4: 
+        # Appelle la fonction qui génère un PNJ ou un PJ et renvoi un texte.
+        return genere_affiche_pj_light()
 
     elif message.startswith('!pj') or message.startswith('!pnj'):
             # Appelle la fonction arguments_reroll, renvoi un texte.
@@ -192,6 +196,7 @@ def all_users_cmd(message):
         return text
 
     elif message.startswith('!métierspj'):
+        # Renvoie la liste des métiers pour PJ sous forme de texte.
         text = [
         "Lors de la génération d'un PJ, seuls les métiers suivants peuvent être générés.\n\n"
         ]
