@@ -83,23 +83,39 @@ def genere_affiche_perso_light() :
 
 	perso.set_particularites()
 	personne = perso.pnj_light()
-	text = description(personne)
-	return text
+	texte = description(personne)
+	return texte
+
+def genere_affiche_pj_light() :
+	"""
+	Génère un personnage.
+
+	Renvoie un texte décrivant le personnage + 
+	en italique, la commande permettant de générer
+	le détail du personnage.
+	"""
+	perso = Personnage()
+
+	perso.set_type_de_personnage_pj()
+	perso.set_particularites()
+	personne = perso.pnj_light()
+	texte = description_pj(personne)
+	return texte
 
 
 def victime_morte(victime):
 	"""
 	Renvoie un texte au passé décrivant un personnage décédé.
 	"""
-	text = ""
+	texte = ""
 
-	text += "La victime était une personne " + victime["age"] + " de genre " + victime["genre"]
-	text += ".\n" + victime["pronom"] + " s'appelait " + victime["prénom"] + " " + victime["nom"]
-	text += ". " + victime["pronom"] + " était de la race des " + victime["race"] + "s.\n"
-	text += victime["pronom"] + " exerçait le métier de " + victime["métier"] + ". "
-	text += victime["prénom"] + " cachait un secret " + victime["secret"] + ".\n"
+	texte += "La victime était une personne " + victime["age"] + " de genre " + victime["genre"]
+	texte += ".\n" + victime["pronom"] + " s'appelait " + victime["prénom"] + " " + victime["nom"]
+	texte += ". " + victime["pronom"] + " était de la race des " + victime["race"] + "s.\n"
+	texte += victime["pronom"] + " exerçait le métier de " + victime["métier"] + ". "
+	texte += victime["prénom"] + " cachait un secret " + victime["secret"] + ".\n"
 	
-	return text
+	return texte
 
 
 def description(personne):
@@ -108,17 +124,134 @@ def description(personne):
 	en italique, la commande permettant de générer
 	le détail du personnage.
 	"""	
-	text = personne["prénom"] + " " + personne["nom"] + ". C'est une personne "
-	text += personne["age"] + " de genre " + personne["genre"] 
-	text += ", de la race des " + personne["race"] + "s. "
-	text += personne["pronom"] + " est " + personne["métier"] + "."
+	texte = personne["prénom"] + " " + personne["nom"] + ". C'est une personne "
+	texte += personne["age"] + " de genre " + personne["genre"] 
+	texte += ", de la race des " + personne["race"] + "s. "
+	texte += personne["pronom"] + " est " + personne["métier"] + "."
 	
-	text += "\n\n*!pnj, 12, 3, prénom=" + personne['prénom'] + ", nom=" + personne['nom']
-	text += ", métier=" + personne['métier'] + ", race=" + personne['race'] 
-	text += ", genre=" + personne["genre"] + ", age=" + personne["age"] + "*" + "\n"
+	texte += "\n\n\*\*\*  *Fiche complète avec cette commande :*  \*\*\*"
+	texte += "\n\n> *!pnj, 12, 3, prénom=" + personne['prénom'] + ", nom=" + personne['nom']
+	texte += " , métier=" + personne['métier'] + ", race=" + personne['race'] 
+	texte += " , genre=" + personne["genre"] + ", age=" + personne["age"] + "*" + "\n"
 
-	return text
+	return texte
+
+
+def description_pj(pj):
+	"""
+	Renvoie un texte décrivant le personnage + 
+	en italique, la commande permettant de générer
+	le détail du personnage.
+	"""	
+	texte = pj["prénom"] + " " + pj["nom"] + " est une personne "
+	texte += pj["age"] + " de genre " + pj["genre"] 
+	texte += ", de la race des " + pj["race"] + "s. "
+	texte += pj["pronom"] + " est " + pj["métier"] + ".\n"
+	texte += commande_pj(pj)
+
+	return texte
+
+
+def commande_pj(pj):
+	"""
+	Renvoie la commande permettant de générer
+	le détail du personnage.
+	"""
+	texte = "\n\n\*\*\*  *Fiche complète avec cette commande :*  \*\*\*"
+	texte += "\n\n> !pj, 12, 3, prénom=" + pj['prénom'] + ", nom="
+	texte += pj['nom'] + ", métier=" + pj['métier']
+	texte += ", race=" + pj['race'] + ", genre="
+	texte += pj["genre"] + ", secret=" + pj["secret"]
+	texte += ", age=" + pj["age"]
+	
 		
+	return texte
+
+
+def recompense_de_quête(pnj_commanditaire, commanditaire, pnj_aide):
+	"""
+	Génère une récompense en fonction de pnj_commanditaire.
+
+	Assigne la valeur à 
+	recompense
+	"""
+
+	metier = pnj_commanditaire["métier"].split(" ")
+	
+	if pnj_aide != {}:
+		metier_2 = pnj_aide["métier"].split(" ")
+
+		if metier_2[0] == "reine/roi" or metier_2[0] == "ministre" or metier_2[0] == "conseiller/e":
+			recompense = "avec un titre et des terres."
+
+	if metier[0] == "reine/roi" or metier[0] == "ministre" or metier[0] == "conseiller/e":
+		recompense = "avec un titre et des terres."
+
+	elif metier[0] == "servante/serviteur":
+		lieu = list(pnj_commanditaire["métier"].split("dans "))
+		recompense = "avec une autorisation d'accès officieuse dans " + lieu[1] + "."
+
+	elif metier[0] == "haut-placé/e":
+		lieu = list(pnj_commanditaire["métier"].split("dans "))
+		recompense = "en les recrutant dans " + lieu[1] + "."
+
+	elif "chef" in metier:	
+		recompense = "en les recrutant."
+
+	elif metier[0] == "marchand/e":
+		marchandises = list(pnj_commanditaire["métier"].split(" de/d' "))
+		recompense = "avec quelques " + marchandises[1] + " de sa boutique."
+
+	elif commanditaire == "la caserne":
+		recompense = "avec un entraînement à manier l'arme de leur choix."
+
+	elif metier[0] == "capitaine":
+		marchandises = commerce[randrange(len(commerce))]
+		while marchandises == "informations":
+			commerce[randrange(len(commerce))]		
+		recompense = "avec quelques " + marchandises + " de sa cargaison."
+
+	elif metier[0] == "artisan/ne" or metier[0] == "astrologue" or metier[0] == "alchimiste":
+		recompense = "en mettant ses talents d'" + pnj_commanditaire["métier"] + " à leur service."
+
+	elif metier[0] == "forgeron/ne" or metier[0] == "cartographe" or metier[0] == "sorcier/sorcière":
+		recompense = "en mettant ses talents de " + pnj_commanditaire["métier"] + " à leur service."
+
+	elif metier[0] == "marin":
+		recompense = "avec une carte marquée d'un X rouge."
+
+	elif metier[0] == "apprenti/e" or metier[0] == "mendiant/e":
+		recompense = "en se mettant à leur service."
+		recompense += commande_pj(pnj_commanditaire)
+
+	elif metier[0] == "tavernier/e":
+		auberge = list(pnj_commanditaire["métier"].split("dans "))
+		recompense = "en leur offrant un tarif préféreciel dans " + auberge[1] + "."
+
+	elif metier[0] == "médecin" or commanditaire == "la guilde des médecins":
+		recompense = "en leur offrant un tarif préféreciel sur tous les soins."
+
+	elif commanditaire == "la guilde des marchands":
+		recompense = "en leur offrant un tarif préféreciel dans toutes les boutiques de la ville."
+
+	elif commanditaire == "la guilde des prostituées":
+		recompense = "en leur offrant un tarif préféreciel dans toutes les maisons closes de la ville."
+
+	elif metier[0] == "prêtre/sse" or commanditaire == "le temple":
+		recompense = "avec un objet très précieux, sûrement magique : " + objet_precieux() + "."
+
+	elif commanditaire == "la guilde des voleurs" or commanditaire == "la guilde des assassins":
+		recompense = "en leur garantissant la protection de la guilde."
+
+	elif "drogue" in metier:
+		recompense_de_quete.append("quelques échantillons de leur marchandise récréative")
+		recompense =  "avec " + recompense_de_quete[randrange(len(recompense_de_quete))] + "."
+		recompense_de_quete.remove("quelques échantillons de leur marchandise récréative")
+
+	else:
+		recompense = "avec " + recompense_de_quete[randrange(len(recompense_de_quete))] + "."
+
+	return recompense
 
 #_____enquete___________________________________________________________
 
@@ -132,15 +265,15 @@ def scene_crime() :
 	scene = lieu_crime[randrange(len(lieu_crime))]
 
 	if scene == "lieu discret" :
-		text = lieu_discret[randrange(len(lieu_discret))] + "."
+		texte = lieu_discret[randrange(len(lieu_discret))] + "."
 
 	elif scene == "une maison" :
-		text = maison[randrange(len(maison))] + "."
+		texte = maison[randrange(len(maison))] + "."
 
 	else : # "une organisation" :
-		text = "dans " + organisation[randrange(len(organisation))] + "."
+		texte = "dans " + organisation[randrange(len(organisation))] + "."
 			
-	return text
+	return texte
 
 
 def enquete_kidnaping(victime) :
@@ -153,25 +286,25 @@ def enquete_kidnaping(victime) :
 
 	Renvoie un texte.
 	"""
-	text = "Il s'agit de " + description(victime) + "\n"
-	text += victime["pronom"] + " est retenu.e "
+	texte = "Il s'agit de " + description(victime) + "\n"
+	texte += victime["pronom"] + " est retenu.e "
 	scene = lieu_crime[randrange(len(lieu_crime))]
 
 	if scene == "lieu discret" :
-		text += lieu_discret[randrange(len(lieu_discret))] + "."
-		text += "\n\nLe coupable est " + genere_affiche_perso_light()
+		texte += lieu_discret[randrange(len(lieu_discret))] + "."
+		texte += "\n\nLe coupable est " + genere_affiche_perso_light()
 
 	elif scene == "une maison" :
-		text += maison[randrange(len(maison))] + "."
-		text += "\n\nLe coupable est " + genere_affiche_perso_light()
+		texte += maison[randrange(len(maison))] + "."
+		texte += "\n\nLe coupable est " + genere_affiche_perso_light()
 	else : # "une organisation" :
 		nom_organisation = organisation[randrange(len(organisation))]
-		text += "dans " + nom_organisation + "."
-		text += "\n\nLe coupable est " + genere_affiche_perso_light()
+		texte += "dans " + nom_organisation + "."
+		texte += "\n\nLe coupable est " + genere_affiche_perso_light()
 	
-	text += "\nLe mobile est " + mobile[randrange(len(mobile))] + "."
+	texte += "\nLe mobile est " + mobile[randrange(len(mobile))] + "."
 	
-	return text
+	return texte
 
 
 #_______________________________________________________________________________________________
@@ -184,21 +317,21 @@ def qui_paye(personne, type_payeur, payeur) :
 	Renvoie un texte.
 	"""
 	if type_payeur == "une organisation" :
-		text = "\nLa livraison se fera dans " + payeur + ". Ils seront attendus."
+		texte = "\nLa livraison se fera dans " + payeur + ". Ils seront attendus."
 
 	elif type_payeur == "un réseau" :
 		contact = lieu_discret[randrange(len(lieu_discret))]
-		text = "\nLa livraison est pour le réseau " + payeur
-		text += ". Ils trouverons leur contact " + contact
+		texte = "\nLa livraison est pour le réseau " + payeur
+		texte += ". Ils trouverons leur contact " + contact
 
 		if contact == "dans la taverne" :
-			text += " : " + nom_auberge() + "."
+			texte += " : " + nom_auberge() + "."
 		else :
-			text += "."
+			texte += "."
 	else :
-		text = "\nLa livraison se fera chez " + description(personne)
+		texte = "\nLa livraison se fera chez " + description(personne)
 
-	return text
+	return texte
 
 
 def truc_a_voler() :
@@ -211,14 +344,14 @@ def truc_a_voler() :
 	truc = vol[randrange(len(vol))]
 
 	if truc == "objet personnel" :
-		text = objet_pers[randrange(len(objet_pers))] + ". Chez "
-		text += genere_affiche_perso_light()
+		texte = objet_pers[randrange(len(objet_pers))] + ". Chez "
+		texte += genere_affiche_perso_light()
 	
 	elif truc == "caisse" :
-		text = str(randrange(1 , 10, 1)) + " caisse(s) " + caisse[randrange(len(caisse))]
-		text += " dans "+ type_lieu_ville()
+		texte = str(randrange(1 , 10, 1)) + " caisse(s) " + caisse[randrange(len(caisse))]
+		texte += " dans "+ type_lieu_ville()
 
-	return text
+	return texte
 
 
 def mission_fabriquer() :
@@ -230,18 +363,18 @@ def mission_fabriquer() :
 
 	Renvoie un texte.
 	"""
-	text = objet_precieux() + " :\n"
+	texte = objet_precieux() + " :\n"
 	
-	text += "\n1) Il leur faudra d'abord trouver les composants dans " 
-	text += lieu_quete()+ "." + ou_nature()
+	texte += "\n1) Il leur faudra d'abord trouver les composants dans " 
+	texte += lieu_quete()+ "." + ou_nature()
 	
-	text += "\n\n2) Puis ils se rendront dans " + lieu_quete()
-	text += " pour fabriquer l'objet." + ou_nature()
+	texte += "\n\n2) Puis ils se rendront dans " + lieu_quete()
+	texte += " pour fabriquer l'objet." + ou_nature()
 
-	text += "\n\n3) Leur quête prendra fin lorsqu'ils aurront terrassé "
-	text += quel_monstre() + " dans "+ lieu_quete_ext() + "." + ou_nature()
+	texte += "\n\n3) Leur quête prendra fin lorsqu'ils aurront terrassé "
+	texte += quel_monstre() + " dans "+ lieu_quete_ext() + "." + ou_nature()
 
-	return text
+	return texte
 
 
 def mission_tuer() :
@@ -253,19 +386,19 @@ def mission_tuer() :
 	cible = kill[randrange(len(kill))]	
 	
 	if cible == "personne" :
-		text = genere_affiche_perso_light() + "\n\nLa cible vit " + ou_en_ville()
+		texte = genere_affiche_perso_light() + "\n\nLa cible vit " + ou_en_ville()
 	
 	elif cible == "monstre" :
-		text = creature[randrange(len(creature))] + " dans " + lieu_quete() + "." + ou_nature()
+		texte = creature[randrange(len(creature))] + " dans " + lieu_quete() + "." + ou_nature()
 	
 	elif cible == "animal sauvage" :
-		text = str(randrange(1, 10, 1))+" "+animal_sauvage[randrange(len(animal_sauvage))] + "."
+		texte = str(randrange(1, 10, 1))+" "+animal_sauvage[randrange(len(animal_sauvage))] + "."
 	
 	else : #"animal"
-		text ="un animal.\nC'est "+animal_domestique[randrange(len(animal_domestique))]
-		text += " appartenant à "+genere_affiche_perso_light()
+		texte ="un animal.\nC'est "+animal_domestique[randrange(len(animal_domestique))]
+		texte += " appartenant à "+genere_affiche_perso_light()
 
-	return text
+	return texte
 
 
 def type_lieu_ville() :
@@ -278,21 +411,21 @@ def type_lieu_ville() :
 	type = batiment[randrange(len(batiment))]
 	
 	if type == "une maison":
-		text = "la maison de " + genere_affiche_perso_light() + ".\nCette personne vit " + ou_en_ville()
+		texte = "la maison de " + genere_affiche_perso_light() + ".\nCette personne vit " + ou_en_ville()
 	
 	elif type == "la taverne":
-		text = "une taverne : " + nom_auberge() + " " + ou_en_ville()
+		texte = "une taverne : " + nom_auberge() + " " + ou_en_ville()
 	
 	elif type == "un navire":
-		text = "un navire : " + nom_navire() + " " + ou_en_ville()
+		texte = "un navire : " + nom_navire() + " " + ou_en_ville()
 	
 	else : # "le temple" "la mairie" "la serre royale" "l'orphelinat" "l'hôpital" "la prison"
-		text = type + " " + ou_en_ville()
+		texte = type + " " + ou_en_ville()
 	
-	return text
+	return texte
 
 
-def cible_protection() :
+def cible_protection(personne) :
 	"""
 	Ce que les héros doivent protéger : 
 	une personne, un secret, un objet personnel, un convoi, un lieu.
@@ -305,50 +438,51 @@ def cible_protection() :
 	cible = protection[randrange(len(protection))]
 
 	if cible == "une personne" :
-		proteger = genere_affiche_perso_light()
+		proteger = personne
 	
 	elif cible == "un secret" :
-		proteger = "le secret de "+ genere_affiche_perso_light()
+		proteger = "le secret de " + personne
 	
 	elif cible == "un objet personnel" :
-		proteger = objet_pers[randrange(len(objet_pers))]+" appartenant à "+ genere_affiche_perso_light()
-	
+		proteger = objet_pers[randrange(len(objet_pers))] + "."
+
 	elif cible == "un convoi" :
-		proteger = type_convoi()+".\nIl part dans "+str(randrange(1, 3, 1))+" jour(s) pour"
+		proteger = type_convoi() + ".\nIl part dans " + str(randrange(1, 3, 1)) + " jour(s) pour"
 		proteger += zone()
-		proteger += "\nLe voyage devrait durer "+str(randrange(1, 10, 1))+" jour(s)."
+		proteger += "\nLe voyage devrait durer " + str(randrange(1, 10, 1)) + " jour(s)."
 
 	else : #"un lieu"
 		proteger = type_lieu_ville()
 	
-	return proteger + " " + menace(cible)
+	proteger += "\n" + menace(cible)
+	return proteger
 
 
-def menace(cible_protection):
+def menace(cible):
 	"""
 	Selon la cible à protéger, définit la menace qui pèse dessus.
 
 	Renvoie un texte.
 	"""
-	if cible_protection == "une personne" :
+	if cible == "une personne" :
 		raison = menace_personne[randrange(len(menace_personne))]
 		menace = "Cette personne est menacée de " + raison + " par "+ entite()
 	
-	elif cible_protection == "un secret" :
+	elif cible == "un secret" :
 		menace = "Ce secret risque d'être révélé par " + entite()
 	
-	elif cible_protection == "un objet personnel" :
+	elif cible == "un objet personnel" :
 		menace = "On peut craindre " + menace_objet_perso[randrange(len(menace_objet_perso))]
-		menace = " de cet objet par " + entite()
+		menace += " de cet objet par " + entite()
 
-	elif cible_protection == "un convoi" :
+	elif cible == "un convoi" :
 		menace = "Sur la route du convoi, les héros risquent de croiser "
-		menace = creature[randrange(len(creature))] + "."
+		menace += creature[randrange(len(creature))] + "."
 
 	else : #"un lieu"
 		menace = "Grâce à un informateur, les héros savent que cet endroit va être la cible d'une attaque.\n"
 		menace += "A la tête de cet assaut "+ entite() + "\n"
-		menace += "\nLe but est " + menace_lieu[randrange(len(menace_lieu))] + " de la cible."
+		menace += "\nLe but de cette attaque est " + menace_lieu[randrange(len(menace_lieu))] + " de la cible."
 
 	return menace
 
@@ -383,25 +517,25 @@ def cible_livraison() :
 	truc = livraison[randrange(len(livraison))]
 	
 	if truc == "une personne" :
-		text = genere_affiche_perso_light() + "\n\nLa cible se cache "
+		texte = genere_affiche_perso_light() + "\n\nLa cible se cache "
 	
 	elif truc == "un objet" :
 		truc = objet[randrange(len(objet))]
-		text = str(randrange(1, 10, 1)) + " " + truc + " "
+		texte = str(randrange(1, 10, 1)) + " " + truc + " "
 	
 	elif truc == "un objet personnel" :
-		text = objet_pers[randrange(len(objet_pers))] + " "
+		texte = objet_pers[randrange(len(objet_pers))] + " "
 	
 	elif truc == "un animal" :
-		text = animal_domestique[randrange(len(animal_domestique))] + " "
+		texte = animal_domestique[randrange(len(animal_domestique))] + " "
 	
 	elif truc == "une caisse" :
-		text = str(randrange(1, 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))] + " "
+		texte = str(randrange(1, 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))] + " "
 	
 	else : # "de l'argent" "un animal"
-		text = truc + " en " + quantite[randrange(len(quantite))] + " "	
+		texte = truc + " en " + quantite[randrange(len(quantite))] + " "	
 
-	return text + ou_en_ville()
+	return texte + ou_en_ville()
 
 
 def type_animal() :
@@ -414,16 +548,16 @@ def type_animal() :
 	type = quel_animal[randrange(len(quel_animal))]
 	
 	if type == "animal sauvage" :
-		text = "un "+animal_sauvage[randrange(len(animal_sauvage))]+" sauvage"
+		texte = "un "+animal_sauvage[randrange(len(animal_sauvage))]+" sauvage"
 	
 	elif type == "animal domestique" :
-		text = animal_domestique[randrange(len(animal_domestique))]+" appartenant à "
-		text += genere_affiche_perso_light()
+		texte = animal_domestique[randrange(len(animal_domestique))]+" appartenant à "
+		texte += genere_affiche_perso_light()
 	
 	else :
-		text = "des "+animal_elevage[randrange(len(animal_elevage))]+"."
+		texte = "des "+animal_elevage[randrange(len(animal_elevage))]+"."
 
-	return text
+	return texte
 
 
 def type_convoi() :
@@ -447,23 +581,23 @@ def mission_infiltrer() :
 
 	Renvoie un texte.
 	"""
-	text, cible = cible_infiltration()
+	texte, cible = cible_infiltration()
 	raison = raison_inf[randrange(len(raison_inf))]
 	
 	if raison == "voler" :
-		text += "\nIls pourront alors voler " + objet_pers[randrange(len(objet_pers))] + "."
+		texte += "\nIls pourront alors voler " + objet_pers[randrange(len(objet_pers))] + "."
 	
 	elif raison == "protéger" or raison == "libérer" or raison == "sauver" :
-		text += "\nIls pourront alors " + raison + " " + genere_affiche_perso_light()
+		texte += "\nIls pourront alors " + raison + " " + genere_affiche_perso_light()
 	
 	elif raison == "tuer" :
 		metier = poste_dans(cible)
-		text += "\nIls pourront alors tuer " + gen_perso_def_metier(metier)
+		texte += "\nIls pourront alors tuer " + gen_perso_def_metier(metier)
 	
 	else : #"détruire"
-		text += "\nIls pourront alors détruire cette organisation de l'intérieur."
+		texte += "\nIls pourront alors détruire cette organisation de l'intérieur."
 	
-	return text
+	return texte
 
 
 def cible_infiltration() :
@@ -476,13 +610,13 @@ def cible_infiltration() :
 	
 	if inf == "un réseau" :
 		cible = reseau[randrange(len(reseau))]
-		text = "un réseau " + cible + "."
+		texte = "un réseau " + cible + "."
 	
 	else : #"une organisation"
 		cible = organisation[randrange(len(organisation))]
-		text = cible + "."
+		texte = cible + "."
 	
-	return text, cible
+	return texte, cible
 
 
 def mission_kidnaper() :
@@ -494,13 +628,13 @@ def mission_kidnaper() :
 	cible = kid[randrange(len(kid))]
 	
 	if cible == "personne" :
-		text = genere_affiche_perso_light()  + "\nLa cible réside " + ou_en_ville()
+		texte = genere_affiche_perso_light()  + "\nLa cible réside " + ou_en_ville()
 	
 	else : #"animal"
 		cible = animal_domestique[randrange(len(animal_domestique))]
-		text = cible + " appartenant à "+genere_affiche_perso_light()
+		texte = cible + " appartenant à "+genere_affiche_perso_light()
 	
-	return text
+	return texte
 
 
 def mission_detruire() :
@@ -512,20 +646,20 @@ def mission_detruire() :
 	cible = destruction[randrange(len(destruction))]
 	
 	if cible == "un objet" :
-		text = objet_pers[randrange(len(objet_pers))] + " appartenant à "
-		text += genere_affiche_perso_light() + "\n\nCette personne vit " + ou_en_ville()
+		texte = objet_pers[randrange(len(objet_pers))] + " appartenant à "
+		texte += genere_affiche_perso_light() + "\n\nCette personne vit " + ou_en_ville()
 
 	elif cible == "une organisation" :
-		text = organisation[randrange(len(organisation))]+" " + ou_en_ville()
+		texte = organisation[randrange(len(organisation))]+" " + ou_en_ville()
 	
 	elif cible == "un réseau" :
-		text = cible+" "+reseau[randrange(len(reseau))] + ".\nIls trouverons une de leurs câches "
-		text += lieu_discret[randrange(len(lieu_discret))] + " " + ou_en_ville()
+		texte = cible+" "+reseau[randrange(len(reseau))] + ".\nIls trouverons une de leurs câches "
+		texte += lieu_discret[randrange(len(lieu_discret))] + " " + ou_en_ville()
 
 	else :#"un bâtiment"
-		text = type_lieu_ville()
+		texte = type_lieu_ville()
 	
-	return text
+	return texte
 
 
 def quel_monstre() :
@@ -537,14 +671,14 @@ def quel_monstre() :
 	cible = monstre[randrange(len(monstre))]
 	
 	if cible == "animal sacré" :
-		text = animal_sacre()
-		text += " dans "+lieu_quete_ext()
+		texte = animal_sacre()
+		texte += " dans "+lieu_quete_ext()
 	
 	else : #"créature"
-		text = creature[randrange(len(creature))]
-		text += " dans "+lieu_quete()
+		texte = creature[randrange(len(creature))]
+		texte += " dans "+lieu_quete()
 	
-	return text
+	return texte
 
 
 def mission_intercepter() :
@@ -580,19 +714,19 @@ def mission_empoisonnement() :
 	cible = poison[randrange(len(poison))]
 	
 	if cible == "un animal domestique" :
-		text = animal_domestique[randrange(len(animal_domestique))] + " appartenant à "
-		text += genere_affiche_perso_light() + "\nSa demeure se trouve " + ou_en_ville()
+		texte = animal_domestique[randrange(len(animal_domestique))] + " appartenant à "
+		texte += genere_affiche_perso_light() + "\nSa demeure se trouve " + ou_en_ville()
 
 	elif cible ==  "une personne" :
-		text = genere_affiche_perso_light() + "\nSa demeure se trouve " + ou_en_ville()
+		texte = genere_affiche_perso_light() + "\nSa demeure se trouve " + ou_en_ville()
 	
 	elif cible ==  "des caisses de nourriture" :
-		text = cible + ". Elles sont dans " + type_lieu_ville()
+		texte = cible + ". Elles sont dans " + type_lieu_ville()
 	
 	else : #  "le puit d'un village"
-		text = "le puit " + ou_en_ville()
+		texte = "le puit " + ou_en_ville()
 	
-	return text
+	return texte
 
 
 def ou_en_ville() :
@@ -633,3 +767,90 @@ def ou_nature() :
 	texte += "\nIl faudra " + str(randrange(5, 10, 1)) + " jour(s) de marche aux héros pour s'y rendre."
 	
 	return texte
+
+
+def contexte_rencontre_commanditaire(type_quete, type_commanditaire, commanditaire):
+
+	contexte = ""
+	if commanditaire == "le temple":
+		contexte += phrases_contexte("accosté.e.s")
+	
+	elif commanditaire in la_ligue_de_l_ombre or type_quete in quetes_illegales:
+		contexte_realiste = contexte_quetes_illegales[randrange(len(contexte_quetes_illegales))]
+		contexte += phrases_contexte(contexte_realiste)
+	
+	else :
+		contexte_realiste = contexte_quetes_legales[randrange(len(contexte_quetes_legales))]
+		contexte += phrases_contexte(contexte_realiste)
+		
+	return contexte
+
+def phrases_contexte(contexte_pioche):
+	
+	# quêtes illégales
+	if contexte_pioche == "Pst":
+		texte = '"Pst, pst !"\nDans une ruelle sombre, une personne encapuchonnée essaie '
+		texte += "d'attirer l'attention des héros.\n\n C'est "
+
+	elif contexte_pioche == "personne ivre":
+		texte = "Une personne visiblement ivre bouscule les héros, "
+		texte +="s'excuse en rotant bruyament et repart en titubant.\n"
+		texte += "Plus tard, un des héros retrouve dans une poche de vêtement "
+		texte += "une note griffonnée leur indiquant de se rendre "
+		texte += lieu_discret[randrange(len(lieu_discret))] + " à midi."
+		texte += "\n\nLes héros pourront y rencontrer "
+
+	elif contexte_pioche == "lettre":
+		texte = "Une lettre a été glissée pendant la nuit, sous la porte de chambre des héros.\n"
+		texte += "Il sont invités à ce rendre ce soir à l'auberge : " + nom_auberge() + "."
+		texte += "\n\nLes héros pourront y rencontrer "
+
+	elif contexte_pioche == "garçon":
+		texte = "Un enfant cours vers le groupe de héros, il est tout sourire.\n"
+		texte += '"La personne là-bas" dit-il en montrant une silhouette en train de disparaître.\n'
+		texte += '"Elle a dit de vous donner ça."\n'
+		texte += "Il tend une lettre à la plus charismatique des filles du groupe et attend quelques minutes...\n"
+		texte += '"Elle a dit aussi que vous allez me donner une pièce parce-que vous êtes des héros.\n\n"'
+		texte += "Il est écrit : \nRendez-vous ce soir à la taverne : " + nom_auberge()
+		texte += ", demandez des bierres rousses."
+		texte += "\n\nLes héros rencontreront alors "
+
+	elif contexte_pioche == "fille":
+		texte = "Une enfant cours vers le groupe de héros, elle tribuche quelques-fois.\n"
+		texte += '"La personne là-bas" dit-elle en montrant une silhouette vague appuyée contre un mur.\n'
+		texte += '"Elle m\'a dit que vous devez la suivre parce-que elle a du t\'avail pour vous."\n'
+		texte += "La silhouette se redresse lentement, épouste ses vêtements et s'en va."
+		texte += "\n\nAprès une filature plutôt facile, les héros rencontrent "
+
+	elif contexte_pioche == "mendiant.e":
+		texte = '"M\'sieurs Dames, une p\'tite pièce contre une info ?"\n'
+		texte += '"Y\'a quelqu\'un la d\'dans qui cherche des types d\'vot\' genre pour un p\'tit boulot."'
+		texte += "\n\nLe mendiant désigne une porte dérobée et leur décrit "
+
+	elif contexte_pioche == "contact":
+		texte = "Un contact des héros les informe d'une opportinitée : "
+		texte += '"Un travail bien payé, dans vos cordes mais j\'peux pas trop en dire plus."\n'
+		texte += '"Si ça vous interresse, je vous mets en contact."'
+		texte += "\n\nIl les mène jusqu'à l'auberge " + nom_auberge() + " et leur présente "
+
+	# Quêtes légales
+	elif contexte_pioche == "annonce":
+		nom_taverne = nom_auberge()
+		texte = "Devant la taverne : " + nom_taverne + ", sur un grand tableau en bois, "
+		texte += "les héros remarquent une annonce :\n"
+		texte += "Recrute mercenaires pour une mission urgente. Retrouvez moi dans la taverne."
+		texte += "\n\nEn poussant la porte, les héros pourront rencontrer "
+
+	elif contexte_pioche == "accosté.e.s":
+		texte = "Les héros sont accosté.e.s dans la rue par "
+
+	elif contexte_pioche == "tavernier.e":
+		texte = "Alors que les héros sont accoudés au comptoir de la taverne, le tavernier leur dit : "
+		texte += '"Vous avez l\'air d\'un groupe de gaillards, y\'a quelqu\'un à cette table là"\n'
+		texte += 'Il indique un coin sombre de la pièce.\n"qui cherche des personnes comme vous.'
+		texte += ' C\'est pour un boulot je crois."' + "\n\n Les héros peuvent s'approcher de "
+
+
+	return texte
+
+	

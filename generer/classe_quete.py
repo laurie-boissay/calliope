@@ -62,6 +62,9 @@ class Quete:
 		if self.quete == "":
 			self.generer_quete()
 
+		if self.contexte_de_quete == "":
+			self.contexte_de_quete = contexte_rencontre_commanditaire(self.type_quete, self.type_commanditaire, self.commanditaire)
+
 		if self.pnj_commanditaire == {}:
 			self.pnj_commanditaire = self.generer_pnj_light()
 
@@ -69,7 +72,7 @@ class Quete:
 			self.set_aide()
 
 		if self.recompense == "":
-			self.set_recompense()
+			self.recompense = recompense_de_quête(self.pnj_commanditaire, self.commanditaire, self.pnj_aide)
 
 
 	def set_commanditaire(self) :
@@ -87,17 +90,23 @@ class Quete:
 			self.commanditaire = "une personne"
 
 
-	def exclure_type_commanditaire(self, quel_type_commanditaires):
+	def set_commanditaire_exclu(self, commanditaires_non_desires) :
 		"""
-		Prends un type de commanditaire en entrée.
-
-		Tant que self.type_commanditaire correspond, la fonction
-		génère un nouveau commanditaire et assigne sa valeur à
-		self.type_commanditaire
+		Prend en entrée les commanditaires non désirés.
+		Tant que les entités désignés sont commanditaire :
+		change self.type_commanditaire et self.commanditaire.
 		"""
-		while self.type_commanditaire == quel_type_commanditaires:
+		while self.commanditaire in commanditaires_non_desires:
 			self.type_commanditaire = commanditaire[randrange(len(commanditaire))]
-			self.set_commanditaire()
+
+			if self.type_commanditaire == "une organisation" :
+				self.commanditaire = organisation[randrange(len(organisation))]
+
+			elif self.type_commanditaire == "un réseau" :
+				self.commanditaire = reseau[randrange(len(reseau))]
+				
+			else :
+				self.commanditaire = "une personne"
 
 
 	def nomer_commanditaire(self):
@@ -118,6 +127,7 @@ class Quete:
 		
 		return text
 
+
 	def set_aide(self):
 		"""
 		Définit quelle genre d'aide les PNJ recevront.
@@ -134,79 +144,6 @@ class Quete:
 			self.aide =  "Les héros devront se débrouiller seuls."
 		else : #"matériel"
 			self.aide =  "Les héros se voient proposer une aide matérielle."
-
-
-	def set_recompense(self):
-		"""
-		Génère une récompense en fonction de self.pnj_commanditaire.
-
-		Assigne la valeur à self.recompense
-		"""
-
-		metier = self.pnj_commanditaire["métier"].split(" ")
-		
-		if self.pnj_aide != {}:
-			metier_2 = self.pnj_aide["métier"].split(" ")
-
-			if metier_2[0] == "reine/roi" or metier_2[0] == "ministre" or metier_2[0] == "conseiller/e":
-				self.recompense = "avec un titre et des terres."
-
-		if metier[0] == "reine/roi" or metier[0] == "ministre" or metier[0] == "conseiller/e":
-			self.recompense = "avec un titre et des terres."
-
-		elif metier[0] == "servante/serviteur":
-			lieu = list(self.pnj_commanditaire["métier"].split("dans "))
-			self.recompense = "avec une autorisation d'accès officieuse dans " + lieu[1] + "."
-
-		elif metier[0] == "haut-placé/e":
-			lieu = list(self.pnj_commanditaire["métier"].split("dans "))
-			self.recompense = "en les recrutant dans " + lieu[1] + "."
-
-		elif metier[0] == "marchand/e":
-			marchandises = list(self.pnj_commanditaire["métier"].split(" de/d' "))
-			self.recompense = "avec quelques " + marchandises[1] + " de sa boutique."
-
-		elif self.commanditaire == "la caserne":
-			self.recompense = "avec un entraînement à manier l'arme de leur choix."
-
-		elif metier[0] == "capitaine":
-			self.recompense = "avec quelques " + commerce[randrange(len(commerce))] + " de sa cargaison."
-
-		elif metier[0] == "artisan/ne" or metier[0] == "astrologue" or metier[0] == "alchimiste":
-			self.recompense = "en mettant ses talents d'" + self.pnj_commanditaire["métier"] + " à leur service."
-
-		elif metier[0] == "forgeron/ne" or metier[0] == "cartographe" or metier[0] == "sorcier/sorcière":
-			self.recompense = "en mettant ses talents de " + self.pnj_commanditaire["métier"] + " à leur service."
-
-		elif metier[0] == "apprenti/e" or metier[0] == "mendiant/e":
-			self.recompense = "en se mettant à leur service."
-			self.recompense += "\n*!pj, 12, 3, prénom=" + self.pnj_commanditaire['prénom'] + ", nom="
-			self.recompense += self.pnj_commanditaire['nom'] + ", métier=" + self.pnj_commanditaire['métier']
-			self.recompense += ", race=" + self.pnj_commanditaire['race'] + ", genre="
-			self.recompense += self.pnj_commanditaire["genre"] + ", secret=" + self.pnj_commanditaire["secret"]
-			self.recompense += ", age=" + self.pnj_commanditaire["age"] + "*"
-
-		elif metier[0] == "tavernier/e":
-			auberge = list(self.pnj_commanditaire["métier"].split("dans "))
-			self.recompense = "en leur offrant un tarif préféreciel dans " + auberge[1] + "."
-
-		elif metier[0] == "médecin" or self.commanditaire == "la guilde des médecins":
-			self.recompense = "en leur offrant un tarif préféreciel sur tous les soins."
-
-		elif self.commanditaire == "la guilde des marchands":
-			self.recompense = "en leur offrant un tarif préféreciel dans toutes les boutiques de la ville."
-
-		elif self.commanditaire == "la guilde des prostituées":
-			self.recompense = "en leur offrant un tarif préféreciel dans toutes les maisons closes de la ville."
-
-		elif metier[0] == "prêtre/sse" or self.commanditaire == "le temple":
-			self.recompense = "avec un objet très précieux, sûrement magique : " + objet_precieux() + "."
-
-		elif self.commanditaire == "la guilde des voleurs" or self.commanditaire == "la guilde des assassins":
-			self.recompense = "en leur garantissant la protection de la guilde."
-
-		else:
-			self.recompense = "avec " + recompense_de_quete[randrange(len(recompense_de_quete))] + "."
 
 
 	def generer_pnj_light(self) :
@@ -233,11 +170,14 @@ class Quete:
 		Renvoie dans le bon ordre, le texte des attributs formants
 		le texte de quête.
 		"""
-		texte_de_quete = self.contexte_de_quete
+		texte_de_quete = ""
 
 		text = [
+		# Comment les héros sont recrutés.
+		self.contexte_de_quete,
+		
 		# Déscription du pnj commanditaire :
-		"Les héros rencontrent ", description(self.pnj_commanditaire), "\n",
+		description(self.pnj_commanditaire), "\n",
 
 		self.nomer_commanditaire()," souhaite les engager pour ", 
 
@@ -267,7 +207,7 @@ class Quete:
 		"""
 
 		if self.type_quete == "voler" :
-			self.exclure_type_commanditaire("une organisation")
+			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**voler**__ " + truc_a_voler()
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
@@ -275,8 +215,8 @@ class Quete:
 			self.quete += "__**infiltrer**__ " + mission_infiltrer()
 		
 		elif self.type_quete == "protéger" :
-
-			self.quete += "__**protéger**__ " + cible_protection()
+			personne_a_proteger = description(self.generer_pnj_light())
+			self.quete += "__**protéger**__ " + cible_protection(personne_a_proteger)
 		
 		elif self.type_quete == "livrer" :
 			self.quete += "__**livrer**__ " + cible_livraison()
@@ -287,14 +227,16 @@ class Quete:
 			self.quete += "__**enquêter**__ sur " + self.mission_enqueter(victime)
 		
 		elif self.type_quete == "kidnaper" :
+			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**kidnaper**__ " + mission_kidnaper() + "\n"
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
 		elif self.type_quete == "tuer" :
+			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**tuer**__ " + mission_tuer()
 
 		elif self.type_quete == "détruire" :
-			self.exclure_type_commanditaire("une organisation")
+			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**détruire**__ " + mission_detruire()
 
 		elif self.type_quete == "trouver" :
@@ -303,10 +245,9 @@ class Quete:
 
 		elif self.type_quete == "sauver" :
 			personne = self.generer_pnj_light()
-			self.set_commanditaire()
 			self.quete += "__**sauver**__ " + description(personne)
 			self.quete += "\nLes héros trouverons cette personne dans "
-			self.quete += type_lieu_ville() + menace("une personne")
+			self.quete += type_lieu_ville()+ " " + menace("une personne")
 
 		elif self.type_quete == "fabriquer" :
 			self.type_commanditaire = "une organisation"
@@ -321,12 +262,12 @@ class Quete:
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
 		elif self.type_quete == "empoisonner" :
-			self.exclure_type_commanditaire("une organisation")
+			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**empoisonner**__ " + mission_empoisonnement()
 
 		elif self.type_quete == "intercepter" :
 			self.quete += "__**intercepter**__ " + mission_intercepter()
-		
+
 
 	def mission_enqueter(self, victime):
 		"""
@@ -345,9 +286,10 @@ class Quete:
 
 			if self.commanditaire == "le chateau" or self.commanditaire == "le temple":
 				victime = self.generer_pnj_light()
-				self.contexte_de_quete += "Un messager arrive à l'auberge où logent les héros."
+				self.contexte_de_quete = "Un messager arrive à l'auberge où logent les héros."
 				self.contexte_de_quete += " Il leur annonce qu'ils sont attendus dans "
 				self.contexte_de_quete += self.commanditaire + ". C'est une mission très confidentielle :\n\n"
+				self.contexte_de_quete += "Les héros rencontrent "
 
 			text += "un meurtre : \n\n"
 			text += victime_morte(victime)
@@ -376,6 +318,8 @@ class Quete:
 		
 		else : #"un réseau"
 			nom_reseau = reseau[randrange(len(reseau))]
+			while nom_reseau == self.commanditaire:
+				nom_reseau = reseau[randrange(len(reseau))]
 			text += "un réseau " + nom_reseau 
 			text += ".\n\nLes héros doivent démasquer la tête pensante de ce réseau.\nC'est "
 			metier = "le chef d'un réseau " + nom_reseau

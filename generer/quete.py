@@ -18,6 +18,4 @@ def texte_de_quete(message):
 	quete.set_mission_commanditaire(message)
 	quete.combler_les_manques()
 
-	text = quete.assembler_texte_de_quete()
-
-	return text
+	return quete.assembler_texte_de_quete()

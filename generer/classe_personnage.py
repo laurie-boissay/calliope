@@ -80,6 +80,13 @@ class Personnage:
 		type_de_perso = self.cmd_text[0].strip("!")
 		self.type = type_de_perso.lower()
 
+	def set_type_de_personnage_pj(self):
+		"""
+		assigne la valeur pj à self.type
+		"""
+		self.type = "pj"
+
+
 	def set_total_points_et_valeur_max(self):
 		"""
 		Récupère l'index 1 et 2 de la commande saisie qui correspondent
@@ -262,9 +269,8 @@ class Personnage:
 		metier = metier_long.split(" ")
 		metier_court = metier[0]
 
-		if metier[0] == "apprenti/e":
+		if metier[0] == "apprenti/e" or metier[0] == "étudiant/e":
 			metier_court = metier[1]
-			
 		return metier_court
 
 	def bonus_de_metier(self):
@@ -382,7 +388,7 @@ class Personnage:
 		for i in range(len(text)):
 			text_a_afficher += text[i]
 
-		text_a_afficher += "\n\n```!personnage```*Explique les détails du fonctionnement de cette commande.*"
+		text_a_afficher += "\n\n*Comment personnaliser ce personnage ?*```!personnage```"
 
 		return text_a_afficher
 

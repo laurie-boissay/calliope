@@ -6,6 +6,7 @@ from collection_de_mots.zone import *
 from collection_de_mots.personnes import *
 from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
+from collection_de_mots.metiers import *
 
 """
 Génère des noms de lieux, d'objets, d'animaux, de personnes, de métier.
@@ -142,7 +143,7 @@ def nom_pers(genre, race) :
 		elif race == "halfelins" or race == "halfelin":
 			nom = prenoms_halfelins_m[randrange(len(prenoms_halfelins_m))] + " " + noms_halfelins[randrange(len(noms_halfelins))]
 		elif race == "gnomes" or race =="gnome":
-			nom = prenoms_gnomes_f[randrange(len(prenoms_gnomes_f))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
+			nom = prenoms_gnomes_m[randrange(len(prenoms_gnomes_m))] + " " +noms_gnomes[randrange(len(noms_gnomes))]
 		elif race == "demi-orcs" or race == "demi-orc":
 			race = race_nom[randrange(len(race_nom))]
 			if race == "orcs" or race == "orc":
@@ -165,41 +166,56 @@ def metier_pers() :
 	Précise pour certains métiers le domaine ou un nom de bâtiment.
 	"""
 	metier = pers_metier[randrange(len(pers_metier))]
+	
 	if metier == "haut-placé/e" :
-		phrase_1 = metier + " dans " +organisation[randrange(len(organisation))]
+		texte = metier + " dans " +organisation[randrange(len(organisation))]
+	
 	elif metier == "éleveur/éleveuse" :
-		phrase_1 = metier + " de/d' " + animal_elevage[randrange(len(animal_elevage))]
+		texte = metier + " de/d' " + animal_elevage[randrange(len(animal_elevage))]
+	
 	elif metier == "paysan/ne" :
-		phrase_1 = metier + " dans la culture " + champ[randrange(len(champ))]
+		texte = metier + " dans la culture " + champ[randrange(len(champ))]
+	
 	elif metier == "servante/serviteur" :
-		phrase_1 = metier+ " dans " + organisation[randrange(len(organisation))]
+		texte = metier+ " dans " + organisation[randrange(len(organisation))]
+	
 	elif metier == "serveur/serveuse" or metier == "tavernier/e" :
-		phrase_1 = metier + " dans l'auberge " + nom_auberge()
+		texte = metier + " dans l'auberge " + nom_auberge()
+	
 	elif metier == "marchand/e" :
-		phrase_1 = metier + " de/d' " +commerce[randrange(len(commerce))]
+		texte = metier + " de/d' " +commerce[randrange(len(commerce))]
+	
 	elif metier == "capitaine" :
-		phrase_1 = metier + " du bateau " + nom_navire()
+		texte = metier + " du bateau " + nom_navire()
+	
 	elif metier == "artisan/ne" :
-		phrase_1 = metier + " " + artisanat[randrange(len(artisanat))]
+		texte = metier + " " + artisanat[randrange(len(artisanat))]
+
 	elif metier == "apprenti/e" :
-		metier_appris = specialite()
-		phrase_1 = metier + " " + metier_appris
+		texte = metier + " " + classe_pers[randrange(len(classe_pers))]
+	
+	elif metier == "étudiant/e" :
+		metier_appris = specialite(pas_étudiant_e)
+		texte = metier + " " + metier_appris
+	
 	else :
-		phrase_1 = metier
-	return phrase_1
+		texte = metier
+	
+	return texte
 
-def specialite():
+def specialite(metiers_interdits):
 	"""
-	Définit la spécialité des apprenti.e.s en piochant dans la liste des métiers.
+	Définit la spécialité des étudiant/e en piochant dans la liste des métiers.
 
-	Certaines associations apprenti/e-métier sont proscrites comme : apprenti/e apprenti/e.
+	Certaines associations étudiant/e-métier sont proscrites comme : étudiant/e étudiant/e.
 	La fonction vérifie la spécialité piochée avec la liste pas_apprenti_e.
 
 	En cas de concordance, la fonction boucle sur elle même.
 	"""
 	metier = pers_metier[randrange(len(pers_metier))]
-	if metier in pas_apprenti_e:
-		return specialite()
+	
+	if metier in metiers_interdits:
+		return specialite(metiers_interdits)
 	else:
 		return metier
 
@@ -213,7 +229,7 @@ def habitants():
 	if race_1 == race_2 :
 		return habitants()
 	else :
-		return " Habitée mojoritairement par des "+race_1+". Il y a aussi quelques "+race_2+"."
+		return " Habitée mojoritairement par des " + race_1 + ". Il y a aussi quelques " + race_2 + "."
 
 def nom_zone(taille, rich, pop, activite_1):
 	"""
