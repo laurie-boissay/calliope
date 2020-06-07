@@ -314,7 +314,7 @@ class Quete:
 			text += "une personne :\n\nIl s'agit de " + genere_affiche_perso_light()
 		
 		elif raison == "un vol" :
-			text += "un vol :\n\nLe voleur a dérobé " + truc_a_voler() + "\n\nLe coupable est "
+			text += "un vol :\n\nLe voleur a dérobé " + truc_derobe() + "\n\nLe coupable est "
 			text += genere_affiche_perso_light()
 		
 		else : #"un réseau"
