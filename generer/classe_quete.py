@@ -72,7 +72,7 @@ class Quete:
 			self.set_aide()
 
 		if self.recompense == "":
-			self.recompense = recompense_de_quête(self.pnj_commanditaire, self.commanditaire, self.pnj_aide)
+			self.recompense = recompense_de_quete(self.pnj_commanditaire, self.commanditaire, self.pnj_aide)
 
 
 	def set_commanditaire(self) :
@@ -190,6 +190,9 @@ class Quete:
 		# Récompense promise :
 		"\n", self.nomer_commanditaire(), " propose de récompenser les héros ", 
 		self.recompense,
+
+		# Astuces commandes.
+		"\n\n", commande_quete(self.type_quete),
 		]
 
 		for i in range(len(text)):
@@ -232,8 +235,12 @@ class Quete:
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
 		elif self.type_quete == "tuer" :
+			la_ligue_de_la_lumiere.remove("le chateau")
+			la_ligue_de_la_lumiere.remove("la caserne")
 			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
 			self.quete += "__**tuer**__ " + mission_tuer()
+			la_ligue_de_la_lumiere.append("le chateau")
+			la_ligue_de_la_lumiere.append("la caserne")
 
 		elif self.type_quete == "détruire" :
 			self.set_commanditaire_exclu(la_ligue_de_la_lumiere)
@@ -242,12 +249,6 @@ class Quete:
 		elif self.type_quete == "trouver" :
 			self.quete += "__**trouver**__ "+ objet_precieux() + " dans " + lieu_quete()
 			self.quete += "." + ou_nature()
-
-		elif self.type_quete == "sauver" :
-			personne = self.generer_pnj_light()
-			self.quete += "__**sauver**__ " + description(personne)
-			self.quete += "\nLes héros trouverons cette personne dans "
-			self.quete += type_lieu_ville()+ " " + menace("une personne")
 
 		elif self.type_quete == "fabriquer" :
 			self.type_commanditaire = "une organisation"
@@ -307,13 +308,13 @@ class Quete:
 			self.commanditaire = organisation[randrange(len(organisation))]
 			espion = self.generer_pnj_light()
 			text += self.commanditaire + " :\n\nLes héros doivent démasquer un espion.\nC'est "
-			text += genere_affiche_perso_light()
+			text += description(espion)
 			
 		elif raison == "une personne" :
 			text += "une personne :\n\nIl s'agit de " + genere_affiche_perso_light()
 		
 		elif raison == "un vol" :
-			text += "un vol :\n\nIl s'agit de " + truc_a_voler() + "\n\nLe coupable est "
+			text += "un vol :\n\nLe voleur a dérobé " + truc_a_voler() + "\n\nLe coupable est "
 			text += genere_affiche_perso_light()
 		
 		else : #"un réseau"
