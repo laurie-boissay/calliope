@@ -115,13 +115,15 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout d'un bandeau pour l'affichage des commandes dans le texte de quête ;
 
-- ajout de phrases de contexte pour expliquer le recrutement des PJ. Elles varient en fonction du type de quêtes et du commanditaire.
+- ajout de phrases de contexte pour expliquer le recrutement des PJ. Elles varient en fonction du type de quête et du commanditaire.
 
 07/06/20 :
 
 - nettoyage du code ;
 
 - correction des nouveaux bugs et coquilles ;
+
+- ajout, sous le texte de quête, d'astuces à propos des commandes de quêtes ;
 
 - ajout de phrases de contexte.
 
