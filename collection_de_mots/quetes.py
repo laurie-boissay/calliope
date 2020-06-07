@@ -94,18 +94,17 @@ livraison = [
 	"un objet personnel",
 	"un animal",
 	"un objet",
-	"un animal",
 	"de l'argent",
 	"une caisse"
 	]
-
+"""
 quantite = [
 	"faible quantité",
 	"très grande quantité",
 	"petite quantité",
 	"quantité très importante"
 	]
-
+"""
 lieu_crime = [
 	"lieu discret",
 	"une organisation",
@@ -142,7 +141,7 @@ menace_lieu =[
 	"le pillage",
 	"la prise de contrôle"
 	]
-
+"""
 quetes_caserne = [
 	"tuer",
 	"capturer",
@@ -152,7 +151,7 @@ quetes_caserne = [
 	"infiltrer",
 	"enquêter"
 	]
-
+"""
 commanditaires_enqueter_meurtre = [
 	"le temple",
 	"la caserne",
@@ -192,7 +191,6 @@ kill = [
 	"personne",
 	"animal",
 	"monstre",
-	"animal sauvage"
 	]
 
 contexte_quetes_illegales = [

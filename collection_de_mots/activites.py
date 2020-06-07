@@ -1,18 +1,39 @@
-quel_animal = (
+"""
+Les listes en rapport avec les activités humaines :
+
+quel_animal[]
+animal_domestique[]
+animal_elevage[]
+animal_sauvage[]
+creature[]
+monstre[]
+organisation[]
+reseau[]
+champ[]
+commerce[]
+artisanat[]
+batiment[]
+maison []
+adjuvant []
+la_ligue_de_l_ombre []
+la_ligue_de_la_lumiere []
+"""
+
+quel_animal = [
 	"animal sauvage",
 	"animal domestique",
-	"animal d'élevage"
-	)
+	"animal d'élevage",
+	]
 
-animal_domestique = (
+animal_domestique = [
 	"un chat",
 	"un chien",
 	"un cheval",
 	"un singe",
-	"un faucon"
-	)
+	"un faucon",
+	]
 
-animal_elevage = (
+animal_elevage = [
 	"poule(s)",
 	"cheval/chevaux",
 	"vache(s)",
@@ -20,10 +41,10 @@ animal_elevage = (
 	"âne(s)",
 	"cochon(s)",
 	"lapin(s)",
-	"oie(s)"
-	)
+	"oie(s)",
+	]
 
-animal_sauvage = (
+animal_sauvage = [
 	"ours",
 	"loup(s)",
 	"sanglier(s)",
@@ -35,10 +56,10 @@ animal_sauvage = (
 	"cheval/chevaux",
 	"scorpion(s)",
 	"serpent(s)",
-	"araignée(s)"
-	)
+	"araignée(s)",
+	]
 
-creature = (
+creature = [
 	"une licorne",
 	"un dragon",
 	"une harpie",
@@ -52,15 +73,15 @@ creature = (
 	"un groupe de bandits",
 	"un yéti",
 	"un ours-hibou",
-	"un équipage de pirates"
-	)
+	"un équipage de pirates",
+	]
 
-monstre = (
+monstre = [
 	"animal sacré",
-	"créature"
-	)
+	"créature",
+	]
 
-organisation = (
+organisation = [
 	"la guilde des voleurs",
 	"la guilde des marchands",
 	"le palais de justice",
@@ -70,8 +91,8 @@ organisation = (
 	"la capitainerie",
 	"la guilde des médecins",
 	"le chateau",
-	"le temple"
-	)
+	"le temple",
+	]
 
 reseau = [
 	"de braconnage",
@@ -80,10 +101,10 @@ reseau = [
 	"de trafic de drogue",
 	"de chantage",
 	"de résistance",
-	"de contrebande"
+	"de contrebande",
 	]
 
-champ = (
+champ = [
 	"du maïs",
 	"du blé",
 	"de l'orge",
@@ -93,10 +114,10 @@ champ = (
 	"de la tomate",
 	"de la carotte",
 	"du seigle",
-	"de la courge"
-	)
+	"de la courge",
+	]
 
-commerce = (
+commerce = [
 	"herbes médicinales et récréatives",
 	"alcools",
 	"armes et armures",
@@ -113,9 +134,9 @@ commerce = (
 	"épices",
 	"parfums",
 	"livres",
-	)
+	]
 
-artisanat = (
+artisanat = [
 	"vanier/e",
 	"tailleur/euse",
 	"cuisinier/e",
@@ -129,10 +150,10 @@ artisanat = (
 	"bijoutier/e",
 	"forgeron/ne",
 	"maréchal férand/e",
-	"parfumeur/se"
-	)
+	"parfumeur/se",
+	]
 
-batiment = (
+batiment = [
 	"le temple",
 	"la mairie",
 	"la taverne",
@@ -141,18 +162,18 @@ batiment = (
 	"l'hôpital",
 	"la prison",
 	"un navire"
-	)
+	]
 
-maison = (
+maison = [
 	"à son domicile",
 	"chez le coupable",
-	)
+	]
 
-adjuvant = (
+adjuvant = [
 	"personne",
 	"matériel",
-	"non"
-	)
+	"non",
+	]
 
 la_ligue_de_l_ombre = [
 	"la guilde des voleurs",
