@@ -2,8 +2,6 @@
 Les listes qui servent à générer des mots pour varier le style des quêtes :
 quete[]
 quetes_illegales[]
-recompense[]
-recompense_de_quete[]
 infiltration[]
 protection[]
 commanditaire[]
@@ -16,7 +14,6 @@ destruction[]
 interception[]
 poison[]
 menace_personne[]
-menace_objet_perso[]
 menace_lieu[]
 quetes_caserne[]
 commanditaires_enqueter_meurtre[]
@@ -26,7 +23,7 @@ kid[]
 kill[]
 contexte_quetes_illegales[] 
 contexte_quetes_legales[]
-
+recompense_quete[]
 """
 from generer.nom import *
 
@@ -40,7 +37,6 @@ quete = [
 	"tuer",
 	"détruire",
 	"trouver",
-	"sauver",
 	"fabriquer",
 	"capturer",
 	"intercepter",
@@ -54,22 +50,6 @@ quetes_illegales = [
 	"détruire",
 	"capturer",
 	"empoisonner",
-	]
-
-recompense = [
-	"un titre",
-	"de l'argent",
-	"une autorisation d'accès",
-	"de l'or",
-	"des bijoux",
-	"un objet précieux",
-	"le recrutement",
-	"des terres"
-	]
-
-recompense_de_quete = [
-	"de l'argent",
-	"des bijoux",
 	]
 
 infiltration = [
@@ -157,10 +137,6 @@ menace_personne = [
 	"kidnaping"
 	]
 
-menace_objet_perso = [
-	"le vol",
-	"la destruction"
-	]
 menace_lieu =[
 	"la destruction",
 	"le pillage",
@@ -231,6 +207,10 @@ contexte_quetes_illegales = [
 
 contexte_quetes_legales = [
 	"annonce",
-	"accosté.e.s",
-	"tavernier.e",
-] 
+	"accostés",
+	"tavernier",
+]
+
+recompense_quete = [
+	"avec de l'argent.",
+]

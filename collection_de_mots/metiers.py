@@ -309,7 +309,7 @@ atouts_pj = [
 	[
 	"sa monture",
 	"sa foi",
-	"sa noblesse",
+	"sa condition de noble",
 	"son héroïsme",
 	"son esprit stratégique",
 	],

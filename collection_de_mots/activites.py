@@ -145,7 +145,7 @@ batiment = (
 
 maison = (
 	"à son domicile",
-	"chez le coupable"
+	"chez le coupable",
 	)
 
 adjuvant = (
