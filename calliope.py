@@ -20,7 +20,7 @@ pour deux JDR différents.
                             !macro
 """
 
-import os
+#import os
 import discord
 
 from commandes.all_cmd import *
