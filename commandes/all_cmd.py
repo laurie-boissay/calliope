@@ -91,7 +91,6 @@ def all_users_cmd(message):
         "\n\n```!+quêtes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
         "\n\n```!pnj    !pj```Génère un personnage."
-        "\n\n```!personnage```Affiche les détails de la commande permettant de créer un PJ ou PNJ personnalisé."
         "\n\n```!auberge```Génère un nom d'auberge."
         "\n\n```!1d20-5   !1d20+5```Lance 1 dé 20 +/-5."
         "\n\n```!macro```Affiche les macros disponibles pour tes personnages."
@@ -118,7 +117,7 @@ def all_users_cmd(message):
 
     elif message.startswith('!zone'):
         # Appelle la fonction qui génère une zone et renvoi un texte.
-        return "Bienvenue dans "+ zone()
+        return texte_description_zone(message)
 
     elif message.startswith('!auberge'): 
         # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
@@ -187,6 +186,14 @@ def all_users_cmd(message):
             text += pers_race[i] + ", "
         return text
 
+    elif message.startswith('!activites'):
+        # Renvoi la liste des races qui influencent la génération d'un patronyme
+        # avec la commande !pnj, x, y
+        text = "Vous pouvez choisir parmis ces activités :\n"
+        for i in range(len(activite)):
+            text += activite[i] + ", "
+        return text
+
     elif message.startswith('!genres'):
         # Renvoi la liste des genres qui influencent la génération d'un patronyme
         # avec la commande !pnj, x, y
@@ -220,6 +227,24 @@ def all_users_cmd(message):
         ]
         for k, v in metiers_et_carac_associee.items():
             text[0] += k + " : " + v + "\n"
+        return text[0]
+
+    elif message.startswith('!description'):
+        # Renvoi le texte d'aide pour utiliser les commande !pnj, x, y, !pj, x, y
+        text = [
+        "\n\n```!zone```peut prendre plusieurs paramètres séparés d'une virgule :"
+        "```!zone, superficie=5```Le paramètre superficie va de 1 à 5."
+        "```!zone, densité=4```Le paramètre densité va de 1 à 4."
+        "```!zone, richesse=4```Le paramètre richesse va de 1 à 4."
+        "```!zone, population=demi-orcs```Le paramètre population accepte une race."
+        "```!zone, nom=Paris```Le paramètre nom accepte un nom de ville."
+        "```!zone, climat=rude```Le paramètre nom accepte un type de climat."
+
+        "\n\n```!zone, superficie=5, densité=4, population=demi-orcs```"
+
+        "\n\n```!races```Affiche la liste des races implémentées."
+        "```!activités```Affiche la liste des activités implémentées."
+        ]
         return text[0]
 
     else:
