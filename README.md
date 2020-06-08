@@ -129,8 +129,10 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 07/06/20 :
 
-- création d'une classe pour la génération de zones.
+- création d'une classe pour la génération de zones ;
 
-- les zones sont maintenant personnalisables.
+- les zones sont maintenant personnalisables ;
+
+- dans le texte de quête s'affiche toujours le nom de la zone mais à la place de la description de la zone, c'est la commande pour l'obtenir qui s'affiche.
 
 
