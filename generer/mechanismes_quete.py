@@ -178,7 +178,6 @@ def commande_quete(type_quete):
 	texte += "\n\*\*\*  *Voir tous les types de quêtes :*  \*\*\*"
 	texte += "\n```!+quêtes```"
 	
-	
 	return texte
 
 
@@ -467,7 +466,7 @@ def qui_paye(personne, type_payeur, payeur) :
 
 	elif type_payeur == "un réseau" :
 		contact = lieu_discret[randrange(len(lieu_discret))]
-		texte = ". Ils trouverons leur contact " + contact
+		texte = "Ils trouverons leur contact " + contact
 
 		if contact == "dans la taverne" :
 			texte += " : " + nom_auberge() + "."
@@ -554,7 +553,7 @@ def mission_tuer() :
 	elif cible == "monstre" :
 		texte = creature[randrange(len(creature))] + " dans " + lieu_quete() + "." + ou_nature()
 	
-	elif cible == "animal sauvage" :
+	elif cible == "animal" :
 		texte = str(randrange(1, 10, 1)) + " " + animal_sauvage[randrange(len(animal_sauvage))] + "."
 
 	return texte

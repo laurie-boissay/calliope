@@ -8,6 +8,8 @@ from collection_de_mots.activites import *
 from collection_de_mots.trucs import *
 from collection_de_mots.metiers import *
 
+from generer.classe_zone import Zone
+
 """
 Génère des noms de lieux, d'objets, d'animaux, de personnes, de métier.
 	
@@ -51,42 +53,21 @@ def animal_sacre():
 	"""
 	return "le/l' "+ animal_sauvage[randrange(len(animal_sauvage))] + " " + objet_adj[randrange(len(objet_adj))]
 
-def zone() :
+
+def zone():
 	"""
-	Cette fonction permet de créer le descriptif d'une zone.
-		- nom de la zone ;
-		- taille de la zone ;
-		- densité de la population ;
-		- races les plus reprsentées ;
-		- activités principales ;
-		- la richesse des habitants ;
-		- climat ;
-		- détails sur le paysage.
+	Permet de lancer la génération d'une zone.
+	Renvoie un texte de nom de ville et la commande
+	permettant d'afficher la description de la zone.
 	"""
-	activite_1 = activite[randrange(len(activite))]
-	activite_2 = activite[randrange(len(activite))]
-	taille = superficie[randrange(len(superficie))]
-	rich = richesse[randrange(len(richesse))]
-	temp = climat[randrange(len(climat))]
-	pop = quantite_pop[randrange(len(quantite_pop))]
+	zone = Zone()	
 
+	zone.contraintes("")
+	zone.set_zone()
 
-	if activite_1 == activite_2 :
-		return zone()
-	else :	
-		phrase_0 = nom_zone(taille, rich, pop, activite_1)+"."
-		phrase_1 = "C'est une "+taille+" zone "+pop+"."
-		if taille == "très grande (4/5)" or taille == "immense (5/5)" :
-			if pop == "surpeuplée" or pop == "très peuplée" :
-				phrase_2 = " La population est cosmopolite."
-			else :
-				phrase_2 = habitants()
-		else :
-			phrase_2 = habitants()
-
-		phrase_3 = "L'activité principale est "+activite_1+", l'activité secondaire est "+activite_2+"."
-		phrase_4 = "La population est "+rich+". Le climat est "+temp+". La zone est "+paysage[randrange(len(paysage))]+"."
-		return  phrase_0+"\n\n"+phrase_1 + phrase_2 +"\n"+ phrase_3 +"\n"+ phrase_4
+	zone.set_commande()
+	
+	return zone.get_zone_nom() + "." + zone.get_commande() + "\n\n"
 
 
 def nom_pers(genre, race) :
