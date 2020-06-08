@@ -8,6 +8,7 @@ pers_race = (
 	"gnomes",
 	"demi-elfes"
 	)
+
 pers_age = (
 	"agé.e",
 	"très agé.e",

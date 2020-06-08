@@ -8,7 +8,6 @@ commanditaire[]
 raison_inf[]
 enquete[]
 livraison[]
-quantite[]
 lieu_crime[]
 destruction[]
 interception[]
@@ -97,14 +96,7 @@ livraison = [
 	"de l'argent",
 	"une caisse"
 	]
-"""
-quantite = [
-	"faible quantité",
-	"très grande quantité",
-	"petite quantité",
-	"quantité très importante"
-	]
-"""
+
 lieu_crime = [
 	"lieu discret",
 	"une organisation",
@@ -141,17 +133,7 @@ menace_lieu =[
 	"le pillage",
 	"la prise de contrôle"
 	]
-"""
-quetes_caserne = [
-	"tuer",
-	"capturer",
-	"intercepter",
-	"protéger",
-	"sauver",
-	"infiltrer",
-	"enquêter"
-	]
-"""
+
 commanditaires_enqueter_meurtre = [
 	"le temple",
 	"la caserne",

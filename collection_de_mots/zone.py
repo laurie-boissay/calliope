@@ -1,14 +1,21 @@
 superficie = (
-	"très petite (1/5)",
-	"petite (2/5)",
-	"grande (3/5)",
-	"très grande (4/5)",
-	"immense (5/5)"
+	"très petite",
+	"petite",
+	"grande",
+	"très grande",
+	"immense"
 	)
 
-quantite_pop = (
-	"déserte (population rare)",
-	"tranquille (population faible)",
+quantite_pop = ( # A virer
+	"déserte",
+	"tranquille",
+	"très peuplée",
+	"surpeuplée"
+	)
+
+densite = (
+	"déserte",
+	"tranquille",
 	"très peuplée",
 	"surpeuplée"
 	)
@@ -287,3 +294,7 @@ quelle_zone = (
 	"ici",
 	"ailleurs"
 	)
+
+cosmopolite_ou_race = [
+	"cosmopolite",
+	]
