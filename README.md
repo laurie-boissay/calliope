@@ -127,5 +127,10 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout de phrases de contexte.
 
+07/06/20 :
+
+- création d'une classe pour la génération de zones.
+
+- les zones sont maintenant personnalisables.
 
 
