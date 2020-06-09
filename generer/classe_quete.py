@@ -2,7 +2,6 @@ from random import randrange
 
 from generer.mechanismes_quete import *
 from generer.classe_personnage import Personnage
-from generer.quete import *
 
 from collection_de_mots.quetes import *
 

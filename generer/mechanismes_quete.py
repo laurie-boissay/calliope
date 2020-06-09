@@ -211,14 +211,14 @@ def recompense_de_quete(pnj_commanditaire, commanditaire, pnj_aide):
 		lieu = list(pnj_commanditaire["métier"].split("dans "))
 		recompense = "avec une autorisation d'accès officieuse dans " + lieu[1] + "."
 
-	elif metier[0] == "haut-placé/e":
+	elif metier[0] == "haut-placé.e":
 		lieu = list(pnj_commanditaire["métier"].split("dans "))
 		recompense = "en les recrutant dans " + lieu[1] + "."
 
 	elif "chef" in metier:	
 		recompense = "en les recrutant."
 
-	elif metier[0] == "marchand/e":
+	elif metier[0] == "marchand.e":
 		marchandises = list(pnj_commanditaire["métier"].split(" de/d' "))
 		recompense = "avec quelques " + marchandises[1]+ "."
 
@@ -233,10 +233,10 @@ def recompense_de_quete(pnj_commanditaire, commanditaire, pnj_aide):
 		commerce.append("informations")	
 		recompense = "avec quelques " + marchandises + " de sa cargaison."
 
-	elif metier[0] == "artisan/ne" or metier[0] == "astrologue" or metier[0] == "alchimiste":
+	elif metier[0] == "artisan.ne" or metier[0] == "astrologue" or metier[0] == "alchimiste":
 		recompense = "en mettant ses talents d'" + pnj_commanditaire["métier"] + " à leur service."
 
-	elif metier[0] == "forgeron/ne" or metier[0] == "cartographe" or metier[0] == "sorcier/sorcière":
+	elif metier[0] == "forgeron.ne" or metier[0] == "cartographe" or metier[0] == "sorcier/sorcière":
 		recompense = "en mettant ses talents de " + pnj_commanditaire["métier"] + " à leur service."
 
 	elif metier[0] == "marin":
@@ -244,11 +244,11 @@ def recompense_de_quete(pnj_commanditaire, commanditaire, pnj_aide):
 		recompense = recompense_quete[randrange(len(recompense_quete))]
 		recompense_quete.remove("avec une carte marquée d'un X rouge.")
 
-	elif metier[0] == "apprenti/e" or metier[0] == "mendiant/e":
+	elif metier[0] == "apprenti.e" or metier[0] == "mendiant.e":
 		recompense = "en se mettant à leur service."
 		recompense += commande_pj(pnj_commanditaire)
 
-	elif metier[0] == "tavernier/e":
+	elif metier[0] == "tavernier/tavernière":
 		auberge = list(pnj_commanditaire["métier"].split("dans "))
 		recompense_quete.append("en leur offrant un tarif préféreciel dans " + auberge[1] + ".")
 		recompense = recompense_quete[randrange(len(recompense_quete))]
@@ -269,7 +269,7 @@ def recompense_de_quete(pnj_commanditaire, commanditaire, pnj_aide):
 		recompense = recompense_quete[randrange(len(recompense_quete))]
 		recompense_quete.remove("en leur offrant un tarif préféreciel dans toutes les maisons closes de la ville.")
 
-	elif metier[0] == "prêtre/sse" or commanditaire == "le temple":
+	elif metier[0] == "prêtre.sse" or commanditaire == "le temple":
 		recompense_quete.append("avec un objet magique : " + objet_precieux() + ".")
 		recompense = recompense_quete[randrange(len(recompense_quete))]
 		del recompense_quete[1]
@@ -466,7 +466,7 @@ def qui_paye(personne, type_payeur, payeur) :
 
 	elif type_payeur == "un réseau" :
 		contact = lieu_discret[randrange(len(lieu_discret))]
-		texte = "Ils trouverons leur contact " + contact
+		texte = " Ils trouverons leur contact " + contact
 
 		if contact == "dans la taverne" :
 			texte += " : " + nom_auberge() + "."
@@ -690,10 +690,10 @@ def cible_livraison() :
 		texte = animal_domestique[randrange(len(animal_domestique))] + " "
 	
 	elif truc == "une caisse" :
-		texte = str(randrange(1, 10, 1))+" caisse(s) "+caisse[randrange(len(caisse))] + " "
+		texte = str(randrange(1, 10, 1)) + " caisse(s) " + caisse[randrange(len(caisse))] + " "
 	
 	else : # "de l'argent"
-		texte = truc + " en " + quantite[randrange(len(quantite))] + " "	
+		texte = truc + " "	
 
 	return texte + ou_en_ville()
 

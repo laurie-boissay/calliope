@@ -269,7 +269,7 @@ class Personnage:
 		metier = metier_long.split(" ")
 		metier_court = metier[0]
 
-		if metier[0] == "apprenti/e" or metier[0] == "étudiant/e":
+		if metier[0] == "apprenti.e" or metier[0] == "étudiant.e":
 			metier_court = metier[1]
 		return metier_court
 

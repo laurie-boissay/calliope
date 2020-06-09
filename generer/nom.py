@@ -1,7 +1,7 @@
 from random import randrange
 
 
-from collection_de_mots.quetes import *
+#from collection_de_mots.quetes import *
 from collection_de_mots.zone import *
 from collection_de_mots.personnes import *
 from collection_de_mots.activites import *
@@ -11,7 +11,7 @@ from collection_de_mots.metiers import *
 from generer.classe_zone import Zone
 
 """
-Génère des noms de lieux, d'objets, d'animaux, de personnes, de métier.
+Génère des noms de lieux, d'objets, d'animaux, de personnes, de métiers.
 	
 Décrit une zone de type ville ou village.
 """
@@ -67,7 +67,7 @@ def zone():
 
 	zone.set_commande()
 	
-	return zone.get_zone_nom() + "." + zone.get_commande() + "\n\n"
+	return zone.get_zone_nom() + "." + zone.get_commande() + "\n"
 
 
 def nom_pers(genre, race) :
@@ -108,6 +108,7 @@ def nom_pers(genre, race) :
 				nom = prenoms_humains_f[randrange(len(prenoms_humains_f))] + " " + noms_humains[randrange(len(noms_humains))]
 		else : # Autres races
 			race = pers_race[randrange(len(pers_race))]
+			
 			return nom_pers(genre, race)
 
 	elif genre == "masculin" :
@@ -137,7 +138,9 @@ def nom_pers(genre, race) :
 
 	else : # autres genres
 		genre = genre_nom[randrange(len(genre_nom))]
+		
 		return nom_pers(genre, race)
+	
 	return nom
 
 
@@ -148,34 +151,34 @@ def metier_pers() :
 	"""
 	metier = pers_metier[randrange(len(pers_metier))]
 	
-	if metier == "haut-placé/e" :
+	if metier == "haut-placé.e" :
 		texte = metier + " dans " +organisation[randrange(len(organisation))]
 	
 	elif metier == "éleveur/éleveuse" :
 		texte = metier + " de/d' " + animal_elevage[randrange(len(animal_elevage))]
 	
-	elif metier == "paysan/ne" :
+	elif metier == "paysan.ne" :
 		texte = metier + " dans la culture " + champ[randrange(len(champ))]
 	
 	elif metier == "servante/serviteur" :
 		texte = metier+ " dans " + organisation[randrange(len(organisation))]
 	
-	elif metier == "serveur/serveuse" or metier == "tavernier/e" :
+	elif metier == "serveur/serveuse" or metier == "tavernier/tavernière" :
 		texte = metier + " dans l'auberge " + nom_auberge()
 	
-	elif metier == "marchand/e" :
+	elif metier == "marchand.e" :
 		texte = metier + " de/d' " +commerce[randrange(len(commerce))]
 	
 	elif metier == "capitaine" :
 		texte = metier + " du bateau " + nom_navire()
 	
-	elif metier == "artisan/ne" :
+	elif metier == "artisan.ne" :
 		texte = metier + " " + artisanat[randrange(len(artisanat))]
 
-	elif metier == "apprenti/e" :
+	elif metier == "apprenti.e" :
 		texte = metier + " " + classe_pers[randrange(len(classe_pers))]
 	
-	elif metier == "étudiant/e" :
+	elif metier == "étudiant.e" :
 		metier_appris = specialite(pas_étudiant_e)
 		texte = metier + " " + metier_appris
 	
@@ -183,6 +186,7 @@ def metier_pers() :
 		texte = metier
 	
 	return texte
+
 
 def specialite(metiers_interdits):
 	"""
@@ -194,23 +198,12 @@ def specialite(metiers_interdits):
 	En cas de concordance, la fonction boucle sur elle même.
 	"""
 	metier = pers_metier[randrange(len(pers_metier))]
-	
+
 	if metier in metiers_interdits:
 		return specialite(metiers_interdits)
 	else:
 		return metier
 
-
-def habitants():
-	"""
-	Pioche deux races d'habitants.
-	"""
-	race_1 = pers_race[randrange(len(pers_race))]
-	race_2 = pers_race[randrange(len(pers_race))]
-	if race_1 == race_2 :
-		return habitants()
-	else :
-		return " Habitée mojoritairement par des " + race_1 + ". Il y a aussi quelques " + race_2 + "."
 
 def nom_zone(taille, rich, pop, activite_1):
 	"""
@@ -220,8 +213,8 @@ def nom_zone(taille, rich, pop, activite_1):
 		- la richesse des habitants ;
 		- l'activité pricipale.
 	"""
-	if taille == "très petite (1/5)" or taille == "petite (2/5)" :
-		if pop == "tranquille (population faible)" or pop == "déserte (population rare)" :
+	if taille == "très petite" or taille == "petite" :
+		if pop == "tranquille" or pop == "déserte" :
 			phrase_1 = "le "
 			phrase_3 = "hammeau "
 		elif pop == "très peuplée" :
@@ -231,7 +224,7 @@ def nom_zone(taille, rich, pop, activite_1):
 			phrase_1 = "La "
 			phrase_3 = "ville "
 
-	elif taille == "grande (3/5)" or taille == "très grande (4/5)" :
+	elif taille == "grande" or taille == "très grande" :
 		if pop == "déserte (population rare)" :
 			phrase_1 = "La "
 			phrase_3 = "étendue "
@@ -245,8 +238,8 @@ def nom_zone(taille, rich, pop, activite_1):
 			phrase_1 = "la "
 			phrase_3 = "citée "
 
-	else : #taille == "immense (5/5)" :
-		if pop == "déserte (population rare)" or pop == "tranquille (population faible)" :
+	else : #taille == "immense" :
+		if pop == "déserte" or pop == "tranquille" :
 			phrase_1 = "la "
 			phrase_3 = "étendue "
 		elif pop == "très peuplée" :
@@ -263,7 +256,7 @@ def nom_zone(taille, rich, pop, activite_1):
 	elif rich == "plutôt à l'aise financièrement" :
 		phrase_2 = "magnifique "
 	else : #"riche"
-		if taille != "très petite (1/5)" and taille != "petite (2/5)" and pop != "déserte (population rare)" and pop != "tranquille (population faible)" :
+		if taille != "très petite" and taille != "petite" and pop != "déserte" and pop != "tranquille" :
 			phrase_2 = "majestueux/se "
 		else :
 			phrase_2 = "joli/e "
