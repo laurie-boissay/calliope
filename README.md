@@ -127,7 +127,7 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - ajout de phrases de contexte.
 
-07/06/20 :
+08/06/20 :
 
 - création d'une classe pour la génération de zones ;
 
@@ -135,4 +135,10 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - dans le texte de quête s'affiche toujours le nom de la zone mais à la place de la description de la zone, c'est la commande pour l'obtenir qui s'affiche.
 
+
+09/06/20 :
+
+- réorganisation des dossiers et fichiers pour plus de clarté ;
+
+- mise en page : les mots écrits au féminin/masculin sont écrits de préférence avec un point ex : prêtre/sse devient prêtre.sse. De même pour le pluriel.
 
