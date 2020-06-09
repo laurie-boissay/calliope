@@ -143,7 +143,7 @@ auberge_adj = [
 	"rouge.s",
 	"gentil.le.s",
 	"chaud.e.s",
-	"roux(se).s",
+	"roux/rousse.s",
 	"aillé.e.s",
 	"roti.e.s",
 	"gras.se.s",

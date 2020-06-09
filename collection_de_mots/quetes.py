@@ -77,7 +77,6 @@ raison_inf = [
 	"libérer",
 	"tuer",	
 	"détruire",
-	"sauver"
 	]
 
 enquete = [
