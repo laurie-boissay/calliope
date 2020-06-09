@@ -12,11 +12,11 @@ from random import randrange
 
 from commandes.des import *
 
-from generer.perso import *
-from generer.quete import *
+from generer.quete_perso_zone import *
 from generer.mechanismes_quete import *
 
 from collection_de_mots.calliope_reaction import *
+
 
 def is_it_cmd(message, client):
     """
@@ -67,6 +67,7 @@ def is_it_cmd(message, client):
             text = ("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Flarondepoetique.com%2Fwa_import187.jpg%3Fv%3D24zc2o6a5we22v1&f=1&nofb=1")
 
     return canal, text
+
 
 def all_users_cmd(message):
     """
@@ -133,7 +134,7 @@ def all_users_cmd(message):
 
     elif message.startswith('!pj') or message.startswith('!pnj'):
             # Appelle la fonction arguments_reroll, renvoi un texte.
-            return comprendre_souhaits_utilisateur(message)
+            return texte_description_perso(message)
 
     elif message.startswith('!macro'):
         # La commande !macro est une macro si un utilisateur ayant tapé !macro
