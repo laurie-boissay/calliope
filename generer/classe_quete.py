@@ -258,7 +258,7 @@ class Quete:
 			self.type_commanditaire = "un réseau"
 			self.commanditaire = "de braconnage"
 			self.quete += "__**capturer**__ " + animal_sacre() + " dans " + lieu_quete_ext()
-			self.quete += "." + ou_nature() + "\n"
+			self.quete += "." + ou_nature()
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
 		elif self.type_quete == "empoisonner" :

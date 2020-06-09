@@ -344,7 +344,7 @@ def phrases_contexte(contexte_pioche, commanditaire):
 
 	elif contexte_pioche == "lettre":
 		texte = "Une lettre a été glissée pendant la nuit, sous la porte de chambre des héros.\n"
-		texte += "Il sont invités à se rendre ce soir à l'auberge : " + nom_auberge() + "."
+		texte += "Ils sont invités à se rendre ce soir à l'auberge : " + nom_auberge() + "."
 		texte += "\n\nLes héros pourront y rencontrer "
 
 	elif contexte_pioche == "garçon":
@@ -465,8 +465,8 @@ def qui_paye(personne, type_payeur, payeur) :
 		texte = "\nLa livraison se fera dans " + payeur + ". Ils seront attendus."
 
 	elif type_payeur == "un réseau" :
-		contact = lieu_discret[randrange(len(lieu_discret))]
-		texte = " Ils trouverons leur contact " + contact
+		contact = lieu_discret[randrange(len(lieu_discret))] + " "
+		texte = "Ils trouverons leur contact " + contact
 
 		if contact == "dans la taverne" :
 			texte += " : " + nom_auberge() + "."
@@ -747,7 +747,7 @@ def mission_infiltrer() :
 	if raison == "voler" :
 		texte += "\nIls pourront alors voler " + objet_pers[randrange(len(objet_pers))] + "."
 	
-	elif raison == "protéger" or raison == "libérer" or raison == "sauver" :
+	elif raison == "protéger" or raison == "libérer":
 		texte += "\nIls pourront alors " + raison + " " + genere_affiche_perso_light()
 	
 	elif raison == "tuer" :
@@ -832,11 +832,11 @@ def quel_monstre() :
 	
 	if cible == "animal sacré" :
 		texte = animal_sacre()
-		texte += " dans "+lieu_quete_ext()
+		texte += " dans " + lieu_quete_ext()
 	
 	else : #"créature"
 		texte = creature[randrange(len(creature))]
-		texte += " dans "+lieu_quete()
+		texte += " dans " + lieu_quete()
 	
 	return texte
 
