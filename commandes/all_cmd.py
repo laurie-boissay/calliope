@@ -103,7 +103,7 @@ def all_users_cmd(message):
         # Appelle la fonction generer_commanditaire et vérifie la longueur
         # du texte reçu puis renvoi le texte ou boucle sur la fonction.
         text = texte_de_quete(message)
-        if len(text) < 1950: # max discord text lenght = 2000.
+        if len(text) < 2001: # max discord text lenght = 2000.
             return text
         else :
             return all_users_cmd(message)
