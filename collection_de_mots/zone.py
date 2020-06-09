@@ -1,26 +1,52 @@
-superficie = (
+"""
+Les listes qui permettent de générer des lieux.
+
+superficie
+densite
+activite
+richesse 
+climat
+paysage
+auberge_nom
+auberge_adj
+navire_nom 
+navire_adj
+lieu_discret
+lieu_quete_nom
+lieu_quete_adj
+ext_nom
+ext_adj
+matiere_extraite 
+chasse
+magie
+drogue
+esclavage
+religion
+artisants
+commercants
+eleveurs 
+alcool
+rose_vent
+quelle_zone
+cosmopolite_ou_race
+"""
+
+superficie = [
 	"très petite",
 	"petite",
 	"grande",
 	"très grande",
 	"immense"
-	)
+	]
 
-quantite_pop = ( # A virer
+densite = [
 	"déserte",
 	"tranquille",
 	"très peuplée",
 	"surpeuplée"
-	)
+	]
 
-densite = (
-	"déserte",
-	"tranquille",
-	"très peuplée",
-	"surpeuplée"
-	)
-
-activite = (
+activite = [
 	"le commerce",
 	"l'esclavage",
 	"la religion",
@@ -34,23 +60,23 @@ activite = (
 	"la chasse",
 	"l'agriculture",
 	"l'artisanat",
-	"l'extraction minière"
-	)
+	"l'extraction minière",
+	]
 
-richesse = (
+richesse = [
 	"misérable",
 	"pauvre",
 	"plutôt à l'aise financièrement",
-	"riche"
-	)
+	"riche",
+	]
 
-climat = (	
+climat = [	
     "doux",
     "rude",
-    "tempéré"
-	)
+    "tempéré",
+	]
 
-paysage = (
+paysage = [
 	"une île",
 	"une presqu'île",
 	"bordée de montagnes",
@@ -68,10 +94,10 @@ paysage = (
 	"aérienne",
 	"dans une vallée",
 	"traversée par une rivière",
-	"sur (d'anciens) des marécages"
-	)
+	"sur [d'anciens] des marécages",
+	]
 
-auberge_nom = (
+auberge_nom = [
 	"Le sanglier",
 	"Le cerf",
 	"les trois p'tits chats",
@@ -103,41 +129,41 @@ auberge_nom = (
 	"l'agneau",
 	"le gigot",
 	"le ragout",
-	"la tourte"
-	)
+	"la tourte",
+	]
 
-auberge_adj = (
-	"rieur/rieuse(s)",
-	"chanceux(se)(s)",
-	"colérique(s)",
+auberge_adj = [
+	"rieur/rieuse.s",
+	"chanceuxchanceuse.s",
+	"colérique.s",
 	"du roi",
 	"de la reine",
-	"gourmand(e)(s)",
-	"joyeux(se)(s)",
-	"rouge(s)",
-	"gentil(le)(s)",
-	"chaud(e)(s)",
-	"roux(se)(s)",
-	"aillé(e)(s)",
-	"roti(e)(s)",
-	"gras(se)(s)",
-	"faisandé(e)(s)",
-	"barbu(e)(s)",
-	"cendré(e)(s)",
-	"fumé(e)(s)",
-	"gargantuesque(s)",
-	"doré(e)(s)",
+	"gourmand.e.s",
+	"joyeux/joyeuse.s",
+	"rouge.s",
+	"gentil.le.s",
+	"chaud.e.s",
+	"roux(se).s",
+	"aillé.e.s",
+	"roti.e.s",
+	"gras.se.s",
+	"faisandé.e.s",
+	"barbu.e.s",
+	"cendré.e.s",
+	"fumé.e.s",
+	"gargantuesque.s",
+	"doré.e.s",
 	"qui sent",
-	"goutu(e)(s)",
+	"goutu.e.s",
 	"aux pruneaux",
-	"juteux(se)(s)",
+	"juteux/justeuse.s",
 	"à l'ail",
-	"piquant(e)(s)",
-	"épicé(e)(s)",
-	"crémeux(se)(s)"
-	)
+	"piquant.e.s",
+	"épicé.e.s",
+	"crémeux/crémeuse.s",
+	]
 
-navire_nom = (
+navire_nom = [
 	"l'anguille",
 	"la sirène",
 	"le loup",
@@ -147,32 +173,32 @@ navire_nom = (
 	"l'étoile",
 	"le poisson",
 	"l'équipage",
-	"la socière"
-	)
+	"la sorcière",
+	]
 
-navire_adj = (
+navire_adj = [
 	"des mers",
-	"intrépide/s",
-	"chanceux/se/s",
+	"intrépide",
+	"chanceux/chanceuse",
 	"sans peurs",
-	"libre/s",
-	"fier/e",
-	"valeureux/se",
-	"volant/e",
-	"sacré/e",
-	"vert/e",
-	"étincelant/e"
-	)
+	"libre.s",
+	"fier/fière",
+	"valeureux/valeureuse",
+	"volant.e",
+	"sacré.e",
+	"vert.e",
+	"étincelant.e",
+	]
 
-lieu_discret = (
+lieu_discret = [
 	"dans la forêt",
 	"dans les égouts",
 	"dans une grotte",
 	"dans les docs",
-	"sous le pont"
-	)
+	"sous le pont",
+	]
 
-lieu_quete_nom = (
+lieu_quete_nom = [
 	"le temple",
 	"la tombe",
 	"les cavernes",
@@ -182,75 +208,75 @@ lieu_quete_nom = (
 	"l'ancienne prison",
 	"le donjon",
 	"le labyrinthe",
-	"l'antre"
-	)
+	"l'antre",
+	]
 
-lieu_quete_adj = (
+lieu_quete_adj = [
 	"du roi maudit",
 	"la reine rouge",
-	"sombre/s",
-	"hanté/e/s",
-	"maudit/e/s",
-	"du dragon blanc"
-	)
+	"sombre.s",
+	"hanté.e.s",
+	"maudit.e.s",
+	"du dragon blanc",
+	]
 
-ext_nom = (
+ext_nom = [
 	"la forêt",
 	"la montagne",
 	"l'île",
 	"les plaines",
 	"la vallée",
 	"la jungle"
-	)
+	]
 
-ext_adj = (
+ext_adj = [
 	"sombre",
 	"sacrée",
 	"maudite",
 	"verte"
-	)
+	]
 
-matiere_extraite = (
+matiere_extraite = [
 	"de quartz",
 	"de fer",
 	"d'acier",
 	"d'airain",
 	"de saphir",
 	"de diamant"
-	)
+	]
 
-chasse = (
+chasse = [
 	"du Cerf blanc",
 	"de Diane"
-	)
+	]
 
-magie = (
+magie = [
 	"de la quintessence",
 	"philosophale",
 	"des érudit",
 	"des illusions"
-	)
+	]
 
-drogue = (
+drogue = [
 	"des rêves embrumés",
 	"des rêveurs",
 	"des plaisirs",
 	"paradis",
 	"des mirages"
-	)
+	]
 
-esclavage = (
+esclavage = [
 	"des enchaînés",
 	"des entraves"
-	)
+	]
 
-religion = (
+religion = [
 	"des éveillés",
 	"des illuminés",
 	"de la foi"
-	)
+	]
 
-artisants = (
+artisants = [
 	"des façonneurs",
 	"de terre cuite",
 	"aux milles éclats",
@@ -258,28 +284,28 @@ artisants = (
 	"des alchimistes",
 	"des miroirs",
 	"des milles senteurs"
-	)
+	]
 
-commercants = (
+commercants = [
 	"des milles senteurs",
 	"aux milles couleurs",
 	"des merveilles"
-	)
+	]
 
-eleveurs = (
+eleveurs = [
 	"de la toison d'or",
 	"de plumes",
 	"des peaux",
 	"des puces"
-	)
+	]
 
-alcool = (
+alcool = [
 	"de Bacchus",
 	"dansante",
 	"qui tangue"
-	)
+	]
 
-rose_vent = (
+rose_vent = [
 	"au nord",
 	"à l'est",
 	"au sud",
@@ -288,12 +314,12 @@ rose_vent = (
 	"au nord-ouest",
 	"au sud-est",
 	"au sud-ouest"
-	)
+	]
 
-quelle_zone = (
+quelle_zone = [
 	"ici",
 	"ailleurs"
-	)
+	]
 
 cosmopolite_ou_race = [
 	"cosmopolite",

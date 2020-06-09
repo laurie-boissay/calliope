@@ -1,31 +1,65 @@
-poste_palais_justice = (
+"""
+Les listes + 1 dictionnaire permettant de générer des métiers/classes de personnages.
+
+poste_palais_justice
+poste_caserne
+poste_capitainerie
+poste_chateau
+poste_guilde
+poste_temple
+pers_metier
+metiers_et_carac_associee {}
+classe_pers
+carac
+atouts_pj
+	#meilleur_atout_archer.e
+	#meilleur_atout_assassin
+	#meilleur_atout_barbare
+	#meilleur_atout_barde
+	#meilleur_atout_druide
+	#meilleur_atout_guerrière_guerrier
+	#meilleur_atout_mage
+	#meilleur_atout_moine
+	#meilleur_atout_necromancien.ne
+	#meilleur_atout_paladin.e
+	#meilleur_atout_prêtre.sse
+	#meilleur_atout_rodeur_rodeuse
+	#meilleur_atout_sorcier_sorcière
+	#meilleur_atout_voleur_voleuse
+	#meilleur_atout_autre
+
+pas_étudiant_e
+"""
+
+
+poste_palais_justice = [
 	"juge",
-	"avocat/e",
-	"greffier/e",
+	"avocat.e",
+	"greffier/greffière",
 	"garde",
 	"procureur"
-	)
+	]
 
-poste_caserne = (
+poste_caserne = [
 	"garde",
 	"soldat",
-	"sergent/e",
-	"lieutenant/e",
+	"sergent.e",
+	"lieutenant.e",
 	"capitaine",
-	"commandant/e",
+	"commandant.e",
 	"commissaire"
-	)
+	]
 
-poste_capitainerie =(
+poste_capitainerie =[
 	"marin",
 	"capitaine",
 	"docker"
-	)
+	]
 
-poste_chateau = (
+poste_chateau = [
 	"reine/roi",
 	"ministre",
-	"conseiller/e",
+	"conseiller/conseillère",
 	"soldat",
 	"serviteur/servante",
 	"soldat",
@@ -35,9 +69,9 @@ poste_chateau = (
 	"soldat",
 	"serviteur/servante",
 	"cuisinier/cuisinière"
-	)
+	]
 
-poste_guilde = (
+poste_guilde = [
 	"le chef",
 	"le bras droit du chef",
 	"simple membre",
@@ -47,10 +81,10 @@ poste_guilde = (
 	"simple membre",
 	"simple membre",
 	"simple membre"
-	)
+	]
 
-poste_temple =(
-	"grand/e prêtre/sse",
+poste_temple =[
+	"grand.e prêtre.sse",
 	"moine",
 	"copiste",
 	"évèque",
@@ -61,25 +95,25 @@ poste_temple =(
 	"moine",
 	"moine",
 	"moine"
-	)
+	]
 
-pers_metier = (
+pers_metier = [
 	"alchimiste",
-	"apprenti/e",
-	"artisan/ne",
+	"apprenti.e",
+	"artisan.ne",
 	"archer/archère",
 	"architecte",
 	"assassin",
 	"astrologue",
 	"barde",
-	"boulanger/e",
+	"boulanger/boulangère",
 	"bourreau",
 	"capitaine",
 	"cartographe",
 	"chasseur/chasseuse",
 	"chevalier/chevalière",
-	"comédienne/comédien",
-	"conseillère/conseiller royal/e",
+	"comédien.ne",
+	"conseillère/conseiller royal.e",
 	"contremaître",
 	"courtisant/courtisanne",
 	"couturier/couturière",
@@ -87,51 +121,51 @@ pers_metier = (
 	"duc/duchesse",
 	"druide",
 	"écuyère/écuyer",
-	"écrivain/e publique/public",
+	"écrivain.e publique/public",
 	"éleveur/éleveuse",
-	"étudiant/e",
-	"forgeron/ne",
+	"étudiant.e",
+	"forgeron.ne",
 	"garde",
 	"géographe",
 	"guerrière/guerrier",
-	"haut-placé/e",
+	"haut-placé.e",
 	"joalière/joalier",
 	"juge",
 	"linguiste",
-	"maçon/maçonne",
+	"maçon.ne",
 	"maire",
 	"mage",
-	"marchand/e",
-	"maréchal/e ferrant/e",
+	"marchand.e",
+	"maréchal.e ferrant.e",
 	"marin",
 	"médecin",
-	"mendiant/e",
+	"mendiant.e",
 	"meunière/meunier",
 	"mineur/mineuse",
-	"nécromancien/ne",
+	"nécromancien.ne",
 	"ministre",
-	"paladin/e",
-	"paysan/ne",
+	"paladin.e",
+	"paysan.ne",
 	"pêcheur/pêcheuse",
 	"peintre",
 	"prefet",
-	"prêtre/sse",
-	"prince/sse",
-	"professeur/e",
+	"prêtre.sse",
+	"prince.sse",
+	"professeur.e",
 	"reine/roi",	
 	"servante/serviteur",
 	"serveur/serveuse",
 	"sorcier/sorcière",
-	"soldat/e",
+	"soldat.e",
 	"tanneur/tanneuse",
-	"tavernier/e",
+	"tavernier/tavernière",
 	"voleur/voleuse",
-	)
+	]
 	
 metiers_et_carac_associee = {
 	"alchimiste" : "Intelligence",
-	"apprenti/e" : "Selon le métier étudié",
-	"artisan/ne" : "Dextérité",
+	"apprenti.e" : "Selon le métier étudié",
+	"artisan.ne" : "Dextérité",
 	"archer/archère" : "Dextérité",
 	"architecte" : "Intelligence",
 	"assassin" : "Dextérité",
@@ -144,7 +178,7 @@ metiers_et_carac_associee = {
 	"cartographe" : "Intelligence",
 	"chasseur/chasseuse" : "Dextérité",
 	"chevalier/chevalière" : "Force",
-	"comédienne/comédien" : "Charisme",
+	"comédien.ne" : "Charisme",
 	"conseillère/conseiller" : "Sagesse",
 	"contremaître" : "Sagesse",
 	"couturier/couturière" : "Dextérité",
@@ -153,46 +187,46 @@ metiers_et_carac_associee = {
 	"duc/duchesse" : "Charisme",
 	"druide" : "Sagesse",
 	"écuyère/écuyer" : "Constitution",
-	"écrivain/e" : "Intelligence",
+	"écrivain.e" : "Intelligence",
 	"éleveur/éleveuse" : "Constitution",
-	"étudiant/e" : "Selon le métier étudié",
-	"forgeron/ne" : "Force",
+	"étudiant.e" : "Selon le métier étudié",
+	"forgeron.ne" : "Force",
 	"garde" : "Force",
 	"géographe" : "Intelligence",
 	"guerrière/guerrier" : "Force",
-	"haut-placé/e" : "Charisme",
+	"haut-placé.e" : "Charisme",
 	"joalière/joalier" : "Dextérité",
 	"juge" : "Sagesse",
 	"linguiste" : "Intelligence",
-	"maçon/maçonne" : "Force",
+	"maçon.ne" : "Force",
 	"maire" : "Charisme",
 	"mage" : "Intelligence",
-	"marchand/e" : "Charisme",
-	"maréchal/e" : "Constitution",
+	"marchand.e" : "Charisme",
+	"maréchal.e" : "Constitution",
 	"marin" : "Constitution",
 	"médecin" : "Intelligence",
-	"mendiant/e" : "Constitution",
+	"mendiant.e" : "Constitution",
 	#"meunière/meunier" : ,
 	"mineur/mineuse" : "Force",
-	"nécromancien/ne" : "Intelligence",
+	"nécromancien.ne" : "Intelligence",
 	"ministre" : "Charisme",
 	"moine" : "Sagesse",
-	"paladin/e" : "Charisme",
-	"paysan/ne" : "Constitution",
+	"paladin.e" : "Charisme",
+	"paysan.ne" : "Constitution",
 	"pêcheur/pêcheuse" :"Constitution" ,
 	"peintre" : "Sagesse",
 	"prefet" : "Charisme",
-	"prêtre/sse" : "Sagesse",
-	"prince/sse" : "Charisme",
-	"professeur/e" : "Intelligence",
+	"prêtre.sse" : "Sagesse",
+	"prince.sse" : "Charisme",
+	"professeur.e" : "Intelligence",
 	"reine/roi" : "Charisme",
 	"rodeur/rodeuse" : "Dextérité",
 	"servante/serviteur" : "Constitution",
 	"serveur/serveuse" : "Constitution",
 	"sorcier/sorcière" : "Intelligence",
-	"soldat/e" : "Force",
+	"soldat.e" : "Force",
 	"tanneur/tanneuse" : "Constitution",
-	"tavernier/e" : "Sagesse",
+	"tavernier/tavernière" : "Sagesse",
 	"voleur/voleuse" : "Dextérité",
 	}
 
@@ -205,9 +239,9 @@ classe_pers = [
 	"guerrière/guerrier", # 5
 	"mage", # 6
 	"moine", # 7
-	"nécromancien/ne", # 8
-	"paladin/e", # 9
-	"prêtre/sse", # 10
+	"nécromancien.ne", # 8
+	"paladin.e", # 9
+	"prêtre.sse", # 10
 	"rodeur/rodeuse", # 11
 	"sorcier/sorcière", # 12
 	"voleur/voleuse", # 13
@@ -221,7 +255,6 @@ carac = [
 	"Sagesse",
 	"Charisme",
 	]
-
 
 atouts_pj = [
 	#meilleur_atout_archer.e = 0
@@ -362,32 +395,31 @@ atouts_pj = [
 ]
 
 pas_étudiant_e = [
-	"apprenti/e",
-	"barbare",
+	"apprenti.e",
 	"capitaine",
 	"duc/duchesse",
 	"écuyère/écuyer",
-	"étudiant/e"
-	"haut-placé/e",
+	"étudiant.e",
+	"haut-placé.e",
 	"maire",
-	"mendiant/e",
+	"mendiant.e",
 	"ministre",
-	"prince/sse",
+	"prince.sse",
 	"reine/roi",
 
-	"archer/archère", # 0
-	"assassin", # 1
-	"barbare", # 2
-	"barde", # 3
-	"druide", # 4
-	"guerrière/guerrier", # 5
-	"mage", # 6
-	"moine", # 7
-	"nécromancien/ne", # 8
-	"paladin/e", # 9
-	"prêtre/sse", # 10
-	"rodeur/rodeuse", # 11
-	"sorcier/sorcière", # 12
-	"voleur/voleuse", # 13
+	"archer/archère",
+	"assassin", 
+	"barbare",
+	"barde",
+	"druide",
+	"guerrière/guerrier",
+	"mage",
+	"moine",
+	"nécromancien.ne",
+	"paladin.e",
+	"prêtre.sse",
+	"rodeur/rodeuse",
+	"sorcier/sorcière",
+	"voleur/voleuse",
 	]
 	

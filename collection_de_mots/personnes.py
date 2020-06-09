@@ -1,4 +1,34 @@
-pers_race = (
+"""
+Les listes permettant de générer les caractéristiques d'un personneage. Sauf son métier.
+
+pers_race
+pers_age
+pers_genre
+pers_secret
+genre_nom
+race_nom
+race_nom_2
+prenoms_humains_f
+prenoms_nains_f
+prenoms_elfes_f
+prenoms_orcs_f
+prenoms_halfelins_f
+prenoms_gnomes_f
+prenoms_humains_m
+prenoms_nains_m
+prenoms_elfes_m
+prenoms_orcs_m
+prenoms_halfelins_m
+prenoms_gnomes_m
+noms_nains
+noms_humains
+noms_halfelins
+noms_gnomes
+noms_elfes
+leitmotiv
+"""
+
+pers_race = [
 	"humains",
 	"nains",
 	"elfes",
@@ -7,22 +37,22 @@ pers_race = (
 	"halfelins",
 	"gnomes",
 	"demi-elfes"
-	)
+	]
 
-pers_age = (
+pers_age = [
 	"agé.e",
 	"très agé.e",
 	"jeune",
 	"très jeune"
-	)
+	]
 
-pers_genre = (
+pers_genre = [
 	"féminin",
 	"masculin",
 	"androgyne"
-	)
+	]
 
-pers_secret = (
+pers_secret = [
 	"de prostitution",
 	"de contrebande",
 	"d'un enfant illégitime",
@@ -56,24 +86,23 @@ pers_secret = (
 	"de son adoption bébé par une famille de loups",
 	"de ses années passées dans une communauté aux croyances étranges",
 	"de ses années passées dans une communauté païenne",
-	)
+	]
 
-
-genre_nom = (
+genre_nom = [
 	"masculin",
 	"féminin"
-	)
-race_nom = (
+	]
+race_nom = [
 	"orc",
 	"humain"
-	)
+	]
 
-race_nom_2 = (
+race_nom_2 = [
 	"elfe",
 	"humain"
-	)
+	]
 
-prenoms_humains_f = (
+prenoms_humains_f = [
 	"An",
 	"Annia",
 	"Alaina",
@@ -104,9 +133,9 @@ prenoms_humains_f = (
 	"Télinne",
 	"Véronnelle",
 	"Wendoline",
-	)
+	]
 
-prenoms_nains_f = (
+prenoms_nains_f = [
 	"Astrid",
 	"Arnhild",
 	"Berthild",
@@ -124,9 +153,9 @@ prenoms_nains_f = (
 	"Sigrid",
 	"Strida",
 	"Diesa"
-	)
+	]
 
-prenoms_elfes_f = (
+prenoms_elfes_f = [
 	"Elberenh",
 	"Elidhwen",
 	"Ellenùviel",
@@ -149,9 +178,9 @@ prenoms_elfes_f = (
 	"Nolwaënn",
 	"Mirielle",
 	"Keltienn"
-	)
+	]
 
-prenoms_orcs_f = (
+prenoms_orcs_f = [
 	"Aoga",
 	"Bargula",
 	"Caroka",
@@ -178,9 +207,9 @@ prenoms_orcs_f = (
 	"Shautha",
 	"Vola",
 	"Volen"
-	)
+	]
 
-prenoms_halfelins_f = (
+prenoms_halfelins_f = [
 	"Eglantine",
 	"Lila",
 	"Jacinthe",
@@ -191,9 +220,9 @@ prenoms_halfelins_f = (
 	"Prune",
 	"Jasmine",
 	"Cerise"
-	)
+	]
 
-prenoms_gnomes_f = (
+prenoms_gnomes_f = [
 	"Thérèse",
 	"Huguette",
 	"Rose",
@@ -204,9 +233,9 @@ prenoms_gnomes_f = (
 	"Germaine",
 	"Charlotte",
 	"Gyslaine"
-	)
+	]
 
-prenoms_humains_m = (
+prenoms_humains_m = [
 	"Adalrik",
 	"Arn",
 	"Bernulf",
@@ -239,9 +268,9 @@ prenoms_humains_m = (
 	"Tao",
 	"Thorsten",
 	"Yu",
-	)
+	]
 
-prenoms_nains_m = (
+prenoms_nains_m = [
 	"Gloin",
 	"Krorin",
 	"Thorin",
@@ -253,9 +282,9 @@ prenoms_nains_m = (
 	"Korik",
 	"Barrend",
 	"Brottor"
-	)
+	]
 
-prenoms_elfes_m = (
+prenoms_elfes_m = [
 	"Arwendil",
 	"Caëldwendir",
 	"Eldwyndor",
@@ -278,9 +307,9 @@ prenoms_elfes_m = (
 	"Laurendor",
 	"Morwendir",
 	"Raëldirion"
-	)
+	]
 
-prenoms_orcs_m = (
+prenoms_orcs_m = [
 	"Aog",
 	"Bargul",
 	"Carok",
@@ -308,9 +337,9 @@ prenoms_orcs_m = (
 	"Ront",
 	"Shump",
 	"Thokk"
-	)
+	]
 
-prenoms_halfelins_m = (
+prenoms_halfelins_m = [
 	"Bill",
 	"Bern",
 	"Don",
@@ -329,9 +358,9 @@ prenoms_halfelins_m = (
 	"Polo",
 	"Sam",
 	"Titi"
-	)
+	]
 
-prenoms_gnomes_m = (
+prenoms_gnomes_m = [
 	"Albert",
 	"Edgard",
 	"Eustache",
@@ -343,9 +372,9 @@ prenoms_gnomes_m = (
 	"Louis",
 	"Guy",
 	"Guilbert"
-	)
+	]
 
-noms_nains = (
+noms_nains = [
 	"Mâchefer",
 	"Briseroc",
 	"Forgefer",
@@ -355,9 +384,9 @@ noms_nains = (
 	"Ecu-de-chêne",
 	"Marteleur",
 	"Peau-de-pierre"
-	)
+	]
 
-noms_humains = (
+noms_humains = [
 	"Dubois",
 	"Dupont",
 	"Deschamps",
@@ -373,9 +402,9 @@ noms_humains = (
 	"Legrand",
 	"Lepetit",
 	"Legros"
-	)
+	]
 
-noms_halfelins =(
+noms_halfelins =[
 	"Sur-le-pont",
 	"Dubois",
 	"Sous-colline",
@@ -386,9 +415,9 @@ noms_halfelins =(
 	"Du-lac-aux-joncs",
 	"Feuilledethé",
 	"SousRameau"
-	)
+	]
 
-noms_gnomes = (
+noms_gnomes = [
 	"Blumdenplick",
 	"Dimtigballen",
 	"Vondemacht",
@@ -398,9 +427,9 @@ noms_gnomes = (
 	"Uhldimmerstelp",
 	"Molkenpulp",
 	"Bimpbelinedor"
-	)
+	]
 
-noms_elfes = (
+noms_elfes = [
 	"Amastacia",
 	"Fleur-d'Etoile",
 	"Amakiir",
@@ -421,8 +450,7 @@ noms_elfes = (
 	"Bouton-de-Gemme",
 	"Xiloscient",
 	"Pétale-d'Or"
-	)
-
+	]
 
 leitmotiv = [
 	"devenir un/e héro/ïne.",
@@ -441,7 +469,7 @@ leitmotiv = [
 	"faire une découverte extraordinaire.",
 	"prouver sa valeur.",
 	"trouver le remède qui sauvera un/e proche.",
-	"etancher sa soif de connaissances.",
+	"étancher sa soif de connaissances.",
 	"retrouver un artefact.",
 	"faire prospérer son entreprise.",
 	"dominer le monde.",

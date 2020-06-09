@@ -1,9 +1,22 @@
-vol = (
-	"objet personnel",
-	"caisse"
-	)
+"""
+Les listes qui permettent de générer un objet.
 
-objet_pers =(
+vol
+objet_pers
+objet
+caisse
+convoi
+objet_nom
+objet_adj
+"""
+
+
+vol = [
+	"objet personnel",
+	"caisse",
+	]
+
+objet_pers = [
 	"un livre de compte",
 	"un petit carnet rouge relié",
 	"une bouteille de vin rare",
@@ -14,21 +27,21 @@ objet_pers =(
 	"une épée magique",
 	"une lettre cachetée",
 	"un contrat",
-	"un petit coffret verrouillé"
-	)
+	"un petit coffret verrouillé",
+	]
 
-objet = (
-	"épée(s)",
-	"hache(s)",
-	"bouclier(s)",	
-	"tableau(x)",
-	"briquet(s)",
-	"sabre(s)",	
-	"potion(s)",
-	"uniforme(s)"
-	)
+objet = [
+	"épée.s",
+	"hache.s",
+	"bouclier.s",	
+	"tableau.x",
+	"sabre.s",	
+	"potion.s",
+	"uniforme.s",
+	"armure.s",
+	]
 
-caisse = (
+caisse = [
 	"d'armes",
 	"d'objets magiques",
 	"de drogue",
@@ -36,17 +49,17 @@ caisse = (
 	"de bijoux",
 	"d'antiquités",
 	"d'objets exotiques",
-	"d'alimentation"
-	)
+	"d'alimentation",
+	]
 
-convoi = (
+convoi = [
 	"d'animaux",
 	"de caisses",
 	"de personnes",
-	"d'or"
-	)
+	"d'or",
+	]
 
-objet_nom = (
+objet_nom = [
 	"l'épée",
 	"la lance",
 	"le marteau",
@@ -61,32 +74,26 @@ objet_nom = (
 	"la rose",
 	"le miroir",
 	"l'arc",
-	"le prisme"
-	)
+	"le prisme",
+	]
 
-objet_adj = (
-	"sacré(e)",
-	"divin(e)",
+objet_adj = [
+	"sacré.e",
+	"divin.e",
 	"des dieux",
-	"saint(e)",
-	"étincelent(e)",
+	"saint.e",
+	"étincelent.e",
 	"de lumière",
 	"du juste",
 	"des géants",
 	"de vérité",
 	"de justice",
 	"de courage",
-	"vaillant(e)",
+	"vaillant.e",
 	"de colère",
 	"de puissance",
 	"de raison",
 	"du sage",
-	"du mage blanc"
-	)
+	"du mage blanc",
+	]
 
-valeur = (
-	"banale",
-	"supérieure",
-	"médicocre",
-	"exceptionnelle"
-	)

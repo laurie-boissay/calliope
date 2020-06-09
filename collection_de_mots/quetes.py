@@ -1,30 +1,31 @@
 """
 Les listes qui servent à générer des mots pour varier le style des quêtes :
-quete[]
-quetes_illegales[]
-infiltration[]
-protection[]
-commanditaire[]
-raison_inf[]
-enquete[]
-livraison[]
-lieu_crime[]
-destruction[]
-interception[]
-poison[]
-menace_personne[]
-menace_lieu[]
-quetes_caserne[]
-commanditaires_enqueter_meurtre[]
-mobile[]
-description_scene[]
-kid[]
-kill[]
-contexte_quetes_illegales[] 
-contexte_quetes_legales[]
-recompense_quete[]
+
+quete
+quetes_illegales
+infiltration
+protection
+commanditaire
+raison_inf
+enquete
+livraison
+lieu_crime
+maison
+destruction
+interception
+poison
+menace_personne
+menace_lieu
+quetes_caserne
+commanditaires_enqueter_meurtre
+mobile
+description_scene
+kid
+kill
+contexte_quetes_illegales
+contexte_quetes_legales
+recompense_quete
 """
-from generer.nom import *
 
 quete = [
 	"voler",
@@ -101,6 +102,11 @@ lieu_crime = [
 	"lieu discret",
 	"une organisation",
 	"une maison"
+	]
+
+maison = [
+	"à son domicile",
+	"chez le coupable",
 	]
 
 destruction = [

@@ -1,22 +1,22 @@
 """
 Les listes en rapport avec les activités humaines :
 
-quel_animal[]
-animal_domestique[]
-animal_elevage[]
-animal_sauvage[]
-creature[]
-monstre[]
-organisation[]
-reseau[]
-champ[]
-commerce[]
-artisanat[]
-batiment[]
-maison []
-adjuvant []
-la_ligue_de_l_ombre []
-la_ligue_de_la_lumiere []
+quel_animal
+animal_domestique
+animal_elevage
+animal_sauvage
+creature
+monstre
+organisation
+reseau
+champ
+commerce
+artisanat
+batiment
+maison
+adjuvant
+la_ligue_de_l_ombre
+la_ligue_de_la_lumiere
 """
 
 quel_animal = [
@@ -34,29 +34,29 @@ animal_domestique = [
 	]
 
 animal_elevage = [
-	"poule(s)",
+	"poule.s",
 	"cheval/chevaux",
-	"vache(s)",
-	"mouton(s)",
-	"âne(s)",
-	"cochon(s)",
-	"lapin(s)",
-	"oie(s)",
+	"vache.s",
+	"mouton.s",
+	"âne.s",
+	"cochon.s",
+	"lapin.s",
+	"oie.s",
 	]
 
 animal_sauvage = [
 	"ours",
-	"loup(s)",
-	"sanglier(s)",
-	"cerf(s)",
-	"renard(s)",
-	"serpent(s)",
-	"crocodile(s)",
-	"aigle(s)",
+	"loup.s",
+	"sanglier.s",
+	"cerf.s",
+	"renard.s",
+	"serpent.s",
+	"crocodile.s",
+	"aigle.s",
 	"cheval/chevaux",
-	"scorpion(s)",
-	"serpent(s)",
-	"araignée(s)",
+	"scorpion.s",
+	"serpent.s",
+	"araignée.s",
 	]
 
 creature = [
@@ -137,20 +137,20 @@ commerce = [
 	]
 
 artisanat = [
-	"vanier/e",
-	"tailleur/euse",
-	"cuisinier/e",
+	"vanier/vanière",
+	"tailleur/tailleuse",
+	"cuisinier/cuisinière",
 	"alchimiste",
 	"herboriste",
-	"potier/e",
-	"verrier/e",
-	"macon/ne",
-	"charpentier/e",
-	"tanneur/se",
-	"bijoutier/e",
-	"forgeron/ne",
-	"maréchal férand/e",
-	"parfumeur/se",
+	"potier/potière",
+	"verrier/verrière",
+	"macon.ne",
+	"charpentière/charpentier",
+	"tanneur/tanneuse",
+	"bijoutière/bijoutier",
+	"forgeron.ne",
+	"maréchal.e ferrant.e",
+	"parfumeur/parfumeuse",
 	]
 
 batiment = [
@@ -162,11 +162,6 @@ batiment = [
 	"l'hôpital",
 	"la prison",
 	"un navire"
-	]
-
-maison = [
-	"à son domicile",
-	"chez le coupable",
 	]
 
 adjuvant = [
