@@ -88,6 +88,8 @@ def all_users_cmd(message):
         text = [
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
+        "\nMa tâche principale est de générer des quêtes aléatoires"
+        "\nmais je sais faire plein d'autres choses :"
         "\n\n```!quête```Génère une quête."
         "\n\n```!+quêtes```Affiche les commandes pour choisir le type de quête."
         "\n\n```!zone```Génère une zone."
@@ -180,7 +182,7 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!races'):
-        # Renvoi la liste des races qui influencent la génération d'un patronyme
+        # Renvoi la liste des races qui influencent la génération d'un patronyme.
         # avec la commande !pnj, x, y
         text = "Vous pouvez choisir la race des :\n"
         for i in range(len(pers_race)):
@@ -188,7 +190,7 @@ def all_users_cmd(message):
         return text
 
     elif message.startswith('!activites'):
-        # Renvoi la liste des races qui influencent la génération d'un patronyme
+        # Renvoi la liste des activités qui influencent la génération d'un nom de zone.
         # avec la commande !pnj, x, y
         text = "Vous pouvez choisir parmis ces activités :\n"
         for i in range(len(activite)):
