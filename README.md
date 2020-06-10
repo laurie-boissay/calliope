@@ -1,4 +1,4 @@
-# Calliope est un robot discord en français pour le JDR.
+# Calliope est un robot discord en français qui génère des quêtes de JDR.
 
 La fonction de base est la génération de quêtes aléatoires pour servir d'inspiration à un Maître du Jeu.
 
