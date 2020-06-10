@@ -10,7 +10,6 @@ class Quete:
 	"""
 	Tous les attributs et méthodes nécessaires pour générer une quête.
 	"""
-
 	def __init__(self):
 		self.type_quete = ""
 		self.quete = ""
@@ -78,7 +77,6 @@ class Quete:
 		"""
 		Qui engage les héros ?
 		"""
-
 		if self.type_commanditaire == "une organisation" :
 			self.commanditaire = organisation[randrange(len(organisation))]
 
@@ -131,7 +129,6 @@ class Quete:
 		"""
 		Définit quelle genre d'aide les PNJ recevront.
 		"""
-
 		aide = adjuvant[randrange(len(adjuvant))]
 	
 		if aide == "personne" :
@@ -246,7 +243,7 @@ class Quete:
 			self.quete += "__**détruire**__ " + mission_detruire()
 
 		elif self.type_quete == "trouver" :
-			self.quete += "__**trouver**__ "+ objet_precieux() + " dans " + lieu_quete()
+			self.quete += "__**trouver**__ " + objet_precieux() + " dans " + lieu_quete()
 			self.quete += "." + ou_nature()
 
 		elif self.type_quete == "fabriquer" :
@@ -258,7 +255,7 @@ class Quete:
 			self.type_commanditaire = "un réseau"
 			self.commanditaire = "de braconnage"
 			self.quete += "__**capturer**__ " + animal_sacre() + " dans " + lieu_quete_ext()
-			self.quete += "." + ou_nature()
+			self.quete += "." + ou_nature() + "\n"
 			self.quete += qui_paye(self.generer_pnj_light(), self.type_commanditaire, self.commanditaire)
 		
 		elif self.type_quete == "empoisonner" :

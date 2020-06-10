@@ -124,9 +124,9 @@ def description(personne):
 	en italique, la commande permettant de générer
 	le détail du personnage.
 	"""	
-	texte = personne["prénom"] + " " + personne["nom"] + ". C'est une personne "
+	texte = personne["prénom"] + " " + personne["nom"] + ". \nC'est une personne "
 	texte += personne["age"] + " de genre " + personne["genre"] 
-	texte += ", de la race des " + personne["race"] + "s. "
+	texte += ", de la race des " + personne["race"] + "s. \n"
 	texte += personne["pronom"] + " est " + personne["métier"] + "."
 	
 	texte += "\n\n\*\*\*  *Fiche complète avec cette commande :*  \*\*\*"
@@ -387,7 +387,7 @@ def phrases_contexte(contexte_pioche, commanditaire):
 		texte = "Les héros sont accostés dans la rue par "
 
 	elif contexte_pioche == "tavernier":
-		texte = "Alors que les héros sont à la taverne, le tavernier s'approche et leur dit : "
+		texte = "Alors que les héros sont à la taverne, le tavernier s'approche et leur dit :\n"
 		texte += '"Y\'a quelqu\'un à cette table là-bas qui cherche à recruter un groupe gaillard'
 		texte += ' un peu dans l\'genre du votre."'
 		texte += "\n\nLes héros peuvent s'approcher de "
@@ -465,7 +465,7 @@ def qui_paye(personne, type_payeur, payeur) :
 		texte = "\nLa livraison se fera dans " + payeur + ". Ils seront attendus."
 
 	elif type_payeur == "un réseau" :
-		contact = lieu_discret[randrange(len(lieu_discret))] + " "
+		contact = lieu_discret[randrange(len(lieu_discret))]
 		texte = "Ils trouverons leur contact " + contact
 
 		if contact == "dans la taverne" :
@@ -605,9 +605,9 @@ def cible_protection(personne) :
 		proteger = objet_pers[randrange(len(objet_pers))] + "."
 
 	elif cible == "un convoi" :
-		proteger = type_convoi() + ".\nIl part dans " + str(randrange(1, 3, 1)) + " jour(s) pour "
+		proteger = type_convoi() + ".\nIl part dans " + str(randrange(1, 3, 1)) + " jour.s pour "
 		proteger += zone()
-		proteger += "\nLe voyage devrait durer " + str(randrange(1, 10, 1)) + " jour(s)."
+		proteger += "\nLe voyage devrait durer " + str(randrange(1, 10, 1)) + " jour.s."
 
 	else : #"un lieu"
 		proteger = type_lieu_ville()
@@ -861,7 +861,7 @@ def mission_intercepter() :
 		texte = cible + " qui vient de : " + zone() + "\n\nLe porteur est "
 		texte += genere_affiche_perso_light()+"\nSon arrivée est prévue dans "
 		
-	return texte + str(randrange(1, 3, 1)) + " jour(s)."
+	return texte + str(randrange(1, 3, 1)) + " jour.s."
 
 
 def mission_empoisonnement() :
@@ -903,7 +903,7 @@ def ou_en_ville() :
 	
 	else : #"ailleurs"
 		texte = "dans " + zone() + "\nIl faudra " +str(randrange(1, 10, 1))
-		texte += " jour(s) de marche aux héros pour s'y rendre."
+		texte += " jour.s de marche aux héros pour s'y rendre."
 
 	return texte
 
@@ -923,7 +923,7 @@ def ou_nature() :
 	else : #"ailleurs"
 		texte = "\nC'est " + rose_vent[randrange(len(rose_vent))] + " de : " + zone()
 
-	texte += "\nIl faudra " + str(randrange(5, 10, 1)) + " jour(s) de marche aux héros pour s'y rendre."
+	texte += "\nIl faudra " + str(randrange(5, 10, 1)) + " jour.s de marche aux héros pour s'y rendre."
 	
 	return texte
 
