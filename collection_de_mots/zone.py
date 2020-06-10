@@ -36,14 +36,14 @@ superficie = [
 	"petite",
 	"grande",
 	"très grande",
-	"immense"
+	"immense",
 	]
 
 densite = [
 	"déserte",
 	"tranquille",
 	"très peuplée",
-	"surpeuplée"
+	"surpeuplée",
 	]
 
 activite = [
@@ -134,7 +134,7 @@ auberge_nom = [
 
 auberge_adj = [
 	"rieur/rieuse.s",
-	"chanceuxchanceuse.s",
+	"chanceux/chanceuse.s",
 	"colérique.s",
 	"du roi",
 	"de la reine",
@@ -226,14 +226,15 @@ ext_nom = [
 	"l'île",
 	"les plaines",
 	"la vallée",
-	"la jungle"
+	"la jungle",
+	"le verger",
 	]
 
 ext_adj = [
-	"sombre",
-	"sacrée",
-	"maudite",
-	"verte"
+	"sombre.s",
+	"sacré.e.s",
+	"maudit.e.s",
+	"vert.e.s",
 	]
 
 matiere_extraite = [
@@ -242,19 +243,19 @@ matiere_extraite = [
 	"d'acier",
 	"d'airain",
 	"de saphir",
-	"de diamant"
+	"de diamant",
 	]
 
 chasse = [
 	"du Cerf blanc",
-	"de Diane"
+	"de Diane",
 	]
 
 magie = [
 	"de la quintessence",
 	"philosophale",
 	"des érudit",
-	"des illusions"
+	"des illusions",
 	]
 
 drogue = [
@@ -262,18 +263,18 @@ drogue = [
 	"des rêveurs",
 	"des plaisirs",
 	"paradis",
-	"des mirages"
+	"des mirages",
 	]
 
 esclavage = [
 	"des enchaînés",
-	"des entraves"
+	"des entraves",
 	]
 
 religion = [
 	"des éveillés",
 	"des illuminés",
-	"de la foi"
+	"de la foi",
 	]
 
 artisants = [
@@ -283,20 +284,20 @@ artisants = [
 	"des forges rouges",
 	"des alchimistes",
 	"des miroirs",
-	"des milles senteurs"
+	"des milles senteurs",
 	]
 
 commercants = [
 	"des milles senteurs",
 	"aux milles couleurs",
-	"des merveilles"
+	"des merveilles",
 	]
 
 eleveurs = [
 	"de la toison d'or",
 	"de plumes",
 	"des peaux",
-	"des puces"
+	"des puces",
 	]
 
 alcool = [
@@ -313,12 +314,12 @@ rose_vent = [
 	"au nord-est",
 	"au nord-ouest",
 	"au sud-est",
-	"au sud-ouest"
+	"au sud-ouest",
 	]
 
 quelle_zone = [
 	"ici",
-	"ailleurs"
+	"ailleurs",
 	]
 
 cosmopolite_ou_race = [
