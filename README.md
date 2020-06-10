@@ -142,3 +142,8 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - mise en page : les mots écrits au féminin/masculin sont écrits de préférence avec un point ex : prêtre/sse devient prêtre.sse. De même pour le pluriel.
 
+
+10/06/20 :
+
+- sur la base de Calliope, je commence un second bot : Clio. Calliope me servira d'inspiration.
+
