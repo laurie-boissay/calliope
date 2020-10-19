@@ -4,7 +4,11 @@ Les commandes et macro de lancer de dés.
 
 from random import randint
 
+
+
 def roll(nb_des, valeur_des, bonus):
+    #Génère le lancer de dés.
+
     resultats = [0] * nb_des
     total = 0
     text = "\n" + str(nb_des) + " dé(s) " + str(valeur_des) + " :\n "
@@ -22,7 +26,10 @@ def roll(nb_des, valeur_des, bonus):
     text = text + " = " + "**" + str(total+bonus) + "**"
     return text
 
+
 def commande_des(cmd):
+    #Une macro un peu longue pour lancer les dés.
+
     elements = list(cmd.strip("!"))
     nb_des = ""
     valeur_des = ""
@@ -72,7 +79,10 @@ def commande_des(cmd):
 
     return roll(nb_des, valeur_des, bonus)
 
+
 def short_dice(bonus, perso, nb_des, valeur_des):
+    # Une macro courte pour lancer les dés.
+
     bonus = bonus.strip("!")
 
     if bonus == "i":

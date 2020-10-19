@@ -64,8 +64,9 @@ def macro_eustache (macro_text) :
         return p1 + p2
 
     elif "!sommeil" in macro_text.lower():
-        p1 = "Nombre de cibles touchées par le sort de sommeil d'Eustache :\n" 
-        p2 = roll(1, 6, 3)
+        p1 = "Nombre de cibles touchées par le sort de sommeil d'Eustache :\n"
+        p1 += "(Avec le carillon.)"
+        p2 = roll(1, 6, 5)
         return p1 + p2
 
 #______Tests stats____________________________________________________________________
@@ -123,14 +124,14 @@ def macro_pyo_dm (macro_text) :
         "\n\n```!dlpierres```Dégâts du lance-pierres d'Eustache.\n"
 
         "\n\n```!rapière```Eustache donne un coup de rapière."
-        "\n\n```!dlpierres```Dégâts de la rapière d'Eustache.\n"
+        "\n\n```!d!drapière```Dégâts de la rapière d'Eustache.\n"
         ]
         return text[0]
 
     elif '!voies' in macro_text.lower():
         text = [
         "\n\n```!sort```Eustache lance un sort."
-        "\n\n```!surpise```Jet de perception d'Eustache en cas de surprise."
+        "\n\n```!surprise```Jet de perception d'Eustache en cas de surprise."
         "\n\n```!sommeil```Nombre de cibles du sort de sommeil d'Eustache."
         ]
         return text[0]

@@ -39,7 +39,7 @@ def is_it_cmd(message, client):
         Vérifie si le message contient 'calliope calliope calliope'
             si oui, modifie le texte et le canal réponse.
 
-    Dans tous les cas renvoit le canal réponse et le texte.
+    Dans tous les cas renvoie le canal réponse et le texte.
 
     """
 
@@ -80,11 +80,11 @@ def all_users_cmd(message):
 
         Et enfin certaines commandes appellent une fonction.
 
-    Dans tous les cas, renvoit un texte.   
+    Dans tous les cas, renvoie un texte.   
 
     """
     if message.startswith('!help'): 
-        # Renvoi un message d'aide.
+        # Renvoie un message d'aide.
         text = [
         "Je suis Calliope, la muse de la poésie épique et du jeu de rôle."
         "\nTu peux me parler en toute confidentialité en message privé."
@@ -102,8 +102,8 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith("!quête"): 
-        # Appelle la fonction generer_commanditaire et vérifie la longueur
-        # du texte reçu puis renvoi le texte ou boucle sur la fonction.
+        # Appelle la fonction generer_commanditaire et vérifie la longueur.
+        # du texte reçu puis renvoie le texte ou boucle sur la fonction.
         text = texte_de_quete(message)
         if len(text) < 2001: # max discord text lenght = 2000.
             return text
@@ -111,7 +111,7 @@ def all_users_cmd(message):
             return all_users_cmd(message)
 
     elif message.startswith("!+quêtes"):
-        # Renvoi les commandes pour choisir un type de quete.
+        # Renvoie les commandes pour choisir un type de quete.
         text = "```!quête=enquêter```Affiche une quête d'enquête.\n"
         text += "Voici les différents types de quêtes :"
         for i in range(len(quete)):
@@ -119,32 +119,32 @@ def all_users_cmd(message):
         return text
 
     elif message.startswith('!zone'):
-        # Appelle la fonction qui génère une zone et renvoi un texte.
+        # Appelle la fonction qui génère une zone et renvoie un texte.
         return texte_description_zone(message)
 
     elif message.startswith('!auberge'): 
-        # Appelle la fonction qui génère un nom d'auberge et renvoi un texte.
+        # Appelle la fonction qui génère un nom d'auberge et renvoie un texte.
         return nom_auberge()
 
     elif message.startswith('!pnj') and len(message) < 5: 
-        # Appelle la fonction qui génère un PNJ ou un PJ et renvoi un texte.
+        # Appelle la fonction qui génère un PNJ ou un PJ et renvoie un texte.
         return genere_affiche_perso_light()
 
     elif  message.startswith('!pj') and len(message) < 4: 
-        # Appelle la fonction qui génère un PNJ ou un PJ et renvoi un texte.
+        # Appelle la fonction qui génère un PNJ ou un PJ et renvoie un texte.
         return genere_affiche_pj_light()
 
     elif message.startswith('!pj') or message.startswith('!pnj'):
-            # Appelle la fonction arguments_reroll, renvoi un texte.
+            # Appelle la fonction arguments_reroll, renvoie un texte.
             return texte_description_perso(message)
 
     elif message.startswith('!macro'):
         # La commande !macro est une macro si un utilisateur ayant tapé !macro
-        # n'a pas de macro enregistrées, renvoi ce message :
+        # n'a pas de macro enregistrées, renvoie ce message :
         return "Tu n'as pas encore de macro.\nDemande à Jaenne pour en ajouter."
 
     elif message.startswith('!info'):
-        # Renvoi le lien vers mon Github.
+        # Renvoie le lien vers mon Github.
         text = [
         "Vous pensez que les gnomes ont le monopole de la technologie ?"
         "\nVous pouvez participer à mon amélioration :" 
@@ -153,7 +153,7 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!personnage'):
-        # Renvoi le texte d'aide pour utiliser les commande !pnj, x, y, !pj, x, y
+        # Renvoie le texte d'aide pour utiliser les commandes !pnj, x, y, !pj, x, y.
         text = [
         "\n\n```!pnj, x, y      !pj, x, y```Génère un personnage, x et y sont obligatoires."
         "\nx correspond au points de caractéristiques à dépenser."
@@ -182,7 +182,7 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!races'):
-        # Renvoi la liste des races qui influencent la génération d'un patronyme.
+        # Renvoie la liste des races qui influencent la génération d'un patronyme.
         # avec la commande !pnj, x, y
         text = "Vous pouvez choisir la race des :\n"
         for i in range(len(pers_race)):
@@ -190,7 +190,7 @@ def all_users_cmd(message):
         return text
 
     elif message.startswith('!activites'):
-        # Renvoi la liste des activités qui influencent la génération d'un nom de zone.
+        # Renvoie la liste des activités qui influencent la génération d'un nom de zone.
         # avec la commande !pnj, x, y
         text = "Vous pouvez choisir parmis ces activités :\n"
         for i in range(len(activite)):
@@ -198,7 +198,7 @@ def all_users_cmd(message):
         return text
 
     elif message.startswith('!genres'):
-        # Renvoi la liste des genres qui influencent la génération d'un patronyme
+        # Renvoie la liste des genres qui influencent la génération d'un patronyme
         # avec la commande !pnj, x, y
         text = ""
         for i in range(len(pers_genre)):
@@ -215,7 +215,7 @@ def all_users_cmd(message):
         return text[0]
     
     elif message.startswith('!métiers'):
-        # Renvoi la liste des métiers qui influencent la génération d'un personnage joueur
+        # Renvoie la liste des métiers qui influencent la génération d'un personnage joueur
         # et une aide à l'utilisation de la commande !pnj, x, y
         text = [
         "Enlever un ou plusieurs métier(s) de la liste :"
@@ -233,7 +233,7 @@ def all_users_cmd(message):
         return text[0]
 
     elif message.startswith('!description'):
-        # Renvoi le texte d'aide pour utiliser les commande !pnj, x, y, !pj, x, y
+        # Renvoie le texte d'aide pour utiliser les commandes !pnj, x, y, !pj, x, y
         text = [
         "\n\n```!zone```peut prendre plusieurs paramètres séparés d'une virgule :"
         "```!zone, superficie=5```Le paramètre superficie va de 1 à 5."

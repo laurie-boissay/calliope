@@ -1,6 +1,14 @@
 #!/usr/bin/python3.8
 #coding:u8
 
+
+#import os
+import discord
+
+from commandes.all_cmd import *
+from commandes.all_macro import *
+
+
 """
 Calliope est un robot discord pour le Jeu de rôle.
                             !help
@@ -20,14 +28,22 @@ pour deux JDR différents.
                             !macro
 """
 
-#import os
-import discord
-
-from commandes.all_cmd import *
-from commandes.all_macro import *
 
 class MyClient(discord.Client):
+    """
+    Confirme dans la console que Calliope est connectée.
 
+    Calliope affiche : "Regarde !help" sous son nom.
+
+    Prend tous les message en entrée pour vérifier s'il s'agit d'une macro
+    ou d'une commande.
+
+    Appelle is_it_macro et selon sa réponse affiche le text dans le canal définit
+    ou appelle la fonction is_it_cmd. 
+
+    Selon la réponse de is_it_cmd, affiche le text dans le canal définit 
+    ou ne fait rien.
+    """
     async def on_ready(self):
 
         print(f'{self.user} est connectée à Discord !')
@@ -45,6 +61,15 @@ class MyClient(discord.Client):
                 
 
 client = MyClient()
-client.run(XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX)
+client.run('SECRET TOKEN')
 
 
+'''
+TypeError: __new__() got an unexpected keyword argument 'deny_new' :
+python3 -m pip install -U discord.py
+'''
+
+
+
+# cd /home/jaenne/Python/calliope
+# ./calliope.py
