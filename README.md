@@ -147,3 +147,7 @@ Elle est loin d'être aussi élaborée que DiceParser mais elle correspond pile 
 
 - sur la base de Calliope, je commence un second bot : Clio. Calliope me servira d'inspiration.
 
+
+19/10/20 :
+
+- nettoyage des macros inutiles.
