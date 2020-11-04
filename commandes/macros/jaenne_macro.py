@@ -69,7 +69,7 @@ def macro_merest (macro_text):
 
     elif "!couteau" in macro_text.lower():
         p1 = perso + " donne un coup de couteau :\n"
-        p2 = roll(1, 20, qui("force") + qui["niveau"])
+        p2 = roll(1, 20, qui["force"] + qui["niveau"])
         return p1 + p2
 
     elif "!dcouteau" in macro_text.lower():
