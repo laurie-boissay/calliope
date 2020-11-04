@@ -73,7 +73,7 @@ def macro_merest (macro_text):
         return p1 + p2
 
     elif "!dcouteau" in macro_text.lower():
-        p1 = "Dégas du coup de couteau de " + perso + " :\n"
+        p1 = "Dégâts du coup de couteau de " + perso + " :\n"
         p2 = roll(1, 4, 0)
         return p1 + p2
 
