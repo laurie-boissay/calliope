@@ -22,7 +22,7 @@ def roll(nb_des, valeur_des, bonus):
             text += " + "
     text = text + "\n (" + str(total) + ")" 
     if bonus != 0:
-        text += " + son bonus/malus de " + str(bonus)
+        text += " + son modificateur de " + str(bonus)
     text = text + " = " + "**" + str(total+bonus) + "**"
     return text
 
