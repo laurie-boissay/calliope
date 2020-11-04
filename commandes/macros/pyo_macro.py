@@ -16,7 +16,7 @@ def macro_eustache (macro_text) :
 
     elif "!dague" in macro_text.lower():
         p1 = "Eustache donne un coup de dague :\n" 
-        p2 = roll(1, 20, qui("force") + qui["niveau"]) 
+        p2 = roll(1, 20, qui["force"] + qui["niveau"]) 
         return p1 + p2
 
     elif "!lpierres" in macro_text.lower():
